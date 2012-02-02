@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -17,7 +18,10 @@ ActiveRecord::Schema.define(:version => 20111105171630) do
     t.string   "email"
     t.string   "encrypted_password"
     t.string   "salt"
+    t.string   "permalink"
+    t.string   "role"
     t.boolean  "admin"
+    t.boolean  "patient"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

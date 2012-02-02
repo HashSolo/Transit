@@ -1,15 +1,19 @@
-<header>
-	<h1><%= link_to "Transit", root_path %></h1>
-		<nav>
-			<ul>				
-				<% if signed_in? %>
-					<li><%= link_to "Sign Out", signout_path %></li>
-					<li><%= link_to "Settings", edit_user_path(current_user), :class => is_active?("users#edit") %></li>
-					<li><%= link_to "Profile", user_path(current_user), :class=> is_active?("users#show") %></li>
-					
-				<% else %>
-					<li><%= link_to "Sign In", signin_path, :class => is_active?("sessions#new") %></li>
-				<% end %>
-			</ul>
-		</nav>
+<header >
+		<% if signed_in? %>
+			<nav class="header light_gray_blue">
+				<ul>
+					<div class="grid_3 alpha">				
+						<li class="header_button header_left left_nav round"><%= link_to user_path(current_user) do |l| %><span class="icon">⌂</span><h2>Transit</h2><% end %></li>
+					</div>
+					<div class="grid_9 omega">	
+						<li class="header_button header_right round"><span class="icon">⊝</span><%= link_to "Sign Out", signout_path %></li>
+						<li class="header_button header_right round"><span class="icon">⚙</span><%= link_to "Settings", edit_user_path(current_user), :class => is_active?("users#edit") %></li>
+						<li class="header_button header_right round"><span class="icon">z</span><%= link_to "Settings", edit_user_path(current_user), :class => is_active?("users#edit") %></li>						
+					</div>
+				</ul>
+			</nav>
+		<% else %>
+			<h1><%= link_to "Transit", root_path %></h1>
+		<% end %>
+		
 </header>

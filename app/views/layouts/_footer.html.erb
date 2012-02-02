@@ -1,24 +1,16 @@
 
 <% if signed_in? %>
-<footer class="loggedin">
-	<div class="border">
-	<div class="container_12">
-	<nav class="grid_12 round">
+<footer>
+	<nav class="footer">
 		<ul>
-			<li><%= link_to "Help", help_path %></li>
-			<li><%= link_to "Contact", contact_path %></li>
+			<li>Transit</li>
 		</ul>
 	</nav>	
-	<div class="grid_12">
-		<div class="footer-text">
-			Transit. An <a href="#" target="_blank">Althea</a> creation.
-		</div>
-	</div>
-	</div>
-	</div>
 </footer>
 <% else %>
-<footer class="home">
-Transit. An <a href="http://alx.bz" target="_blank">Althea</a> creation.
+<footer>
+	<div class="copyright">
+		Transit. An <a href="http://alx.bz" target="_blank">Althea</a> creation.
+	</div>
 </footer>
 <% end %>

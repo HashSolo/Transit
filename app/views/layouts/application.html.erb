@@ -7,23 +7,47 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div class="container">
-		<%= render 'layouts/header' %>
-		
-		<section class="container_12 page-body-content">
-		
-		<% unless is_active?('pages#home')=="active" %>
-		<% flash.each do |key, value| %>
-			<div class="grid_6 suffix_6"><div class="flash <%= key %>"><%= value %></div>			</div>
-		<% end %>
-		<% end %>
-			<%= yield %>
-			
-		</section>
-		
-		<%= render 'layouts/footer' %>
-	</div>
+		<div class="container_12">
+		<div class="grid_12">	
 
-<%= debug(params) if Rails.env.development? %>
+			<%= render 'layouts/header' %>				
+
+			<div class="middle_content">
+			<% if signed_in? %>
+
+					<div class="grid_2 alpha">
+						<%= render 'layouts/left_sidebar' %>
+					</div>
+			
+					<div class="grid_10 omega">
+						<div class="content_view">
+							<% flash.each do |key, value| %>
+							<div class="flash <%= key %>"><%= value %></div>
+							<% end %>
+			
+							<%= yield %>
+						</div>
+					</div>
+			
+			<% else %>
+				<div class="content_view">
+					<% flash.each do |key, value| %>
+						<div class="flash <%= key %>"><%= value %></div>
+					<% end %>
+					<%= yield %>
+				</div>
+			<% end %>
+			</div>
+			
+			<%= render 'layouts/footer' %>
+
+			<div class="grid_12 alpha omega">			
+				<div class="debug">
+					<%= debug(params) if Rails.env.development? %>	
+				</div>
+			</div>
+		</div>
+		</div>
+
 </body>
 </html>

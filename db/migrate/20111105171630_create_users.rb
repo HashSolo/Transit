@@ -5,8 +5,10 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :encrypted_password
       t.string :salt
+      t.string :permalink
+      t.string :role
       t.boolean :admin
-
+      t.boolean :patient
       t.timestamps
     end
   end
