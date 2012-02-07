@@ -7,13 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-		<div class="container_12">
-		<div class="grid_12">	
+
+			
+			<% if signed_in? %>
+
+			<div class="container_12">
+			<div class="grid_12">
 
 			<%= render 'layouts/header' %>				
 
 			<div class="middle_content">
-			<% if signed_in? %>
 
 					<div class="grid_3 alpha">
 						<%= render 'layouts/left_sidebar' %>
@@ -28,26 +31,40 @@
 							<%= yield %>
 						</div>
 					</div>
+
+			</div>		
+		
+				<%= render 'layouts/footer' %>
+
+				<div class="grid_12 alpha omega">			
+					<div class="debug">
+						<%= debug(params) if Rails.env.development? %>	
+					</div>
+				</div>
+			</div>
+			</div>
 			
 			<% else %>
 				<div class="content_view">
+					
+					<%= yield %>
 					<% flash.each do |key, value| %>
 						<div class="flash <%= key %>"><%= value %></div>
 					<% end %>
-					<%= yield %>
-				</div>
-			<% end %>
-			</div>
-			
-			<%= render 'layouts/footer' %>
+				
+					<%= render 'layouts/footer' %>
 
-			<div class="grid_12 alpha omega">			
-				<div class="debug">
-					<%= debug(params) if Rails.env.development? %>	
+					<div class="grid_12 alpha omega">			
+						<div class="debug">
+							<%= debug(params) if Rails.env.development? %>	
+						</div>
+					</div>
+				
 				</div>
-			</div>
-		</div>
-		</div>
+				
+			<% end %>
+			
+		
 
 </body>
 </html>
