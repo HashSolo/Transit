@@ -5,8 +5,10 @@ Transit::Application.routes.draw do
 	match '/register', :to => 'users#new'
 	match '/signin', :to => 'sessions#new'
 	match '/signout', :to => 'sessions#destroy'
+  match '/home', :to => 'pages#home'
 
   root :to => "sessions#new"
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

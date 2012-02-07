@@ -1,16 +1,39 @@
-<h2>Sign In</h2>
+<div class="sign_in">
+	
+
+<!--	<h2 class="sign_in">Sign In</h2>-->
+	<br>
 
 
-<%= form_for(:session, :url => sessions_path) do |f| %>
-	<div class="field">
-		<%= f.label :email %><br />
-		<%= f.text_field :email %>
-	</div>
-	<div class="field">
-		<%= f.label :password %><br/>
-		<%= f.password_field :password %>	
-	</div>
-	<div class="actions">
-		<%= f.submit "Sign in", :class => "styled-button green-gradient sign-in-button" %>
-	</div>
-<% end %>
+	<%= form_for(:session, :url => sessions_path) do |f| %>
+		
+		<div class="actions float_right button_margin">
+			<br>
+			<%= f.submit "Sign in", :class => "styled_button" %>
+		</div>
+		
+		<div class="field float_right">
+			<%= f.label :password, :class => "label_font" %><br/>
+			<%= f.password_field :password, :class => "form_border" %>	
+		</div>
+		
+		<div class="field float_right">
+			<%= f.label :email, :class => "label_font" %><br />
+			<%= f.text_field :email, :class => "form_border" %>
+		</div>
+		
+		<div class="logo_margin">
+		 	<%= link_to "transit", root_path, :class => "logo_font" %>
+		</div>
+		
+	<% end %>
+			
+</div>
+
+<br>
+<div class="signin_pic">
+Design Image
+</div>
+
+<div class="sign_in_bottom">
+</div> 
