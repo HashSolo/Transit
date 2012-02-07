@@ -2,10 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 /*Globals*/
-html {height:100%;}
-body {height:100%;margin:0;padding:0;}
+html {height:100%;font-family:'Trebuchet MS', Arial, sans-serif;}
+body {height:100%;margin:0;padding:0;font-family:'Trebuchet MS', Arial, sans-serif;}
 div.content {display:inline-block;float:left;width:100%;position:relative;min-height:100%;}
-div.middle_content {display:inline-block;width:100%;float:left;position:relative;min-height:400px;margin-top:5px;}
+div.middle_content {display:inline-block;width:100%;float:left;position:relative;height:100%;margin-top:5px;}
 
 /*content view*/
 div.content_view {display:inline-block;width:100%;float:left;padding-top:10px;height:100%;min-height:400px;}
@@ -19,23 +19,38 @@ nav.header ul li {padding:0px;margin:0px;display:inline-block;list-style-type:no
 nav.header ul li:hover {background:#325d5d;border:4px double #7895a3;}
 nav.header ul li span.text_label {font-size:12px;width:100%;display:inline-block;}
 nav.header ul li span.icon {display:inline-block;width:100%;padding-top:15px;}
+nav.header ul li span.time_icon {display:inline-block;width:100%;padding-top:15px;font-weight:bold;}
 nav.header ul li.header_left {border:0px solid #ffffff;background:#ffffff;color:#7895a3;float:left;width:13.667%;text-align:left;font-size:30px;font-family:'Trebuchet MS', Arial, sans-serif;padding-left:20px;line-height:70px;padding-top:0px;height:70px;}
-nav.header ul li.header_left span.icon {display:inline;color:#7895a3;}
-nav.header ul li.header_left h2 {display:inline-block;width:20%;font-size:25px;margin-left:10px;color:#7895a3;}
-nav.header ul li.header_right {float:right;text-align:center;font-size:30px;width:11.667%;margin-left:1%;}
+nav.header ul li.header_left span.icon {display:inline;color:#7895a3;font-size:40px;}
+nav.header ul li.header_left h2 {display:inline-block;width:20%;font-size:28px;margin-left:10px;color:#7895a3;}
+nav.header ul li.header_right {float:right;text-align:center;font-size:30px;width:8.667%;margin-left:1%;}
+nav.header ul li.header_right.selected {background:#325d5d;border:4px double #7895a3;}
 nav.header ul li a {text-decoration:none;color:#ffffff;display:block;height:70px;}
 
 
 /*Footer*/
 footer {padding:0px;height:50px;margin:0px;display:inline-block;float:left;width:100%;text-align:center;position:relative;float:bottom;}
 footer div.copyright {padding:0px;margin:0px;display:inline-block;float:left;width:100%;text-align:center;}
-nav.footer {height:50px;border-top:3px double #7895a3;border-left:3px double #7895a3;border-right:3px double #7895a3;}
+nav.footer {height:50px;border-top:1px solid #cccccc;margin-top:18px;padding-top:12px;display:inline-block;width:100%;color:#325d5d;}
+nav.footer ul {padding:0px;margin:0px;display:inline-block;float:left;width:100%;}
+nav.footer ul li {padding:0px;margin:0px;display:inline-block;float:left;width:100%;list-style-type:none;}
+
 
 /*Left Sidebar*/
-div.left_sidebar {display:inline-block;width:100%;height:100%;float:left;position:relative;background:#ffffff;min-height:400px;}
-div.left_sidebar ul {padding:0px;margin:0px;display:inline-block;float:left;width:99%;background:#7895a3;border:4px double #325d5d;min-height:400px;}
-div.left_sidebar ul li {padding:0px;margin:0px;display:inline-block;float:left;width:96%;list-style-type:none;height:40px;border-bottom:1px solid #325d5d;margin-left:2%;margin-right:2%;line-height:40px;}
-div.left_sidebar ul li.header {text-align:center;color:#ffffff;background:#103b3b;width:100%;margin-left:0;margin-right:0;position:relative;top:0;left:0;margin-left:0;margin-right:0;}
+div.left_sidebar {display:inline-block;width:100%;height:100%;float:left;position:relative;background:#ffffff;}
+div.left_sidebar ul {padding:0px;margin:0px;display:inline-block;float:left;width:99%;height:100%;}
+div.left_sidebar ul li {padding:0px;margin:0px;display:inline-block;float:left;width:96%;list-style-type:none;height:40px;border-bottom:1px solid #ffffff;margin-left:2%;margin-right:2%;line-height:40px;color:#ffffff;font-size:18px;border:4px double #325d5d;margin-top:6px;margin-bottom:6px;background:#7895a3;text-align:center;}
+div.left_sidebar ul li a {text-decoration:none;color:#ffffff;}
+div.left_sidebar ul li.option {cursor:pointer;}
+div.left_sidebar ul li.option:hover {background:#325d5d;border:4px double #7895a3;}	
+div.left_sidebar ul li span.text {float:left;padding-left:18px;}
+div.left_sidebar ul li span.icon {float:right;padding-right:18px;}
+div.left_sidebar ul li.header {text-align:center;color:#7895a3;font-weight:bold;border-bottom:3px double #7895a3;width:100%;margin-left:0;margin-right:0;position:relative;top:0;left:0;margin-left:0;margin-right:0;font-size:20px;border:4px double #7895a3;background:#ffffff;}
+
+/*Left sidebare appointmnent*/
+div.left_sidebar ul li.left_side_schedule {height:100%;display:inline-block;height:360px;}
+div.left_sidebar ul li.left_side_schedule ul {display:inline-block;width:100%;padding:0px;margin:0px;height:360px;border:0px solid #789d53;}
+div.left_sidebar ul li.left_side_schedule ul li {display:inline-block;width:100%;padding:0px;margin:0px;height:100%;list-style-type:none;border:0px solid #7895a3;height:360px;}
 
 /*Content View*/
 div.content_view {display:inline-block;width:100%;height:100%;float:left;position:relative;}

@@ -1,11 +1,29 @@
 <div class="left_sidebar">
-	<ul>
-		<li class="header">Welcome Back</li>
-		<li>Select 'New Case' To Begin a New Case</li>
-		<li>Select 'Administration' to Add Employees</li>
-		<li>Select 'Calendar' to View/Make Appointments</li>
-		<li>Select 'Case Lookup' to Search for Previous Cases</li>
-		<li>Select 'Account Settings' to Edit Your Info</li>
-		<li>Select 'Sign Out' to Call It a Day</li>
-	</ul>
+		<% if is_controller_active?('users') && is_action_active?('show') #This would be the home page... %>
+			<ul>
+				<li class="header">Today's Schedule</li>
+				<li class="left_side_schedule">
+					<ul>
+						<li>Appointment Mockup List</li>
+					</ul>
+				</li>
+			</ul>
+		<% elsif is_controller_active?('cases') #The following is the left sidebar when in a case view (show/edit...or any nested views) %>
+			<% if is_action_active?('edit') || is_action_active?('show') #Only to be shown during the edit and show views %>
+			<ul>
+				<li class="header">Case #: <%= @case.id %></li>
+				<li class="option"><%= link_to edit_case_path(@case) do |f| %><span class="text">Overview</span><span class="icon">E</span><% end %></li>
+				<li class="option"><span class="text">Patients</span><span class="icon">u</span></li>
+				<li class="option"><span class="text">Diagnosis</span><span class="icon">✎</span></li>
+				<li class="option"><span class="text">Stimulation</span><span class="icon">⌚</span></li>
+				<li class="option"><span class="text">Embryology</span><span class="icon">s</span></li>
+				<li class="option"><span class="text">Appointments</span><span class="icon">l</span></li>
+				<li class="option"><span class="text">Follow Up</span><span class="icon">✔</span></li>
+			</ul>
+			<% elsif is_action_active?('index') #What to show during the index (case search) view %>
+				<h1>Case Lookup</h1>
+			<% elsif is_action_active?('new') #What to show during the new case view %>
+				<h1>Start a New Case</h1>
+			<% end %>	
+		<% end %>
 </div>
