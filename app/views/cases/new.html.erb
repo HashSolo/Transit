@@ -1,44 +1,51 @@
 <%= form_for @case do |f|%>
-	
-	<%= fields_for @user do |g| %>
-		<table><tr><td class = "label"> 
-		<%= g.label :email, "Patient email" %>*<%= g.text_field :email %>
-		</td></tr></table>
-	<% end %>
-	
-	
-	<% referrers_select = "<option value = ''>No Referrer</option>" %>
-	<% @referrers.each do |g| 
-		referrers_select += "<option value='#{g.id}'>#{g.first_name} #{g.last_name}</option>"
-	end %>
-	<%= f.select(:referrer_id, referrers_select) %>
-	
-	<br>
-	
-	<% clinicians_select = "<option value = ''>No Clinician</option>" %>
-	<% @clinicians.each do |g| 
-		clinicians_select += "<option value='#{g.id}'>#{g.first_name} #{g.last_name}</option>"
-	end %>
-	<%= f.select(:clinician_id, clinicians_select) %>
-	
+
+<div class="entries round">
 		
-	<%= fields_for @appointment do |g| %>
-
-		<table><tr><td class = "label"> 
-		<%= g.label :date_and_time, "Date and time" %>*<%= g.datetime_select :date_and_time %>
-		</td></tr></table>
-
+	<table class="entries">	
+	<tr>	
+		<td>Patient email:</td>	
+		<td><%= fields_for @user do |g| %>
+			<%= g.text_field :email %>
+			<% end %>
+		</td>
+	</tr>
+	<tr>
+		<td>Referring MD:</td>
+		<% referrers_select = "<option value = ''>No Referrer</option>" %>
+			<% @referrers.each do |g| 
+				referrers_select += "<option value='#{g.id}'>#{g.first_name} #{g.last_name}</option>"
+			end %>
+		<td><%= f.select(:referrer_id, referrers_select) %></td>
+	</tr>
+	<tr>
+		<td>Case clinician:</td>
+		<% clinicians_select = "<option value = ''>No Clinician</option>" %>
+		<% @clinicians.each do |g| 
+			clinicians_select += "<option value='#{g.id}'>#{g.first_name} #{g.last_name}</option>"
+		end %>
+		<td><%= f.select(:clinician_id, clinicians_select) %></td>
+	</tr>
+	<tr>	
+		<td>Initial appointment:</td>	
+		<td><%= fields_for @appointment do |g| %>
+			<%= g.datetime_select :date_and_time %></td>
+	</tr>
+	<tr>
+		<td>	with </td>	
 		<% clinicians_select = "<option value = ''>No Clinician</option>" %>
 		<% @clinicians.each do |h| 
 			clinicians_select += "<option value='#{h.id}'>#{h.first_name} #{h.last_name}</option>"
 		end %>
-		<%= g.select(:clinician_id, clinicians_select) %>
-
+		<td><%= g.select(:clinician_id, clinicians_select) %></td>
+	</tr>
+	</table>
 
 	<% end %>
-	
-	<br>
-	
-	<%= f.submit "Create Case"%>
+
+</div>
+		
+	<%= f.submit "Create Case", :class => "case_button round" %>
 		
 <% end %>
+
