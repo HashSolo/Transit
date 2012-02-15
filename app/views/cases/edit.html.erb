@@ -1,0 +1,10 @@
+<% 
+clinician = Clinician.find_by_id(@case.clinician_id) 
+referrer = Referrer.find_by_id(@case.referrer_id)
+
+
+%>
+
+
+<p>Clinician: <%= clinician.first_name %> </p>
+<p>Referrer: <%= referrer.first_name %> </p>

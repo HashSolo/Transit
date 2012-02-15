@@ -9,7 +9,12 @@ class CasesController < ApplicationController
 
   def new
     @title = "Start New Case"
-    @case = Case.new
+    @user = User.new
+    @case = @user.cases.new
+    @appointment = @case.appointments.new  
+    @clinicians = Clinician.all
+    @referrers = Referrer.all
+    
   end
 
   def create

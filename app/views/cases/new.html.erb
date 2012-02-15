@@ -1,0 +1,44 @@
+<%= form_for @case do |f|%>
+	
+	<%= fields_for @user do |g| %>
+		<table><tr><td class = "label"> 
+		<%= g.label :email, "Patient email" %>*<%= g.text_field :email %>
+		</td></tr></table>
+	<% end %>
+	
+	
+	<% referrers_select = "<option value = ''>No Referrer</option>" %>
+	<% @referrers.each do |g| 
+		referrers_select += "<option value='#{g.id}'>#{g.first_name} #{g.last_name}</option>"
+	end %>
+	<%= f.select(:referrer_id, referrers_select) %>
+	
+	<br>
+	
+	<% clinicians_select = "<option value = ''>No Clinician</option>" %>
+	<% @clinicians.each do |g| 
+		clinicians_select += "<option value='#{g.id}'>#{g.first_name} #{g.last_name}</option>"
+	end %>
+	<%= f.select(:clinician_id, clinicians_select) %>
+	
+		
+	<%= fields_for @appointment do |g| %>
+
+		<table><tr><td class = "label"> 
+		<%= g.label :date_and_time, "Date and time" %>*<%= g.datetime_select :date_and_time %>
+		</td></tr></table>
+
+		<% clinicians_select = "<option value = ''>No Clinician</option>" %>
+		<% @clinicians.each do |h| 
+			clinicians_select += "<option value='#{h.id}'>#{h.first_name} #{h.last_name}</option>"
+		end %>
+		<%= g.select(:clinician_id, clinicians_select) %>
+
+
+	<% end %>
+	
+	<br>
+	
+	<%= f.submit "Create Case"%>
+		
+<% end %>
