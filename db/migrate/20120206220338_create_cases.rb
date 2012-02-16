@@ -4,6 +4,7 @@ class CreateCases < ActiveRecord::Migration
       t.integer :user_id
       t.integer :clinician_id
       t.integer :referrer_id
+      t.boolean :status
       t.string :email
       t.timestamps
     end

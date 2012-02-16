@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20120209192839) do
     t.integer  "user_id"
     t.integer  "clinician_id"
     t.integer  "referrer_id"
+    t.boolean  "status"
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -59,14 +60,12 @@ ActiveRecord::Schema.define(:version => 20120209192839) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name"
     t.string   "email"
     t.string   "encrypted_password"
     t.string   "salt"
-    t.string   "permalink"
-    t.string   "role"
     t.boolean  "admin"
     t.boolean  "patient"
+    t.boolean  "clinician"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

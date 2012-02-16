@@ -8,8 +8,9 @@
 		<td><%= fields_for @user do |g| %>
 			<%= g.text_field :email %>
 			<% end %>
-		</td>
+		</td>	
 	</tr>
+	
 	<tr>
 		<td>Referring MD:</td>
 		<% referrers_select = "<option value = ''>No Referrer</option>" %>
@@ -32,7 +33,7 @@
 			<%= g.datetime_select :date_and_time %></td>
 	</tr>
 	<tr>
-		<td>	with </td>	
+		<td>with</td>	
 		<% clinicians_select = "<option value = ''>No Clinician</option>" %>
 		<% @clinicians.each do |h| 
 			clinicians_select += "<option value='#{h.id}'>#{h.first_name} #{h.last_name}</option>"
@@ -48,4 +49,3 @@
 	<%= f.submit "Create Case", :class => "case_button round" %>
 		
 <% end %>
-
