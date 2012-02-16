@@ -11,25 +11,61 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120206220338) do
+ActiveRecord::Schema.define(:version => 20120209192839) do
+
+  create_table "appointments", :force => true do |t|
+    t.integer  "case_id"
+    t.integer  "clinician_id"
+    t.datetime "date_and_time"
+    t.string   "appointment_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "cases", :force => true do |t|
     t.integer  "user_id"
-    t.string   "email"
+    t.integer  "clinician_id"
     t.integer  "referrer_id"
+    t.boolean  "status"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "clinicians", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.integer  "user_id"
+    t.string   "role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "referrers", :force => true do |t|
+    t.integer  "case_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "practice_name"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "website"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name"
     t.string   "email"
     t.string   "encrypted_password"
     t.string   "salt"
-    t.string   "permalink"
-    t.string   "role"
     t.boolean  "admin"
     t.boolean  "patient"
+    t.boolean  "clinician"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

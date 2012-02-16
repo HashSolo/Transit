@@ -1,15 +1,25 @@
 <header >
 		<% if signed_in? %>
 			<nav class="header">
-				<ul>		
+				<ul>	
+											
 						<li class="header_button header_left left_nav"><%= link_to user_path(current_user) do |l| %><span class="icon">⌂</span><h2>Transit</h2><% end %></li>
+						
 						<li class="header_button header_right "><%= link_to signout_path do |l| %><span class="icon">⊝</span><span class="text_label">Sign Out</span><% end %></li>
-						<li class="header_button header_right "><%= link_to edit_user_path(current_user) do |l| %><span class="icon">⚙</span><span class="text_label">Account Settings</span><% end %></li>
-						<li class="header_button header_right "><%= link_to '#' do |l| %><span class="icon">u</span><span class="text_label">Practice Admin</span><% end %></li>						
-						<li class="header_button header_right "><%= link_to '#' do |l| %><span class="icon">C</span><span class="text_label">Reports</span><% end %></li>
-						<li class="header_button header_right "><%= link_to cases_path do |l| %><span class="icon">z</span><span class="text_label">Case Lookup</span><% end %></li>
-						<li class="header_button header_right "><%= link_to '#' do |l| %><span class="time_icon"><%= Time.now.strftime('%b') %> <%= Time.now.day %></span><span class="text_label">Calendar</span><% end %></li>
-						<li class="header_button header_right "><%= link_to new_case_path do |l| %><span class="icon">⊕</span><span class="text_label">New Case</span><% end %></li>
+						
+						<li class="<%= is_state_active?('users','edit') %> header_right "><%= link_to edit_user_path(current_user) do |l| %><span class="icon">⚙</span><span class="text_label">Account Settings</span><% end %></li>
+						
+						<li class="<%= is_state_active?('#','#') %> header_right "><%= link_to '#' do |l| %><span class="icon">u</span><span class="text_label">Practice Admin</span><% end %></li>						
+						
+						<li class="<%= is_state_active?('#','#') %> header_right "><%= link_to '#' do |l| %><span class="icon">C</span><span class="text_label">Reports</span><% end %></li>
+
+						<li class="<%= is_state_active?('cases','index') %> header_right "><%= link_to cases_path do |l| %><span class="icon">z</span><span class="text_label">Case Lookup</span><% end %></li>
+						
+						<li class="<%= is_state_active?('#','#') %> header_right "><%= link_to '#' do |l| %><span class="time_icon"><%= Time.now.strftime('%b') %> <%= Time.now.day %></span><span class="text_label">Calendar</span><% end %></li>
+
+												
+						<li class="<%= is_state_active?('cases','new') %> header_right "><%= link_to new_case_path do |l| %><span class="icon">⊕</span><span class="text_label">New Case</span><% end %></li>
+				
 				</ul>
 			</nav>
 		<% else %>

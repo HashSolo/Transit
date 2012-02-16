@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
+
+clinicians = Clinician.create!([{:first_name => 'Clinican 1'}, {:first_name => 'Clinician 2'}])
+referrers = Referrer.create([{:first_name => 'Referrer 1'}, {:first_name => 'Referrer 2'}])
+user = User.create({:email => 'cfclevel@gmail.com', :password => 'foobar'})

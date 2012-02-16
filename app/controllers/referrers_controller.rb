@@ -1,0 +1,2 @@
+class ReferrersController < ApplicationController
+end
