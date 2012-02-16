@@ -9,6 +9,10 @@ body {height:100%;margin:0;padding:0;font-family:'Trebuchet MS', Arial, sans-ser
 div.content {display:inline-block;float:left;width:100%;position:relative;min-height:100%;}
 div.middle_content {display:inline-block;width:100%;float:left;position:relative;height:100%;margin-top:5px;}
 
+
+/*Admin Title*/
+h1.admin_title {margin:24px;margin-top:12px;border-bottom:1px solid #cccccc;}
+
 /*content view*/
 div.content_view {display:inline-block;width:100%;float:left;padding-top:10px;height:100%;min-height:400px;}
 
@@ -19,17 +23,17 @@ nav.header {padding:0px;margin:0px;display:inline-block;width:100%;float:left;he
 nav.header ul {padding:0px;margin:0px;display:inline-block;width:100%;float:left;height:100px;}
 nav.header ul li {padding:0px;margin:0px;display:inline-block;list-style-type:none;height:70px;color:#ffffff;line-height:20px;margin-top:15px;margin-bottom:15px;background:#7895a3;border:4px double #325d5d;}
 nav.header ul li:hover {background:#325d5d;border:4px double #7895a3;}
-nav.header ul li span.text_label {font-size:12px;width:100%;display:inline-block;}
+nav.header ul li span.text_label {font-size:10px;width:100%;display:inline-block;}
 nav.header ul li span.icon {display:inline-block;width:100%;padding-top:15px;}
 nav.header ul li span.time_icon {display:inline-block;width:100%;padding-top:15px;font-weight:bold;}
 nav.header ul li.header_left {border:0px solid #ffffff;background:#ffffff;color:#7895a3;float:left;width:13.667%;text-align:left;font-size:30px;font-family:'Trebuchet MS', Arial, sans-serif;padding-left:20px;line-height:70px;padding-top:0px;height:70px;}
 nav.header ul li.header_left span.icon {display:inline;color:#7895a3;font-size:40px;}
 nav.header ul li.header_left h2 {display:inline-block;width:20%;font-size:28px;margin-left:10px;color:#7895a3;}
-nav.header ul li.header_right {float:right;text-align:center;font-size:30px;width:8.667%;margin-left:1%;}
+nav.header ul li.header_right {float:right;text-align:center;font-size:24px;width:9%;margin-left:1%;}
 nav.header ul li.header_right.selected {background:#325d5d;border:4px double #7895a3;}
 nav.header ul li a {text-decoration:none;color:#ffffff;display:block;height:70px;}
 /*selected headers*/
-nav.header ul li.header_selected{background:#325d5d;border:4px double #7895a3;}
+nav.header ul li.selected{background:#325d5d;border:4px double #7895a3;}
 
 
 /*Footer*/
@@ -43,10 +47,11 @@ nav.footer ul li {padding:0px;margin:0px;display:inline-block;float:left;width:1
 /*Left Sidebar*/
 div.left_sidebar {display:inline-block;width:100%;height:100%;float:left;position:relative;background:#ffffff;}
 div.left_sidebar ul {padding:0px;margin:0px;display:inline-block;float:left;width:99%;height:100%;}
-div.left_sidebar ul li {padding:0px;margin:0px;display:inline-block;float:left;width:96%;list-style-type:none;height:40px;border-bottom:1px solid #ffffff;margin-left:2%;margin-right:2%;line-height:40px;color:#ffffff;font-size:18px;border:4px double #325d5d;margin-top:6px;margin-bottom:6px;background:#7895a3;text-align:center;}
+div.left_sidebar ul li {padding:0px;margin:0px;display:inline-block;float:left;width:96%;list-style-type:none;height:40px;border-bottom:1px solid #ffffff;margin-left:2%;margin-right:2%;line-height:40px;color:#ffffff;font-size:14px;border:4px double #325d5d;margin-top:6px;margin-bottom:6px;background:#7895a3;text-align:center;}
 div.left_sidebar ul li a {text-decoration:none;color:#ffffff;}
 div.left_sidebar ul li.option {cursor:pointer;}
 div.left_sidebar ul li.option:hover {background:#325d5d;border:4px double #7895a3;}	
+div.left_sidebar ul li.option.selected {background:#325d5d;border:4px double #7895a3;}	
 div.left_sidebar ul li span.text {float:left;padding-left:18px;}
 div.left_sidebar ul li span.icon {float:right;padding-right:18px;}
 div.left_sidebar ul li.header {text-align:center;color:#7895a3;font-weight:bold;border-bottom:3px double #7895a3;width:100%;margin-left:0;margin-right:0;position:relative;top:0;left:0;margin-left:0;margin-right:0;font-size:20px;border:4px double #7895a3;background:#ffffff;}
@@ -57,7 +62,7 @@ div.left_sidebar ul li.left_side_schedule ul {display:inline-block;width:100%;pa
 div.left_sidebar ul li.left_side_schedule ul li {display:inline-block;width:100%;padding:0px;margin:0px;height:100%;list-style-type:none;border:0px solid #7895a3;height:360px;}
 
 /*Content View*/
-div.content_view {display:inline-block;width:100%;height:100%;float:left;position:relative;}
+div.content_view {display:inline-block;width:100%;min-height:450px;float:left;position:relative;border-left:1px solid #cccccc;}
 
 /*Sign in*/
 div.sign_in {padding:0px;margin:auto;width:100%;height:80px;background:#7895a3;}
@@ -78,8 +83,6 @@ div.float_right{float:right;}
 div.entries{padding:0px;margin:0px;position:relative;left:45px;width:97%;border:2px solid #7895a3;background:white;}
 table.entries td {padding:15px;}
 table.entries tr > td:first-child {text-align:right;}
-.case_button{background-color:#7895a3;width:auto;position:relative;left:45px;font-size:60px;color:white;border:none;cursor:pointer}
-.case_button:hover{background-color:#325d64;}
 
 /*Case Index*/
 ul.index li{padding:10px;margin:10px;border:none;background-color:#7895a3;width:auto;
@@ -109,3 +112,25 @@ li.nav_bar {float:left;margin:10px;cursor:pointer;}
 }
 /*round stuff*/
 .round {-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;}
+
+/*New Referrer Page*/
+/*New Referrer Page*/
+div.referrer_submit_button {display:inline-block;float:left;margin-left:35%;margin-right:35%;width:35%;margin-top:24px;}
+
+/*New CAse Page*/
+div.table_wrapper {min-height:100px;margin-bottom:12px;padding-left:5%;padding-right:5%;margin-left:5%;background:#D1E0E8;border:4px double #325d5d;}
+div.table_wrapper.bottom_wrapper {min-height:160px;}
+div.table_wrapper.right_wrapper {margin-left:-5px;}
+div.table_wrapper.left_wrapper {margin-right:-5px;}
+div.table_wrapper h2 {padding-top:5%;}
+table.form {width:100%;font-size:13px;color:#444444;}
+table.form tr {height:40px;width:100%;}
+table.form tr td {height:40px;line-height:40px;}
+table.form tr td.label {text-align:left;}
+table.form tr td.value {text-align:right;}
+.case_button{background-color:#7895a3;color:white;border:none;cursor:pointer;padding:20px;font-size:30px;margin-left:35%;margin-right:35%;width:30%;margin-top:24px;border:4px double #325d5d;text-align:center;}
+.case_button:hover{background-color:#325d64;}
+
+/*jQuery UI Calendar*/
+div.calendar_container {display:inline-block;width:100%;float:left;padding-bottom:12px;margin-top:12px;}
+div#calendar{}

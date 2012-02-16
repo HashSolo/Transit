@@ -1,0 +1,51 @@
+<h1 class="admin_title">Add a New Referrer</h1>
+<%= form_for @referrer do |f| %>
+<div class="grid_4 suffix_1 alpha">	
+	<div class="table_wrapper left_wrapper">
+	<table class="form">
+		<tr>
+			<td class="label"><%= f.label :last_name %></td><td class="value"><%= f.text_field :last_name %></td>
+		</tr>
+		<tr>
+			<td class="label"><%= f.label :first_name %></td><td class="value"><%= f.text_field :first_name %></td>
+		</tr>
+		<tr>
+			<td class="label"><%= f.label :practice_name %></td><td class="value"><%= f.text_field :practice_name %></td>
+		</tr>
+		<tr>
+			<td class="label"><%= f.label :address_1 %></td><td class="value"><%= f.text_field :address_1 %></td>
+		</tr>
+		<tr>
+			<td class="label"><%= f.label :address_2 %></td><td class="value"><%= f.text_field :address_2 %></td>
+		</tr>
+		<tr>
+			<td class="label"><%= f.label :city %></td><td class="value"><%= f.text_field :city %></td>
+		</tr>
+	</table>
+	</div>
+</div>
+<div class="grid_4 omega">
+	<div class="table_wrapper right_wrapper">
+	<table class="form">
+		<tr>
+			<td class="label"><%= f.label :state %></td><td class="value"><%= f.text_field :state %></td>
+		</tr>
+		<tr>
+			<td class="label"><%= f.label :zip %></td><td class="value"><%= f.text_field :zip %></td>
+		</tr>
+		<tr>
+			<td class="label"><%= f.label :phone %></td><td class="value"><%= f.text_field :phone %></td>
+		</tr>
+		<tr>
+			<td class="label"><%= f.label :email %></td><td class="value"><%= f.email_field :email %></td>
+		</tr>
+		<tr>
+			<td class="label"><%= f.label :website %></td><td class="value"><%= f.text_field :website %></td>
+		</tr>
+	</table>
+</div>
+</div>
+	<div class="referrer_submit_button">
+		<%= f.submit :value => "Create Referrer" %>
+	</div>
+<% end %>

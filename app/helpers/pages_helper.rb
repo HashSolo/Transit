@@ -31,9 +31,8 @@ module PagesHelper
   #method used in the header partial to highlight the active tab 
   def is_state_active?(controller_name, action_name)
     if is_controller_active?(controller_name) && is_action_active?(action_name)  
-		  "header_selected" 
+		  "selected" 
 	  else
-		  "header_button"
 	  end  
   end
 	

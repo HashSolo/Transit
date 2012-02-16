@@ -1,12 +1,5 @@
-<ul class="index round">
+<ul>
 <% @cases.each do |c| %>
-
-
-<%
-clinician = Clinician.find_by_id(c.clinician_id) 
-referrer = Referrer.find_by_id(c.referrer_id)
-user = User.find_by_id(c.user_id)
-%>
 
 <li>
 	<%= link_to "Case: #{c.id}, 

@@ -23,8 +23,34 @@
 			</ul>
 			<% elsif is_action_active?('index') #What to show during the index (case search) view %>
 				<h1>Case Lookup</h1>
-			<% elsif is_action_active?('new') #What to show during the new case view %>
-				<h1>Start a New Case</h1>
-			<% end %>	
+			<% elsif is_action_active?('new') || is_action_active?('create') #What to show during the new case view %>
+				<ul>
+					<li class="header">Create a New Case</li>
+					<li class="option"><%= link_to new_referrer_path do |f| %><span class="text">Add a New Referrer</span><span class="icon">u</span><% end %></li>
+					<li class="option"><%= link_to new_clinician_path do |f| %><span class="text">Add a New Clinician</span><span class="icon">u</span><% end %></li>
+				</ul>
+			<% end %>
+		<% elsif is_controller_active?('clinicians') || is_controller_active?('referrers') %>
+			<ul>
+				<li class="option <%= is_state_active?('clinicians','index') %>"><%= link_to clinicians_path do |f| %><span class="text">View All Clinicians</span><span class="icon">u</span><% end %></li>
+				<li class="option <%= is_state_active?('clinicians','new') %>"><%= link_to new_clinician_path do |f| %><span class="text">Add a New Clinician</span><span class="icon">u</span><% end %></li>
+				<li class="option <%= is_state_active?('referrers','new') %>"><%= link_to new_referrer_path do |f| %><span class="text">Add a New Referrer</span><span class="icon">u</span><% end %></li>				
+			</ul>
+		
+		<% elsif is_controller_active?('appointments') %>
+			<div class="calendar_container">	
+				<div id="calendar">
+				</div>
+			</div>
+			
+			<ul>
+				<li class="option <%= is_state_active?('appointments','index') %>"><%= link_to appointments_path do |f| %><span class="text">View Today's Schedule</span><span class="icon">⌚</span><% end %></li>
+				<li class="option <%= is_state_active?('appointments','new') %>"><%= link_to new_appointment_path do |f| %><span class="text">Create New Appointment</span><span class="icon">⊕</span><% end %></li>
+			</ul>
 		<% end %>
+		
 </div>
+
+<script type="text/javascript">
+
+</script>

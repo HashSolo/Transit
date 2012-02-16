@@ -2,7 +2,6 @@ class CasesController < ApplicationController
   def index
 	  @title = "Case Lookup"
 	  @cases = Case.paginate(:page => params[:page])
-    #@cases = Case.all
   end
   
   def show
@@ -11,9 +10,9 @@ class CasesController < ApplicationController
   def new
     @title = "Start New Case"
     @user = User.new
-    @case = Case.new
+    @case = Case.new    
+    @appointment = Appointment.new  
     
-    @appointment = @case.appointments.new  
     @clinicians = Clinician.all
     @referrers = Referrer.all
     
@@ -22,28 +21,41 @@ class CasesController < ApplicationController
   def create
 
 	  @user = User.new(params[:user])
-	  @user.patient = true
+	  @user.toggle(:patient_account)
 
     #automatically generates a password for new user
 	  #will create a helper to make a random pswd generator
 	  @user.password = "foobarbaz"
 	  @user.password_confirmation = "foobarbaz"
-	  @user.save!
-
 	  @case = @user.cases.build(params[:case])
-	  @case.status = true
 	  
-	  if @case.save 
-	    redirect_to edit_case_path(@case)
+	  if @user.save
+	    @appointment = @case.appointments.build(params[:appointment])
+	    if @appointment.save
+	      flash[:success] = "New Case Successfully Created"
+	      redirect_to edit_case_path(@case)
+	    else
+	      @title = "Error"
+	      @clinicians = Clinician.all
+        @referrers = Referrer.all
+        @appointment = Appointment.new  
+  	    render 'new'
+      end
 	  else
 	    @title = "Error"
-	    redirect_to cases_path
+	    @clinicians = Clinician.all
+      @referrers = Referrer.all
+      @appointment = Appointment.new        
+	    render 'new'
 	  end
   end
 
   def edit
 	  @case = Case.find_by_id(params[:id])
     @title = "Case #{@case.id}"  
+    @clinician = Clinician.find_by_id(@case.clinician_id) 
+    @referrer = Referrer.find_by_id(@case.referrer_id)
+    @user = User.find_by_id(@case.user_id)
   end
   
   def update

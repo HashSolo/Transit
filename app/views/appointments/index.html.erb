@@ -1,0 +1,48 @@
+<h1 class="admin_title">Your Clinic's Schedule</h1>
+<div id="appt_list" class="daily_appts">
+	
+</div>
+
+
+
+
+<script type="text/javascript">
+var global_date = <%= "#{Time.now.day}/#{Time.now.month}/#{Time.now.year}" %>;
+
+function FindApptData(){
+	$('div#appt_list').html("");
+	var data = {
+		date: global_date
+	}
+	$.ajax({
+		url: "<%= url_for(:action => 'index') %>",
+		dataType: 'json',
+		async: true,
+		data: data,
+		success: 	function(data){
+					//JSON returned from server
+					$.each(data, function(k){
+						var appt_html = "<ul><li>"+ data[k]['case_id']+"</li>";
+						appt_html = appt_html + "<li>"+ data[k]['clinician_id']+"</li>";
+						appt_html = appt_html + "<li>"+ data[k]['date_and_time']+"</li>";
+						appt_html = appt_html + "<li>"+ data[k]['appointment_type']+"</li>";																
+						appt_html = appt_html + "</li></ul>";
+						$('div#appt_list').append(appt_html);
+					});
+		}
+	});
+    
+}
+
+$(document).ready(function(){
+	FindApptData();
+	
+	$('div#calendar').datepicker({
+		onSelect: function(date) {		
+			global_date = date;
+			FindApptData();
+		}
+	});
+});
+
+</script>

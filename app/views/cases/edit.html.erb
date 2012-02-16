@@ -1,11 +1,9 @@
-<% 
+<p>User email: <%= @user.email %></p>
 
-clinician = Clinician.find_by_id(@case.clinician_id) 
-referrer = Referrer.find_by_id(@case.referrer_id)
-user = User.find_by_id(@case.user_id)
+<% unless @clinician.nil? %>
+<p>Clinician: <%= @clinician.first_name %> </p>
+<% end %>
 
-%>
-
-<p>User email: <%= user.email %></p>
-<p>Clinician: <%= clinician.first_name %> </p>
-<p>Referrer: <%= referrer.first_name %> </p>
+<% unless @referrer.nil? %>
+<p>Referrer: <%= @referrer.first_name %> </p>
+<% end %>

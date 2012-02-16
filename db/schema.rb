@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120209192839) do
+ActiveRecord::Schema.define(:version => 20120216192256) do
 
   create_table "appointments", :force => true do |t|
     t.integer  "case_id"
@@ -26,8 +26,7 @@ ActiveRecord::Schema.define(:version => 20120209192839) do
     t.integer  "user_id"
     t.integer  "clinician_id"
     t.integer  "referrer_id"
-    t.boolean  "status"
-    t.string   "email"
+    t.boolean  "status",       :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -63,9 +62,9 @@ ActiveRecord::Schema.define(:version => 20120209192839) do
     t.string   "email"
     t.string   "encrypted_password"
     t.string   "salt"
-    t.boolean  "admin"
-    t.boolean  "patient"
-    t.boolean  "clinician"
+    t.boolean  "admin_account",      :default => false
+    t.boolean  "patient_account",    :default => false
+    t.boolean  "clinician_account",  :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
