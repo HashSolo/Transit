@@ -2,6 +2,7 @@ class CasesController < ApplicationController
   def index
 	  @title = "Case Lookup"
 	  @cases = Case.paginate(:page => params[:page])
+    #@cases = Case.all
   end
   
   def show
@@ -9,12 +10,30 @@ class CasesController < ApplicationController
 
   def new
     @title = "Start New Case"
+    @user = User.new
     @case = Case.new
+    
+    @appointment = @case.appointments.new  
+    @clinicians = Clinician.all
+    @referrers = Referrer.all
+    
   end
 
   def create
-	  @case = Case.new(params[:case])
-	  if @case.save
+
+	  @user = User.new(params[:user])
+	  @user.patient = true
+
+    #automatically generates a password for new user
+	  #will create a helper to make a random pswd generator
+	  @user.password = "foobarbaz"
+	  @user.password_confirmation = "foobarbaz"
+	  @user.save!
+
+	  @case = @user.cases.build(params[:case])
+	  @case.status = true
+	  
+	  if @case.save 
 	    redirect_to edit_case_path(@case)
 	  else
 	    @title = "Error"
@@ -23,8 +42,8 @@ class CasesController < ApplicationController
   end
 
   def edit
-	  @title = "Case Overview"
 	  @case = Case.find_by_id(params[:id])
+    @title = "Case #{@case.id}"  
   end
   
   def update

@@ -5,8 +5,7 @@
 			<div class="grid_12 alpha omega">
 				<div class="gravatar-and-name">
 				<h1>
-					<%= gravatar_for @user %>
-					<%= @user.name %>
+					<%= @user.email %>
 				</h1>
 				</div>
 			</div>
@@ -18,7 +17,6 @@
 			<div class="grid_6 alpha">
 				<div class="user-info-table">
 				<table>
-					<tr><td><strong>Name</strong></td><td><%= @user.name %></td></tr>
 					<tr><td><strong>Email</strong></td><td><%= link_to @user.email, @user.email %></td></tr>
 					<tr><td><strong>Member Since</strong></td><td><%= @user.created_at.strftime("%B %d, %Y") %></td></tr>
 				</table>
