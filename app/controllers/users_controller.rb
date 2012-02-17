@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 	@user = User.new(params[:user])
 	if @user.save
 	  sign_in @user
-	  flash[:success] = "Welcome to The Geno.me!"
+	  flash[:success] = "Welcome to Transit!"
 	  redirect_to @user
 	else
 	  @title = "Sign Up"
@@ -65,6 +65,6 @@ class UsersController < ApplicationController
 	end
 	
 	def admin_user
-	  redirect_to(root_path) unless current_user.admin?
+	  redirect_to(root_path) unless current_user.admin_account?
 	end
 end

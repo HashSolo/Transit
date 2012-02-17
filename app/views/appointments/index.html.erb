@@ -7,13 +7,14 @@
 
 
 <script type="text/javascript">
-var global_date = <%= "#{Time.now.day}/#{Time.now.month}/#{Time.now.year}" %>;
+var global_date = <%= "#{Time.now.strftime('%m')}"%> + "/" + <%= "#{Time.now.strftime('%d')}" %> + "/" + <%= "#{Time.now.strftime('%Y')}" %>;
 
 function FindApptData(){
 	$('div#appt_list').html("");
 	var data = {
 		date: global_date
 	}
+	$('h1.admin_title').html("Your Clinic's Schedule - " + global_date);
 	$.ajax({
 		url: "<%= url_for(:action => 'index') %>",
 		dataType: 'json',
@@ -38,7 +39,7 @@ $(document).ready(function(){
 	FindApptData();
 	
 	$('div#calendar').datepicker({
-		onSelect: function(date) {		
+		onSelect: function(date) {
 			global_date = date;
 			FindApptData();
 		}

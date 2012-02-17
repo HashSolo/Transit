@@ -45,7 +45,7 @@
 			
 			<ul>
 				<li class="option <%= is_state_active?('appointments','index') %>"><%= link_to appointments_path do |f| %><span class="text">View Today's Schedule</span><span class="icon">⌚</span><% end %></li>
-				<li class="option <%= is_state_active?('appointments','new') %>"><%= link_to new_appointment_path do |f| %><span class="text">Create New Appointment</span><span class="icon">⊕</span><% end %></li>
+				<li class="option <%= is_state_active?('appointments','new') %>"><%= link_to new_appointment_path do |f| %><span class="text">New Appointment</span><span class="icon">⊕</span><% end %></li>
 			</ul>
 		<% end %>
 		

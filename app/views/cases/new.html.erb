@@ -8,7 +8,7 @@
 			<h2>Account Information</h2>
 			<table class="form">
 				<tr>	
-					<td class="label">Patient email:</td>	
+					<td class="label">Email:</td>
 					<td class="value"><%= fields_for @user do |g| %>
 						<%= g.text_field :email %>
 						<% end %>
@@ -64,7 +64,7 @@
 			<tr>
 				<td class="label">Time:</td>
 				<td class="value">
-					<%= g.time_select :date_and_time %></td>
+					<%= g.time_select :date_and_time, :ignore_date => true %></td>
 			</tr>
 			<tr>
 				<td class="label">Physician:</td>	
