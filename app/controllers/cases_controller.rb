@@ -25,8 +25,8 @@ class CasesController < ApplicationController
 
     #automatically generates a password for new user
 	  #will create a helper to make a random pswd generator
-	  @user.password = "foobarbaz"
-	  @user.password_confirmation = "foobarbaz"
+	  @user.password = "foobar"
+	  @user.password_confirmation = "foobar"
 	  @case = @user.cases.build(params[:case])
 	  
 	  if @user.save

@@ -9,7 +9,13 @@
 						
 						<li class="<%= is_state_active?('users','edit') %> header_right "><%= link_to edit_user_path(current_user) do |l| %><span class="icon">⚙</span><span class="text_label">Account Settings</span><% end %></li>
 						
-						<li class="<%= is_state_active?('clinicians','index') %> header_right "><%= link_to clinicians_path do |l| %><span class="icon">u</span><span class="text_label">Practice Admin</span><% end %></li>						
+						<% if is_controller_active?('clinicians') || is_controller_active?('referrers') 
+							css_var = "selected"
+							else 
+							css_var = "" 
+							end %>
+						
+						<li class="<%= css_var %> header_right "><%= link_to clinicians_path do |l| %><span class="icon">u</span><span class="text_label">Practice Admin</span><% end %></li>						
 						
 						<li class="<%= is_state_active?('#','#') %> header_right "><%= link_to '#' do |l| %><span class="icon">C</span><span class="text_label">Reports</span><% end %></li>
 

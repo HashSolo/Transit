@@ -3,7 +3,4 @@ class Clinician < ActiveRecord::Base
   has_many :cases
   has_many :appointments
   
-  
-  
-  
 end

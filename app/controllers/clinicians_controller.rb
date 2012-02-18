@@ -5,15 +5,40 @@ class CliniciansController < ApplicationController
   
   def show
     @clinician = Clinician.find(params[:id])
-    @user = User.find_by_clinician_id(@clinician.id)
+    @user = User.find(@clinician.user_id)
     @title = "Employee Account - #{@clinician.last_name}, #{@clinician.first_name}"
   end
   
   def new
     @title = "Add New Employee"
+    @clinician = Clinician.new
   end
   
   def create
+    #@clinician = Clinician.new
+    @user = User.new
+    @user.toggle(:clinician_account)
+
+    #assigns dummy password to user for now
+	  @user.password = "foobarbaz"
+	  @user.password_confirmation = "foobarbaz"
+	  @user.email = params[:clinician][:email]	  
+    @clinician = Clinician.new(params[:clinician])     
+     
+    if @user.save
+      @clinician.user_id = @user.id 
+      @title = "user saved"
+	     
+        #= @user.clinician.build(params[:clinician])
+  	    if @clinician.save
+  	      flash[:success] = "New Clinician Successfully Created"
+  	      redirect_to @clinician
+	      end
+  	else
+      @title = "Error"
+	    render 'new'  
+	  end
+      
   end
   
   def edit

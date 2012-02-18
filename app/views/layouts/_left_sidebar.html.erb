@@ -26,8 +26,8 @@
 			<% elsif is_action_active?('new') || is_action_active?('create') #What to show during the new case view %>
 				<ul>
 					<li class="header">Create a New Case</li>
-					<li class="option"><%= link_to new_referrer_path do |f| %><span class="text">Add a New Referrer</span><span class="icon">u</span><% end %></li>
 					<li class="option"><%= link_to new_clinician_path do |f| %><span class="text">Add a New Clinician</span><span class="icon">u</span><% end %></li>
+					<li class="option"><%= link_to new_referrer_path do |f| %><span class="text">Add a New Referrer</span><span class="icon">u</span><% end %></li>
 				</ul>
 			<% end %>
 		<% elsif is_controller_active?('clinicians') || is_controller_active?('referrers') %>

@@ -1,0 +1,30 @@
+<h1 class="admin_title">Add a New Clinician</h1>
+<%= form_for @clinician do |f| %>
+<div class="grid_4 suffix_1 alpha">	
+	<div class="table_wrapper left_wrapper">
+	<table class="form">
+		<tr>
+			<td class="label"><%= f.label :last_name %></td><td class="value"><%= f.text_field :last_name %></td>
+		</tr>
+		<tr>
+			<td class="label"><%= f.label :first_name %></td><td class="value"><%= f.text_field :first_name %></td>
+		</tr>
+	</table>
+	</div>
+</div>
+<div class="grid_4 omega">
+	<div class="table_wrapper right_wrapper">
+	<table class="form">
+		<tr>
+			<td class="label"><%= f.label :email %></td><td class="value"><%= f.email_field :email %></td>
+		</tr>
+		<tr>
+			<td class="label"><%= f.label :role %></td><td class="value"><%= f.text_field :role %></td>
+		</tr>
+	</table>
+</div>
+</div>
+	<div class="referrer_submit_button">
+		<%= f.submit :value => "Create Clincian" %>
+	</div>
+<% end %>
