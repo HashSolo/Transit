@@ -23,18 +23,23 @@ class CliniciansController < ApplicationController
 	  @user.password = "foobarbaz"
 	  @user.password_confirmation = "foobarbaz"
 	  @user.email = params[:clinician][:email]	  
+   # @clinician = @user.clinician.build(params[:clinician])
     @clinician = Clinician.new(params[:clinician])     
      
     if @user.save
       @clinician.user_id = @user.id 
       @title = "user saved"
 	     
-        #= @user.clinician.build(params[:clinician])
   	    if @clinician.save
   	      flash[:success] = "New Clinician Successfully Created"
   	      redirect_to @clinician
+  	    else
+  	      flash[:failure] = "Invalid Clinician information"
+  	      @title = "Error"
+    	    render 'new'
 	      end
   	else
+  	  flash[:failure] = "Invalid Clinician information"
       @title = "Error"
 	    render 'new'  
 	  end

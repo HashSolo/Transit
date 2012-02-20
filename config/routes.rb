@@ -5,6 +5,7 @@ Transit::Application.routes.draw do
 	resources :clinicians
 	resources :referrers
 	resources :appointments
+	resources :patients
 	
 	match '/register', :to => 'users#new'
 	match '/signin', :to => 'sessions#new'
