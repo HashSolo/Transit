@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20120220201607) do
   end
 
   create_table "histories", :force => true do |t|
+    t.integer  "patient_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

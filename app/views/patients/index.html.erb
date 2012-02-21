@@ -1,0 +1,26 @@
+<table>
+<% @patients.each do |patient| %>
+
+<tr>
+	<td>
+	<%= link_to "Patient: #{patient.first_name} #{patient.last_name}", 
+				patient_path(patient.id) %>
+	</td>
+	<% if patient.history.nil? 	%>
+		<td>
+			No Medical History
+		</td>
+		<td>
+			<%= link_to "Fill out Medical History", new_patient_history_path(patient.id) %>
+		</td>
+	<% else %>
+		<td>
+			<%= link_to "Medical History", '#' %>
+		</td>	
+	<% end %>
+</tr>
+
+<% end %>
+<%= will_paginate @patients %>
+
+</table>
