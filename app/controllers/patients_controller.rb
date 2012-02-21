@@ -5,6 +5,11 @@ def index
   @patients = Patient.paginate(:page => params[:page])
 end
 
+def show
+  @title = "Show Patient"
+  @patient = Patient.find(params[:id])
+end
+
 def new
   @title = "Add a New Patient"
   @patient = Patient.new
@@ -32,7 +37,14 @@ def edit
 end
 
 def update
-  
+    @patient = Patient.find(params[:id])
+	  if @patient.update_attributes(params[:patient])
+	    flash[:success] = "Patient updated."
+	    redirect_to patient_path(@patient)
+	  else
+	    @title = "Edit Patient"
+	    render 'edit'
+	  end
 end
 
 end

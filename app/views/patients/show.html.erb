@@ -1,39 +1,13 @@
-<h1 class="admin_title">Add a New Patient to Case</h1>
-<%= form_for @patient do |f| %>
-<div class="grid_4 suffix_1 alpha">	
-	<div class="table_wrapper left_wrapper">
-	<table class="form">
-		<tr>
-			<td class="label"><%= f.label :last_name %></td><td class="value"><%= f.text_field :last_name %></td>
-		</tr>
-		<tr>
-			<td class="label"><%= f.label :first_name %></td><td class="value"><%= f.text_field :first_name %></td>
-		</tr>
-		<tr>
-			<td class="label"><%= f.label :sex %></td><td class="value"><%= f.text_field :sex %></td>
-		</tr>
-		<tr>
-			<td class="label"><%= f.label :date_of_birth %></td><td class="value"><%= f.date_select :date_of_birth %></td>
-		</tr>
-	</table>
-	</div>
-</div>
-<div class="grid_4 omega">
-	<div class="table_wrapper right_wrapper">
-	<table class="form">
-		<tr>
-			<td class="label"><%= f.label :occupation %></td><td class="value"><%= f.text_field :occupation %></td>
-		</tr>
-		<tr>
-			<td class="label"><%= f.label :ethnicity %></td><td class="value"><%= f.text_field :ethnicity %></td>
-		</tr>
-		<tr>
-			<td class="label"><%= f.label :marital_status %></td><td class="value"><%= f.text_field :marital_status %></td>
-		</tr>
-	</table>
-</div>
-</div>
-	<div class="referrer_submit_button">
-		<%= f.submit :value => "Create Patient" %>
-	</div>
-<% end %>
+<%= link_to "Edit Patient Info", 		
+			edit_patient_path(@patient) %>
+
+<p>First Name: <%= @patient.first_name %></p>
+
+<p>Last Name: <%= @patient.last_name %></p>
+
+<p>Sex: <%= @patient.sex %></p>
+
+<p>DOB: <%= @patient.date_of_birth %></p>
+
+<%= link_to "Return to Patient Page", 		
+			patients_path %>

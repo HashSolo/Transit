@@ -4,7 +4,7 @@
 <li>
 	<%= link_to "Case: #{c.id}, 
 				Opened at #{c.created_at.in_time_zone("Central Time (US & Canada)")}", 		
-				edit_case_path(c.id) %>
+				case_path(c.id) %>
 </li>
 
 <% end %>

@@ -1,0 +1,15 @@
+<%= link_to "Edit Case", 		
+			edit_case_path(@case) %>
+
+<p>User email: <%= @user.email %></p>
+
+<% unless @clinician.nil? %>
+<p>Clinician: <%= @clinician.first_name %> </p>
+<% end %>
+
+<% unless @referrer.nil? %>
+<p>Referrer: <%= @referrer.first_name %> </p>
+<% end %>
+
+<%= link_to "Return to Case Page", 		
+			cases_path %>

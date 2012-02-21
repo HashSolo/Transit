@@ -21,6 +21,10 @@
 </tr>
 
 <% end %>
+
 <%= will_paginate @patients %>
 
 </table>
+
+<%= link_to "Add New Patient", 
+			new_patient_path %>

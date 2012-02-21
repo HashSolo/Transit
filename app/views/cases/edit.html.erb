@@ -1,9 +1,84 @@
-<p>User email: <%= @user.email %></p>
+<%= form_for @case do |f|%>
 
-<% unless @clinician.nil? %>
-<p>Clinician: <%= @clinician.first_name %> </p>
-<% end %>
 
-<% unless @referrer.nil? %>
-<p>Referrer: <%= @referrer.first_name %> </p>
+	
+	<div class="grid_9 alpha omega">
+	<div class="grid_4 alpha">
+		<div class="table_wrapper top_wrapper left_wrapper">
+			<h2>Account Information</h2>
+			<table class="form">
+				<tr>	
+					<td class="label">Email:</td>
+					<td class="value"><%= fields_for @user do |g| %>
+						<%= g.text_field :email %>
+						<% end %>
+					</td>	
+				</tr>
+			</table>
+		</div>
+	</div>	
+	
+	<div class="grid_5 omega">
+			<div class="table_wrapper top_wrapper right_wrapper">		
+				<h2>Referral Information</h2>			
+				<table class="form">
+					<tr>
+						<td class="label">Referring MD:</td>
+						<% referrers_select = "<option value = ''>No Referrer</option>" %>
+							<% @referrers.each do |g| 
+								referrers_select += "<option value='#{g.id}'>#{g.first_name} #{g.last_name}</option>"
+							end %>
+						<td class="value"><%= f.select(:referrer_id, referrers_select) %></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		</div>
+	
+	
+	<div class="grid_9 alpha omega">
+	<div class="grid_4 alpha">
+		<div class="table_wrapper bottom_wrapper left_wrapper">	
+			<h2>Clinician Information</h2>							
+			<table class="form">
+				<tr>
+					<td class="label">Case clinician:</td>
+					<td class="value"><%= f.select(:clinician_id, options_for_select(@clinicians.collect {|g| [g.first_name, g.last_name]}, @clinician)) %></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	
+	<div class="grid_5 omega">
+		<div class="table_wrapper bottom_wrapper right_wrapper">		
+			<h2>Appointment Information</h2>										
+			<table class="form">
+			<tr>	
+				<td class="label">Date:</td>	
+				<td class="value"><%= fields_for @appointment do |g| %>
+					<%= g.date_select :date_and_time %></td>
+			</tr>
+			<tr>
+				<td class="label">Time:</td>
+				<td class="value">
+					<%= g.time_select :date_and_time, :ignore_date => true %></td>
+			</tr>
+			<tr>
+				<td class="label">Physician:</td>	
+				<% clinicians_select = "<option value = ''>No Clinician</option>" %>
+				<% @clinicians.each do |h| 
+					clinicians_select += "<option value='#{h.id}'>#{h.first_name} #{h.last_name}</option>"
+				end %>
+				<td class="value"><%= g.select(:clinician_id, clinicians_select) %></td>
+			</tr>
+			</table>
+		</div>
+	</div>
+	</div>
+
+	<% end %>
+
+
+		
+	<%= f.submit "Update Case", :class => "case_button" %>
 <% end %>

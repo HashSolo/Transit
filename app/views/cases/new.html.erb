@@ -19,21 +19,22 @@
 	</div>	
 	
 	<div class="grid_5 omega">
-		<div class="table_wrapper top_wrapper right_wrapper">		
-			<h2>Referral Information</h2>			
-			<table class="form">
-				<tr>
-					<td class="label">Referring MD:</td>
-					<% referrers_select = "<option value = ''>No Referrer</option>" %>
-						<% @referrers.each do |g| 
-							referrers_select += "<option value='#{g.id}'>#{g.first_name} #{g.last_name}</option>"
-						end %>
-					<td class="value"><%= f.select(:referrer_id, referrers_select) %></td>
-				</tr>
-			</table>
+			<div class="table_wrapper top_wrapper right_wrapper">		
+				<h2>Referral Information</h2>			
+				<table class="form">
+					<tr>
+						<td class="label">Referring MD:</td>
+						<% referrers_select = "<option value = ''>No Referrer</option>" %>
+							<% @referrers.each do |g| 
+								referrers_select += "<option value='#{g.id}'>#{g.first_name} #{g.last_name}</option>"
+							end %>
+						<td class="value"><%= f.select(:referrer_id, referrers_select) %></td>
+					</tr>
+				</table>
+			</div>
 		</div>
-	</div>
-	</div>
+		</div>
+	
 	
 	<div class="grid_9 alpha omega">
 	<div class="grid_4 alpha">

@@ -5,6 +5,11 @@ class CasesController < ApplicationController
   end
   
   def show
+    @case = Case.find_by_id(params[:id])
+    @title = "Case #{@case.id}"  
+    @clinician = Clinician.find_by_id(@case.clinician_id) 
+    @referrer = Referrer.find_by_id(@case.referrer_id)
+    @user = User.find_by_id(@case.user_id)
   end
 
   def new
@@ -33,7 +38,7 @@ class CasesController < ApplicationController
 	    @appointment = @case.appointments.build(params[:appointment])
 	    if @appointment.save
 	      flash[:success] = "New Case Successfully Created"
-	      redirect_to edit_case_path(@case)
+	      redirect_to case_path(@case)
 	    else
 	      @title = "Error"
 	      @clinicians = Clinician.all
@@ -51,18 +56,25 @@ class CasesController < ApplicationController
   end
 
   def edit
-	  @case = Case.find_by_id(params[:id])
+	  @case = Case.find(params[:id])
     @title = "Case #{@case.id}"  
-    @clinician = Clinician.find_by_id(@case.clinician_id) 
-    @referrer = Referrer.find_by_id(@case.referrer_id)
-    @user = User.find_by_id(@case.user_id)
+    
+    @clinicians = Clinician.all
+    @referrers = Referrer.all
+    
+    @clinician = Clinician.find(@case.clinician_id) 
+    @referrer = Referrer.find(@case.referrer_id)
+    @user = User.find(@case.user_id)
+    @appointment = Appointment.find_by_case_id(@case.id)
+    @appointment_clinician = Clinician.find(@appointment.clinician_id)
+  
   end
   
   def update
 	  @case = Case.find(params[:id])
-	  if @Case.update_attributes(params[:case])
+	  if @case.update_attributes(params[:case])
 	    flash[:success] = "Case updated."
-	    redirect_to edit_case_path(@case)
+	    redirect_to case_path(@case)
 	  else
 	    @title = "Edit Case"
 	    render 'edit'
