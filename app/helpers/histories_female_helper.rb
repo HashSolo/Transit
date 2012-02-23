@@ -1,0 +1,2 @@
+module HistoriesFemaleHelper
+end

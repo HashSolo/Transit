@@ -13,8 +13,8 @@
 			<% if is_action_active?('edit') || is_action_active?('show') #Only to be shown during the edit and show views %>
 			<ul>
 				<li class="header">Case #: <%= @case.id %></li>
-				<li class="option <%= is_state_active?('cases','show') %>" ><%= link_to edit_case_path(@case) do |f| %><span class="text">Overview</span><span class="icon">E</span><% end %></li>
-				<li class="option"><span class="text">Patients</span><span class="icon">u</span></li>
+				<li class="option <%= is_state_active?('cases','show') %>" ><%= link_to case_path(@case) do |f| %><span class="text">Overview</span><span class="icon">E</span><% end %></li>
+				<li class="option"><%= link_to patients_path do |f| %><span class="text">Patients</span><span class="icon">u</span><% end %></li>
 				<li class="option"><span class="text">Diagnosis</span><span class="icon">✎</span></li>
 				<li class="option"><span class="text">Stimulation</span><span class="icon">⌚</span></li>
 				<li class="option"><span class="text">Embryology</span><span class="icon">s</span></li>

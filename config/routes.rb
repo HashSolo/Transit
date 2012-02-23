@@ -7,7 +7,8 @@ Transit::Application.routes.draw do
 	resources :appointments
 	
 	resources :patients do
-	  resources :histories
+	  resources :history_females
+	  resources :history_males
   end
 	
 	match '/register', :to => 'users#new'

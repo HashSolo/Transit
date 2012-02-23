@@ -1,0 +1,16 @@
+<h1 class="admin_title">Update Male History</h1>
+<%= form_for([@patient, @history]) do |f| %>
+<div class="grid_4 suffix_1 alpha">	
+	<div class="table_wrapper left_wrapper">
+	<table class="form">
+		<tr>
+			<td class="label"><%= f.label :prior_infertility %></td><td class="value"><%= f.text_field :prior_infertility %></td>
+		</tr>
+	</table>
+	</div>
+</div>
+<% @history.patient_id = @patient.id %>
+	<div class="referrer_submit_button">
+		<%= f.submit :value => "Update History" %>
+	</div>
+<% end %>

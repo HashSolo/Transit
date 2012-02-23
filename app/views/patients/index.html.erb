@@ -6,16 +6,24 @@
 	<%= link_to "Patient: #{patient.first_name} #{patient.last_name}", 
 				patient_path(patient.id) %>
 	</td>
-	<% if patient.history.nil? 	%>
+	<% if patient.history_female.nil? && patient.history_male.nil? 	%>
 		<td>
 			No Medical History
 		</td>
 		<td>
-			<%= link_to "Fill out Medical History", new_patient_history_path(patient.id) %>
+			<% if patient.sex == "Female" %>
+				<%= link_to "Fill out Medical History", new_patient_history_female_path(patient.id) %>
+			<% elsif patient.sex == "Male" %>
+				<%= link_to "Fill out Medical History", new_patient_history_male_path(patient.id) %>
+			<% end %>
 		</td>
 	<% else %>
 		<td>
-			<%= link_to "Medical History", '#' %>
+			<% if patient.sex == "Female" %>
+				<%= link_to "Medical History", patient_history_female_path(patient.id, patient.history_female.id) %>
+			<% elsif patient.sex == "Male" %>
+				<%= link_to "Medical History", patient_history_male_path(patient.id, patient.history_male.id) %>
+			<% end %>
 		</td>	
 	<% end %>
 </tr>

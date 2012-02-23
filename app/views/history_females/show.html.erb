@@ -1,0 +1,15 @@
+<p><%= "#{@patient.first_name} #{@patient.last_name}'s Medical Record" %></p>
+
+
+
+<p> Pregnancies: <%= @history.pregnancies %> </p>
+
+<br>
+
+<%= link_to "Edit Medical History Info", 		
+			edit_patient_history_female_path(params[:patient_id], @history.id) %>
+			
+<br>
+			
+<%= link_to "Return to Patient Page", 		
+			patients_path %>
