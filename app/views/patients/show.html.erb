@@ -1,5 +1,5 @@
 <%= link_to "Edit Patient Info", 		
-			edit_patient_path(@patient) %>
+			edit_case_patient_path(@case.id, @patient) %>
 
 <p>First Name: <%= @patient.first_name %></p>
 
@@ -10,4 +10,4 @@
 <p>DOB: <%= @patient.date_of_birth %></p>
 
 <%= link_to "Return to Patient Page", 		
-			patients_path %>
+			case_patients_path(@case.id) %>

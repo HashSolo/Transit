@@ -9,21 +9,21 @@
 					</ul>
 				</li>
 			</ul>
-		<% elsif is_controller_active?('cases') #The following is the left sidebar when in a case view (show/edit...or any nested views) %>
-			<% if is_action_active?('edit') || is_action_active?('show') #Only to be shown during the edit and show views %>
+		<% elsif is_controller_active?('cases') || is_controller_active?('patients') #The following is the left sidebar when in a case view (show/edit...or any nested views) %>
+			<% if ( (is_controller_active?('cases') && is_action_active?('edit')) || is_action_active?('show')) || is_controller_active?('patients') #To be shown for case=>edit, case=>show, and patients contoller %>
 			<ul>
 				<li class="header">Case #: <%= @case.id %></li>
 				<li class="option <%= is_state_active?('cases','show') %>" ><%= link_to case_path(@case) do |f| %><span class="text">Overview</span><span class="icon">E</span><% end %></li>
-				<li class="option"><%= link_to patients_path do |f| %><span class="text">Patients</span><span class="icon">u</span><% end %></li>
+				<li class="option"><%= link_to case_patients_path(@case.id) do |f| %><span class="text">Patients</span><span class="icon">u</span><% end %></li>
 				<li class="option"><span class="text">Diagnosis</span><span class="icon">✎</span></li>
 				<li class="option"><span class="text">Stimulation</span><span class="icon">⌚</span></li>
 				<li class="option"><span class="text">Embryology</span><span class="icon">s</span></li>
 				<li class="option"><span class="text">Appointments</span><span class="icon">l</span></li>
 				<li class="option"><span class="text">Follow Up</span><span class="icon">✔</span></li>
 			</ul>
-			<% elsif is_action_active?('index') #What to show during the index (case search) view %>
+			<% elsif (is_controller_active?('cases') && is_action_active?('index')) #What to show during the index (case search) view %>
 				<h1>Case Lookup</h1>
-			<% elsif is_action_active?('new') || is_action_active?('create') #What to show during the new case view %>
+			<% elsif is_controller_active?('cases') && (is_action_active?('new') || is_action_active?('create')) #What to show during the new case view %>
 				<ul>
 					<li class="header">Create a New Case</li>
 					<li class="option"><%= link_to new_clinician_path do |f| %><span class="text">Add a New Clinician</span><span class="icon">u</span><% end %></li>

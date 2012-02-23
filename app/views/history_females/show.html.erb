@@ -7,9 +7,9 @@
 <br>
 
 <%= link_to "Edit Medical History Info", 		
-			edit_patient_history_female_path(params[:patient_id], @history.id) %>
+			edit_case_patient_history_female_path(@case.id, @patient.id, @history.id) %>
 			
 <br>
 			
 <%= link_to "Return to Patient Page", 		
-			patients_path %>
+			case_patients_path(@case.id) %>
