@@ -1,0 +1,20 @@
+<%= form_for @patient_id do |f| %>
+
+Referring MD:
+<% patients_select = "<option value = ''>No Patient</option>" %>
+	<% @patients.each do |g| 
+		patients_select += "<option value='#{g.id}'>#{g.first_name} #{g.last_name}</option>"
+	end %>
+<%= f.select(:id, patients_select) %>
+
+<%= f.submit :value => "Add Patient" %>
+
+<% end %>
+
+<% 
+@patient = Patient.find(@patient_id[:id])
+@case.patients << @patient
+%>
+
+<%= link_to "Return to Patient Page", 		
+			case_patients_path(@case.id) %>

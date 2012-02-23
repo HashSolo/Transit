@@ -9,7 +9,7 @@
 					</ul>
 				</li>
 			</ul>
-		<% elsif is_controller_active?('cases') || is_controller_active?('patients') #The following is the left sidebar when in a case view (show/edit...or any nested views) %>
+		<% elsif is_controller_active?('cases') || is_controller_active?('patients') || is_controller_active?('history_males') || is_controller_active?('history_females') #The following is the left sidebar for a general case %>
 			<% if ( (is_controller_active?('cases') && is_action_active?('edit')) || is_action_active?('show')) || is_controller_active?('patients') #To be shown for case=>edit, case=>show, and patients contoller %>
 			<ul>
 				<li class="header">Case #: <%= @case.id %></li>

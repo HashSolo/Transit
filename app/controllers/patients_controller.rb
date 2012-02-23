@@ -18,6 +18,13 @@ def new
   @patient = Patient.new
 end
 
+def add
+  @title = "Add existing patient"
+  @case = Case.find(params[:case_id])
+  @patients = Patient.all
+  @patient_id = { :patient_id => 1 }
+end
+
 def create 
   @title = "New Patient Successfully Added"
   @patient = Patient.new(params[:patient])
