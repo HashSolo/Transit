@@ -1,5 +1,7 @@
 <h1 class="admin_title">Add a New Patient to Case</h1>
 <%= form_for ([@case, @patient]) do |f| %>
+<%= render 'shared/error_messages', :object => f.object %>
+
 <div class="grid_4 suffix_1 alpha">	
 	<div class="table_wrapper left_wrapper">
 	<table class="form">
