@@ -8,16 +8,19 @@
 			
 				<%= link_to case_patient_path(@case, patient) do |l| %>
 				<span class="left round">
-					<span class="icon_female">	u</span><br>
+					<span class="icon_female">u</span><br>
 					<span class="text_label">Donor/Carrier</span>
 				</span>
 				<% end %>
 			
 			
-					<span>				
+				<span class="middle">				
+					
+				
 					<table>
+						<h1>Information</h1><br>
 						<tr>
-							<td>Name: </td><td><%= "#{patient.first_name} #{patient.last_name}" %> </td>
+							<td>Name: </td><td><%= "#{patient.last_name}, #{patient.first_name}".to(15) %> </td>
 						</tr>
 						<tr>
 							<td>DOB: </td><td><%= "#{patient.date_of_birth}" %> </td>
@@ -31,8 +34,9 @@
 					</table>
 				
 				</span>
-				<span>
+				<span class="right">
 					<table>
+						<h1>Status</h1><br>
 					<% if patient.history_female.nil? %>
 						<tr>
 							<td>History: </td><td><%= link_to "Incomplete", new_case_patient_history_female_path(@case.id, patient.id) %></td>
@@ -61,11 +65,11 @@
 				</span>
 				<% end %>
 			
-				<span>
-				
+				<span class="middle">
+					<h1>Information</h1><br>
 					<table>
 						<tr>
-							<td>Name: </td><td><%= "#{patient.first_name} #{patient.last_name}" %> </td>
+							<td>Name: </td><td><%= "#{patient.last_name}, #{patient.first_name}".to(15) %> </td>
 						</tr>
 						<tr>
 							<td>DOB: </td><td><%= "#{patient.date_of_birth}" %> </td>
@@ -80,7 +84,8 @@
 				
 				</span>
 				
-				<span>
+				<span class="right">
+					<h1>Status</h1><br>
 					<table>
 					<% if patient.history_male.nil? %>
 						<tr>
@@ -112,6 +117,10 @@
 				<span class="text_label">Add Patient</span>
 			</span>
 		<% end %>
+		
+		<span class="new">
+			<h1>Add new patient to case</h1>
+		</span>
 	
 	</li>		
 			
