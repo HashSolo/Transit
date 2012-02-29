@@ -1,11 +1,41 @@
-<ul>
-<% @cases.each do |c| %>
+<ul class="case_index">
+	<% @cases.each do |c| %>
+	
+	<%
+	@referrer = Referrer.find(c.referrer_id)
+	@user = User.find(c.user_id)
+	@clinician = Clinician.find(c.clinician_id)
+	%>
 
-<li>
-	<%= link_to "Case: #{c.id}, 
-				Opened at #{c.created_at.in_time_zone("Central Time (US & Canada)")}", 		
-				case_path(c.id) %>
-</li>
+		<li>
+		
+			<%= link_to case_path(c) do |l| %>			
+			<span class="round left"> 
+				<span class="icon">l</span>
+				<h1>ID <%="#{c.id}"%></h1>
+			</span>
+			<% end %>
+			
+			<span class="middle">
+				<h1>Information</h1>
+				<table>
+					<tr>
+						<td>Opened:</td><td><%= "#{c.created_at.to_date}"%></td>
+					</tr>
+					<tr>
+						<td>Account:</td><td><%= "#{@user.email}"%></td>
+					</tr>
+					<tr>
+						<td>Referring MD:</td><td><%= "#{@referrer.last_name}, #{@referrer.first_name}".to(15)%></td>
+					</tr>
+					<tr>
+						<td>Clinician:</td><td><%= "#{@clinician.last_name}, #{@clinician.first_name}".to(15)%></td>
+					</tr>
+				</table>
+				
+			</span>
+		
+		</li>
 
 <% end %>
 <%= will_paginate @cases %>
