@@ -5,13 +5,15 @@
 	@referrer = Referrer.find(c.referrer_id)
 	@user = User.find(c.user_id)
 	@clinician = Clinician.find(c.clinician_id)
+	@patients = c.patients.all
 	%>
 
 		<li>
 		
 			<%= link_to case_path(c) do |l| %>			
 			<span class="round left"> 
-				<span class="icon">l</span>
+				<br>
+				<span class="icon">g</span>
 				<h1>ID <%="#{c.id}"%></h1>
 			</span>
 			<% end %>
@@ -26,13 +28,28 @@
 						<td>Account:</td><td><%= "#{@user.email}"%></td>
 					</tr>
 					<tr>
-						<td>Referring MD:</td><td><%= "#{@referrer.last_name}, #{@referrer.first_name}".to(15)%></td>
+						<td>Referring MD:</td><td><%= "#{@referrer.last_name}, #{@referrer.first_name}".to(15) %></td>
 					</tr>
 					<tr>
 						<td>Clinician:</td><td><%= "#{@clinician.last_name}, #{@clinician.first_name}".to(15)%></td>
 					</tr>
 				</table>
 				
+			</span>
+			
+			<span class="right">
+				<% if @patients.count == 0 %>
+				<h1>No patients</h1>
+				<% else %>
+				<h1>Patients</h1>
+				<table>
+					<% @patients.each do |p| %>
+					<tr>
+						<td><%= "#{p.last_name}, #{p.first_name}".to(15) %></td>
+					</tr>
+					<% end %>
+				</table>
+				<% end %>
 			</span>
 		
 		</li>
