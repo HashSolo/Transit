@@ -8,9 +8,9 @@
 			
 				<%= link_to case_patient_path(@case, patient) do |l| %>
 				<span class="left round">
-					<span class="icon_female">u</span><br>
-					<span class="text_label">Donor/Carrier</span>
-				</span>
+					<span class="icon female">u</span><br>
+					<h1>Egg Donor/Carrier</h1>
+					</span>
 				<% end %>
 			
 			
@@ -23,13 +23,10 @@
 							<td>Name: </td><td><%= "#{patient.last_name}, #{patient.first_name}".to(15) %> </td>
 						</tr>
 						<tr>
-							<td>DOB: </td><td><%= "#{patient.date_of_birth}" %> </td>
-						</tr>
-						<tr>
-							<td>Ethnicity: </td><td><%= "#{patient.ethnicity}" %> </td>
-						</tr>
-						<tr>
 							<td>Gender: </td><td><%= "#{patient.sex}" %> </td>
+						</tr>
+						<tr>
+							<td>DOB: </td><td><%= "#{patient.date_of_birth}" %> </td>
 						</tr>
 					</table>
 				
@@ -60,8 +57,8 @@
 			
 				<%= link_to case_patient_path(@case, patient) do |l| %>
 				<span class="left round">
-					<span class="icon_male">u</span><br>
-					<span class="text_label">Sperm Donor</span>
+					<span class="icon male">u</span><br>
+					<h1>Sperm Donor</h1>
 				</span>
 				<% end %>
 			
@@ -72,13 +69,10 @@
 							<td>Name: </td><td><%= "#{patient.last_name}, #{patient.first_name}".to(15) %> </td>
 						</tr>
 						<tr>
-							<td>DOB: </td><td><%= "#{patient.date_of_birth}" %> </td>
-						</tr>
-						<tr>
-							<td>Ethnicity: </td><td><%= "#{patient.ethnicity}" %> </td>
-						</tr>
-						<tr>
 							<td>Gender: </td><td><%= "#{patient.sex}" %> </td>
+						</tr>
+						<tr>
+							<td>DOB: </td><td><%= "#{patient.date_of_birth}" %> </td>
 						</tr>
 					</table>
 				
@@ -114,7 +108,7 @@
 		<%= link_to new_case_patient_path(@case.id) do |l| %>
 			<span class="left round">
 				<span class="icon_new">⊕</span><br>
-				<span class="text_label">Add Patient</span>
+				<h1>Add Patient</h1>
 			</span>
 		<% end %>
 		
