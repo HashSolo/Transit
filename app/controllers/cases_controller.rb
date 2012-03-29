@@ -5,11 +5,12 @@ class CasesController < ApplicationController
   end
   
   def show
-    @case = Case.find_by_id(params[:id])
+    @case = Case.find(params[:id])
     @title = "Case #{@case.id}"  
-    @clinician = Clinician.find_by_id(@case.clinician_id) 
-    @referrer = Referrer.find_by_id(@case.referrer_id)
-    @user = User.find_by_id(@case.user_id)
+    @clinician = Clinician.find(@case.clinician_id) 
+    @referrer = Referrer.find(@case.referrer_id)
+    @user = User.find(@case.user_id)
+    @patients = @case.patients.all
   end
 
   def new

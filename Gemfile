@@ -42,7 +42,6 @@ group :test do
   gem 'sqlite3'
 end
 
-
 # Use unicorn as the web server
 # gem 'unicorn'
 
