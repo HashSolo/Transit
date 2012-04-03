@@ -7,13 +7,14 @@ Transit::Application.routes.draw do
 	
 	resources :cases do
 	  resources :patients do
-	    collection do
-	      get 'add'
-      end
-	    resources :history_females
-	    resources :history_males
+      resources :history_females
+      resources :history_males
     end
   end
+  
+     # collection do
+	    #  get 'add'
+    #  end
 
 	match '/register', :to => 'users#new'
 	match '/signin', :to => 'sessions#new'

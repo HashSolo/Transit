@@ -2,14 +2,14 @@
 
 
 
-<p> Pregnancies: <%= @history.pregnancies %> </p>
+<p> Pregnancies: <%= @history.pregnancy_count %> </p>
 
 <br>
 
 <%= link_to "Edit Medical History Info", 		
-			edit_case_patient_history_female_path(@case.id, @patient.id, @history.id) %>
+			 edit_case_patient_history_female_path(@case.id, @patient.id, 		@history.id) %>
 			
 <br>
 			
-<%= link_to "Return to Patient Page", 		
-			case_patients_path(@case.id) %>
+<%= link_to "Return to Patients Page", 		
+		 	case_patient_path(@case.id, @patient.id) %>

@@ -36,15 +36,15 @@
 						<h1>Status</h1><br>
 					<% if patient.history_female.nil? %>
 						<tr>
-							<td>History: </td><td><%= link_to "Incomplete", new_case_patient_history_female_path(@case.id, patient.id) %></td>
+							<td>History: </td><td>Incomplete</td>
 						</tr>
 					<% else %>
 						<tr>
-							<td>History: </td><td><%= link_to "Complete", case_patient_history_female_path(@case.id, patient.id, patient.history_female.id) %></td>
+							<td>History: </td><td>Completed</td>
 						</tr>
 					<% end %>
 						<tr>
-							<td>Insurance: </td><td><%= link_to "Incomplete", "#" %></td>
+							<td>Insurance: </td><td>Incomplete</td>
 						</tr>
 						
 					</table>
@@ -83,15 +83,15 @@
 					<table>
 					<% if patient.history_male.nil? %>
 						<tr>
-							<td>History: </td><td><%= link_to "Incomplete", new_case_patient_history_male_path(@case.id, patient.id) %></td>
+							<td>History: </td><td>Incomplete</td>
 						</tr>
 					<% else %>
 						<tr>
-							<td>History: </td><td><%= link_to "Complete", case_patient_history_male_path(@case.id, patient.id, patient.history_male.id) %></td>
+							<td>History: </td><td>Completed</td>
 						</tr>
 					<% end %>
 						<tr>
-							<td>Insurance: </td><td><%= link_to "Incomplete", "#" %></td>
+							<td>Insurance: </td><td>Incomplete</td>
 						</tr>
 						
 					</table>

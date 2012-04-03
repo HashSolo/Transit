@@ -9,5 +9,59 @@
 
 <p>DOB: <%= @patient.date_of_birth %></p>
 
+<% if @patient.sex == "Female" %>
+
+	<br>
+
+	<% if @patient.history_female.nil? %>
+
+		<% # store patient id in patients helper %>
+
+		<%= link_to "Fill out Patient History", 
+		new_case_patient_history_female_path(@case.id, @patient.id) %>
+
+	<% else %>
+	
+		<% #...display high level patient history content %>
+	
+		<%= link_to "View Complete Patient History", 
+		case_patient_history_female_path(@case.id, @patient.id, 						@patient.history_female.id) %>
+	
+		<br>
+	
+		<%= link_to "Edit Patient History", 
+		edit_case_patient_history_female_path(@case.id, @patient.id,  @patient.history_female.id) %>
+
+	<% end %>
+
+<% elsif @patient.sex == "Male" %>
+
+	<br>
+
+	<% if @patient.history_male.nil? %>
+
+		<% # store patient id in patients helper %>
+
+		<%= link_to "Fill out Patient History", 
+		new_case_patient_history_male_path(@case.id) %>
+		
+	<% else %>
+
+		<% #...display high level patient history content %>
+
+		<%= link_to "View Complete Patient History", 
+		case_patient_history_male_path(@case.id, @patient.history_male.id) %>
+
+		<br>
+
+		<%= link_to "Edit Patient History", 
+		edit_case_patient_history_male_path(@case.id, @patient.history_male.id) %>
+
+	<% end %>
+
+<% end %>
+
+<br>
+
 <%= link_to "Return to Patient Page", 		
 			case_patients_path(@case.id) %>

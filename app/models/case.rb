@@ -8,5 +8,7 @@ class Case < ActiveRecord::Base
   has_and_belongs_to_many :patients
   
   attr_accessor :user_email
+  attr_accessor :current_patient
+  attr_accessible :current_patient
 
 end

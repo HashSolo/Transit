@@ -4,12 +4,12 @@
 	<div class="table_wrapper left_wrapper">
 	<table class="form">
 		<tr>
-			<td class="label"><%= f.label :pregnancies %></td><td class="value"><%= f.text_field :pregnancies %></td>
+			<td class="label"><%= f.label :pregnancy_count %></td><td class="value"><%= f.text_field :pregnancy_count %></td>
 		</tr>
 	</table>
 	</div>
 </div>
-<% @history.patient_id = @patient.id %>
+<% #@history.patient_id = @patient.id %>
 	<div class="referrer_submit_button">
 		<%= f.submit :value => "Update History" %>
 	</div>

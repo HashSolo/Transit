@@ -10,6 +10,9 @@ def show
   @title = "Show Patient"
   @case = Case.find(params[:case_id])
   @patient = Patient.find(params[:id])
+  #@case.current_patient = @patient
+  #@case.save
+  #current_patient @patient #uses method from patient helper
 end
 
 def new
@@ -18,12 +21,12 @@ def new
   @patient = Patient.new
 end
 
-def add
-  @title = "Add existing patient"
-  @case = Case.find(params[:case_id])
-  @patients = Patient.all
-  @patient_id = { :patient_id => 1 }
-end
+#def add
+#  @title = "Add existing patient"
+#  @case = Case.find(params[:case_id])
+#  @patients = Patient.all
+#  @patient_id = { :patient_id => 1 }
+#end
 
 def create 
   @title = "New Patient Successfully Added"

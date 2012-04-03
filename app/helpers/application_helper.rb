@@ -11,4 +11,5 @@ module ApplicationHelper
 	def logo
 		logo_path = image_tag("logo.png", :alt => "Sample App", :class => "round")
 	end
+
 end

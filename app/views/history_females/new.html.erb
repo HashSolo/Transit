@@ -1,16 +1,111 @@
 <h1 class="admin_title">Add Female History</h1>
-<%= form_for([@case, @patient, @history]) do |f| %>
-<div class="grid_4 suffix_1 alpha">	
-	<div class="table_wrapper left_wrapper">
-	<table class="form">
-		<tr>
-			<td class="label"><%= f.label :pregnancies %></td><td class="value"><%= f.text_field :pregnancies %></td>
-		</tr>
-	</table>
-	</div>
+
+<div id="tabs" class="">
+	
+	<ul>
+
+		<!--
+		<li class="update_history_tab"><a href="#update_history_1">Basic</a></li>
+		<li class="update_history_tab"><a href="#update_history_2">Menstrual Cycle</a></li>
+		-->
+		
+		<li class="update_history_tab" id="update_history_1">Basic</li>
+		<li class="update_history_tab" id="update_history_2">Menstrual Cycle</li>
+		<li class="update_history_tab" id="update_history_3">Gynecologic</li>
+		
+	</ul>	
+	
 </div>
-<% @history.patient_id = @patient.id %>
-	<div class="referrer_submit_button">
-		<%= f.submit :value => "Create History" %>
+
+<div class="history_form">
+
+	<%= form_for([@case, @patient, @history]) do |f| %>
+
+
+	<div id="update_history_1" class="">
+		<h2>Fill out patient information</h2>
+	
+		<table class="form">
+			<tr>
+				<td class="label">Name </td><td class="value"><%= f.text_field :name %></td>
+			</tr>
+			<tr>
+				<td class="label">Occupation </td><td class="value"><%= f.text_field :occupation %></td>
+			</tr>
+		</table>
+	
+		<!--
+		<div class="referrer_submit_button">
+			<%= f.submit :value => "Save History" %>
+		</div>
+		-->
+		
 	</div>
-<% end %>
+
+	<div id="update_history_2" class="hidden">
+		<h2>Fill out menstrual cycle history</h2>
+
+		<table class="form">
+			<tr>
+				<td class="label">What age did you start having periods?</td><td class="value"><%= f.text_field :age_when_periods_start%></td>
+			</tr>
+			<tr>
+				<td class="label">What is the date of your last menstrual period?</td><td class="value"><%= f.text_field :last_menstrual_period %></td>
+			</tr>
+		</table>
+	
+		<!--
+		<div class="referrer_submit_button">
+			<%= f.submit :value => "Save History" %>
+		</div>
+		-->
+	</div>
+	
+	<div id="update_history_3" class="hidden">
+		<h2>Fill out gynecologic history</h2>
+
+		<table class="form">
+			<tr>
+				<td class="label">Is your pap smear current?</td><td class="value"><%= f.text_field :pap_smear_current %></td>
+			</tr>
+			<tr>
+				<td class="label">If not, when was the last pap done?</td><td class="value"><%= f.text_field :last_pap_smear %></td>
+			</tr>
+		</table>
+			
+	</div>
+	
+	<div class="referrer_submit_button">
+		<%= f.submit :value => "Save History" %>
+	</div>
+	
+	<% end %>
+	
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	$("li#update_history_1").click(function(){
+	  $("div#update_history_1").show();
+	  $("div#update_history_2").hide();
+	  $("div#update_history_3").hide();
+	});
+	
+	$("li#update_history_2").click(function(){
+	  $("div#update_history_1").hide();
+	  $("div#update_history_2").show();
+	  $("div#update_history_3").hide();
+	});
+	
+	$("li#update_history_3").click(function(){
+	  $("div#update_history_1").hide();
+	  $("div#update_history_2").hide();
+	  $("div#update_history_3").show();
+	});
+	
+})
+
+</script>
+
