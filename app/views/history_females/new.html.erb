@@ -32,6 +32,14 @@
 			<tr>
 				<td class="label">Occupation </td><td class="value"><%= f.text_field :occupation %></td>
 			</tr>
+			
+			<tr>	
+				<td class="value"><%= f.radio_button :marriage_status, 'male' %></td>
+				<td class="label"><%= label :marriage_status_male, "Male"%></td>
+				<td class="value"><%= f.radio_button :marriage_status, 'female' %></td>
+				<td class="label"><%= label :marriage_status_female, "Female"%></td>	
+			</tr>
+			
 		</table>
 	
 		<!--
@@ -52,6 +60,22 @@
 			<tr>
 				<td class="label">What is the date of your last menstrual period?</td><td class="value"><%= f.text_field :last_menstrual_period %></td>
 			</tr>
+			
+			<tr>
+				<td class="label">If you take medication, please check all that apply </td>
+				<td class="value"><%= f.check_box :premarin %> Premarin</td>
+				<td class="value"><%= f.check_box :estrace %> Estrace</td>
+				<td class="value"><%= f.check_box :birth_control %> Birth Control Pills</td>
+				<td class="value"><%= f.check_box :progesterone %> Progesterone</td>
+				<td class="value"><%= f.check_box :provera %> Provera</td>
+				<td class="value"><%= f.check_box :cycrin %> Cycrin</td>
+				<td class="value"><%= f.check_box :aygestin %> Aygestin</td>
+				<td class="value"><%= f.check_box :crinone %> Crinone</td>
+				<td class="value"><%= f.check_box :prometrium %> Prometrium</td>
+				
+			
+			</tr>
+			
 		</table>
 	
 		<!--

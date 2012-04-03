@@ -1,4 +1,5 @@
 class CasesController < ApplicationController
+  
   def index
 	  @title = "Case Lookup"
 	  @cases = Case.paginate(:page => params[:page])
@@ -28,16 +29,20 @@ class CasesController < ApplicationController
 
 	  @user = User.new(params[:user])
 	  @user.toggle(:patient_account)
-
     #automatically generates a password for new user
 	  #will create a helper to make a random pswd generator
 	  @user.password = "foobar"
 	  @user.password_confirmation = "foobar"
+	  
 	  @case = @user.cases.build(params[:case])
+	  @case.clinician_id = params[:case][:clinician_id]
+	  @case.referrer_id = params[:case][:referrer_id]
+	  
 	  
 	  if @user.save
 	    @appointment = @case.appointments.build(params[:appointment])
 	    if @appointment.save
+	      @title = "New Case!"
 	      flash[:success] = "New Case Successfully Created"
 	      redirect_to case_path(@case)
 	    else
