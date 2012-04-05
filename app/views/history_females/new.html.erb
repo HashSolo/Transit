@@ -1,58 +1,92 @@
-<h1 class="admin_title">Add Female History</h1>
-
-<div id="tabs" class="">
-	
-	<ul>
-
-		<!--
-		<li class="update_history_tab"><a href="#update_history_1">Basic</a></li>
-		<li class="update_history_tab"><a href="#update_history_2">Menstrual Cycle</a></li>
-		-->
-		
-		<li class="update_history_tab" id="update_history_1">Basic</li>
-		<li class="update_history_tab" id="update_history_2">Menstrual Cycle</li>
-		<li class="update_history_tab" id="update_history_3">Gynecologic</li>
-		
-	</ul>	
-	
-</div>
-
 <div class="history_form">
+
+	<!--<h1>Female Patient History</h1>-->
 
 	<%= form_for([@case, @patient, @history]) do |f| %>
 
 
 	<div id="update_history_1" class="">
-		<h2>Fill out patient information</h2>
+		<h2><span class="icon">✎</span>Fill out patient information</h2>
 	
-		<table class="form">
-			<tr>
-				<td class="label">Name </td><td class="value"><%= f.text_field :name %></td>
-			</tr>
-			<tr>
-				<td class="label">Occupation </td><td class="value"><%= f.text_field :occupation %></td>
-			</tr>
+	
+	
+		<table>
+			<tr class="odd"><td>Name:</td><td><%= f.text_field :name %></td></tr>
+			<tr><td>Occupation:</td> <td><%= f.text_field :occupation %></td></tr>
+			<tr class="odd"><td>Height:</td> <td><%= f.text_field :height_ft, :size => 1 %> ft 
+						<%= f.text_field :height_in, :size => 1 %> in</td></tr>
+			<tr><td>Weight:</td> <td><%= f.text_field :weight, :size => 1 %> lbs</td></tr>
+			<tr class="odd"><td>What is your date of birth?</td> <td><%= f.date_select :birth_date %></td></tr>
+			<tr><td>Race:</td> <td><%= f.text_field :race %></td></tr>
+			<tr class="odd"><td>Term Births:</td> <td><%= f.text_field :term_births, :size => 1 %></td></tr>
+			<tr><td>Age:</td> <td><%= f.text_field :age, :size => 1 %></td></tr>
+			<tr class="odd"><td>Sex: 
+				</td><td><%= f.radio_button :marriage_status, 'Male' %>
+				<%= label :marriage_status_male, "Male"%>
+				<%= f.radio_button :marriage_status, 'Female' %>
+				<%= label :marriage_status_female, "Female"%></td></tr>
 			
-			<tr>	
-				<td class="value"><%= f.radio_button :marriage_status, 'male' %></td>
-				<td class="label"><%= label :marriage_status_male, "Male"%></td>
-				<td class="value"><%= f.radio_button :marriage_status, 'female' %></td>
-				<td class="label"><%= label :marriage_status_female, "Female"%></td>	
-			</tr>
-			
+			<tr><td>Preterm Births:</td> <td><%= f.text_field :preterm_births, :size => 1 %></td></tr>
+			<tr class="odd"><td>Miscarriages or Abortions:</td> <td><%= f.text_field :miscarriages_or_abortions, :size => 1 %></td></tr>
+			<tr><td>Ectopic Births:</td> <td><%= f.text_field :ectopic, :size => 1 %></td></tr>
+
+			<tr class="odd"><td>How long have you been trying to achieve pregnancy?</td> <td><%= f.text_field :months_trying, :size => 1 %> months</td></tr>
+			<tr><td>How long have you been trying to achieve pregnancy with current partner? </td><td><%= f.text_field :months_trying_with_partner, :size => 1 %> months</td></tr>
+
 		</table>
-	
-		<!--
-		<div class="referrer_submit_button">
-			<%= f.submit :value => "Save History" %>
-		</div>
-		-->
+
 		
 	</div>
-
+	
 	<div id="update_history_2" class="hidden">
-		<h2>Fill out menstrual cycle history</h2>
+		<h2><span class="icon">✎</span>Fill out pregnancy information</h2>
+	</div>
+	
+	<div id="update_history_3" class="hidden">
+		<h2><span class="icon">✎</span>Fill out menstrual cycle history</h2>
 
+
+		<table>
+			
+			<tr class="odd"><td>At what age did you begin having periods?</td> <td><%= f.text_field :age_when_periods_start, :size => 1 %></td></tr>
+			<tr class=""><td>What is the date of your last menstrual period?</td> <td><%= f.date_select :last_menstrual_period%></td></tr>
+			<tr class="odd"><td>What is the average length of time your periods last?</td> <td><%= f.text_field :average_days_of_period, :size => 1 %> days of flow</td></tr>
+			<tr class=""><td>What is the average length of time from the start of one period to the start of the next?</td> <td><%= f.text_field :average_days_between_periods, :size => 1 %> days between periods</td></tr>
+			<tr class="odd"><td>During the last year, have your periods been regular (without medication) within 26-32 days?</td> 
+				<td><%= f.radio_button :are_periods_typical, 'Yes' %>
+				<%= label :are_periods_typical_yes, "Yes"%>
+				<%= f.radio_button :are_periods_typical, "No" %>
+				<%= label :are_periods_typical_no, "No"%></td></tr>
+			<tr class="odd"><td class="sub_question">If no, have your periods always been irregular?</td> 
+					<td><%= f.radio_button :always_irregular_periods, 'Yes' %>
+					<%= label :always_irregular_periods_yes, "Yes"%>
+					<%= f.radio_button :always_irregular_periods, "No" %>
+					<%= label :always_irregular_periods_no, "No"%></td></tr>
+			
+			
+			<tr><td>Do you currently require medication in order to get a period?</td> 
+				<td><%= f.radio_button :period_medication, 'Yes' %>
+				<%= label :period_medication_yes, "Yes"%>
+				<%= f.radio_button :period_medication, "No" %>
+				<%= label :period_medication_no, "No"%></td></tr>
+				
+				<tr><td class="sub_question">If yes, please check all that apply:</td>
+				<td>
+				<div class="fix"><%= f.check_box :premarin %> Premarin</div>
+				<div class="fix"><%= f.check_box :estrace %> Estrace</div>
+				<div class="fix"><%= f.check_box :birth_control %> Birth Control Pills</div>
+				<div class="fix"><%= f.check_box :progesterone %> Progesterone</div>
+				<div class="fix"><%= f.check_box :provera %> Provera</div>
+				<div class="fix"><%= f.check_box :cycrin %> Cycrin</div>
+				<div class="fix"><%= f.check_box :aygestin %> Aygestin</div>
+				<div class="fix"><%= f.check_box :crinone %> Crinone</div>
+				<div class="fix"><%= f.check_box :prometrium %> Prometrium</div>
+				<div class="fix">Other: <%= f.text_field :other_period_medication_string %></div>
+				</td>
+				</tr>
+		</table>
+
+ 		<!--
 		<table class="form">
 			<tr>
 				<td class="label">What age did you start having periods?</td><td class="value"><%= f.text_field :age_when_periods_start%></td>
@@ -75,17 +109,10 @@
 				
 			
 			</tr>
-			
-		</table>
-	
-		<!--
-		<div class="referrer_submit_button">
-			<%= f.submit :value => "Save History" %>
-		</div>
 		-->
 	</div>
 	
-	<div id="update_history_3" class="hidden">
+	<div id="update_history_4" class="hidden">
 		<h2>Fill out gynecologic history</h2>
 
 		<table class="form">
@@ -97,6 +124,22 @@
 			</tr>
 		</table>
 			
+	</div>
+	
+	<div id="update_history_5" class="hidden">
+		<h2>Fill out gynecologic history</h2>
+	</div>
+	
+	<div id="update_history_6" class="hidden">
+	</div>
+	
+	<div id="update_history_7" class="hidden">
+	</div>
+	
+	<div id="update_history_8" class="hidden">
+	</div>
+	
+	<div id="update_history_9" class="hidden">
 	</div>
 	
 	<div class="referrer_submit_button">
@@ -113,20 +156,65 @@ $(document).ready(function(){
 	
 	$("li#update_history_1").click(function(){
 	  $("div#update_history_1").show();
+	  $("li#update_history_1").css("background-color","#325d64");
 	  $("div#update_history_2").hide();
+	  $("li#update_history_2").css("background-color","#7895a3");	  
 	  $("div#update_history_3").hide();
+	  $("li#update_history_3").css("background-color","#7895a3");	         			
+	  $("div#update_history_4").hide();
+	  $("li#update_history_4").css("background-color","#7895a3");
+   	  $("div#update_history_5").hide();
+	  $("li#update_history_5").css("background-color","#7895a3");	  
+	  $("div#update_history_6").hide();
+	  $("li#update_history_6").css("background-color","#7895a3");	     			
+	  $("div#update_history_7").hide();
+	  $("li#update_history_7").css("background-color","#7895a3");
+	  $("div#update_history_8").hide();
+	  $("li#update_history_8").css("background-color","#7895a3");	
+	  $("div#update_history_9").hide();
+	  $("li#update_history_9").css("background-color","#7895a3");
 	});
 	
 	$("li#update_history_2").click(function(){
-	  $("div#update_history_1").hide();
-	  $("div#update_history_2").show();
-	  $("div#update_history_3").hide();
+      $("div#update_history_1").hide();
+	  $("li#update_history_1").css("background-color","#7895a3");
+      $("div#update_history_2").hide();
+      $("li#update_history_2").css("background-color","#325d64");	  
+      $("div#update_history_3").show();
+      $("li#update_history_3").css("background-color","#7895a3");	         			
+	  $("div#update_history_4").hide();
+	  $("li#update_history_4").css("background-color","#7895a3");
+	  $("div#update_history_5").hide();
+      $("li#update_history_5").css("background-color","#7895a3");	  
+	  $("div#update_history_6").hide();
+	  $("li#update_history_6").css("background-color","#7895a3");	     			
+	  $("div#update_history_7").hide();
+	  $("li#update_history_7").css("background-color","#7895a3");
+	  $("div#update_history_8").hide();
+	  $("li#update_history_8").css("background-color","#7895a3");	
+	  $("div#update_history_9").hide();
+	  $("li#update_history_9").css("background-color","#7895a3");
 	});
 	
 	$("li#update_history_3").click(function(){
 	  $("div#update_history_1").hide();
+	  $("li#update_history_1").css("background-color","#7895a3");
 	  $("div#update_history_2").hide();
+	  $("li#update_history_2").css("background-color","#7895a3");	  
 	  $("div#update_history_3").show();
+ 	  $("li#update_history_3").css("background-color","#325d64");	         			
+	  $("div#update_history_4").hide();
+	  $("li#update_history_4").css("background-color","#7895a3");
+   	  $("div#update_history_5").hide();
+	  $("li#update_history_5").css("background-color","#7895a3");	  
+	  $("div#update_history_6").hide();
+	  $("li#update_history_6").css("background-color","#7895a3");	     			
+	  $("div#update_history_7").hide();
+	  $("li#update_history_7").css("background-color","#7895a3");
+	  $("div#update_history_8").hide();
+	  $("li#update_history_8").css("background-color","#7895a3");	
+	  $("div#update_history_9").hide();
+	  $("li#update_history_9").css("background-color","#7895a3");
 	});
 	
 })

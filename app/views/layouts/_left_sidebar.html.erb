@@ -49,6 +49,26 @@
 			</ul>
 		<% end %>
 		
+
+<% #patient history toolbar%>
+
+<% if is_controller_active?('history_females') %>
+
+<ul>
+	<li class="header">Female History</li>
+	<li class="option" id="update_history_1"><span class="text">Basic</span></li>
+	<li class="option"id="update_history_2"><span class="text">Pregnancy History</span></li>
+	<li class="option"id="update_history_3"><span class="text">Menstrual Cycle</span></li>
+	<li class="option"id="update_history_4"><span class="text">Gynecologic History</span></li>
+	<li class="option"id="update_history_5"><span class="text">Medical History</span></li>
+	<li class="option"id="update_history_6"><span class="text">Environmental Factors</span></li>
+	<li class="option"id="update_history_7"><span class="text">Genetic/Family History</span></li>
+	<li class="option"id="update_history_8" ><span class="text">Infertility Tests</span></li>
+	<li class="option" id="update_history_9"><span class="text">Infertility Treatments</span></li>
+</ul>
+
+<% end %>
+
 </div>
 
 <script type="text/javascript">
