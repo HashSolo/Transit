@@ -75,6 +75,8 @@ ActiveRecord::Schema.define(:version => 20120330201730) do
     t.integer  "ectopic"
     t.integer  "months_trying"
     t.integer  "months_trying_with_partner"
+    t.boolean  "past_pregnancy"
+    t.integer  "past_pregnancy_count"
     t.integer  "age_when_periods_start"
     t.date     "last_menstrual_period"
     t.integer  "average_days_of_period"

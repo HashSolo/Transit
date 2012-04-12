@@ -23,7 +23,7 @@ class HistoryFemalesController < ApplicationController
     if @history.save
 
       flash[:success] = "New History Successfully Added"
-      redirect_to case_patients_path
+      redirect_to case_patient_path(params[:case_id], params[:patient_id])
 
     else
       @title = "Error"       

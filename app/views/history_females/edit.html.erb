@@ -1,16 +1,326 @@
-<h1 class="admin_title">Update Female History</h1>
-<%= form_for([@case, @patient, @history]) do |f| %>
-<div class="grid_4 suffix_1 alpha">	
-	<div class="table_wrapper left_wrapper">
-	<table class="form">
-		<tr>
-			<td class="label"><%= f.label :pregnancy_count %></td><td class="value"><%= f.text_field :pregnancy_count %></td>
-		</tr>
-	</table>
+<div class="history_form">
+
+	<!--<h1>Female Patient History</h1>-->
+
+	<div id="test_print">
+		TEST
 	</div>
+
+	<%= form_for([@case, @patient, @history]) do |f| %>
+	
+	<div class="navigation">
+		<span class="icon left">←</span>
+		<span class="middle"><%= f.submit :value => "Save Progress and Return to Patient Page", :id => "inline" %><span>
+		<span class="icon right">→</span>				
+	</div>
+
+
+	<%#*******************************************************************
+	Page 1: General
+	*********************************************************************%>
+	<div id="update_history_1" class="">
+		<h2><span class="icon">✎</span>Fill out patient information</h2>
+			
+		<table>
+			<tr class="odd"><td>Name:</td><td><%= f.text_field :name, :id => 'test' %></td></tr>
+			<tr><td>Occupation:</td> <td><%= f.text_field :occupation %></td></tr>
+			<tr class="odd"><td>Height:</td> <td><%= f.text_field :height_ft, :size => 1 %> ft 
+						<%= f.text_field :height_in, :size => 1 %> in</td></tr>
+			<tr><td>Weight:</td> <td><%= f.text_field :weight, :size => 1 %> lbs</td></tr>
+			<tr class="odd"><td>What is your date of birth?</td> <td><%= f.date_select :birth_date %></td></tr>
+			<tr><td>Race:</td> <td><%= f.text_field :race %></td></tr>
+			<tr class="odd"><td>Term Births:</td> <td><%= f.text_field :term_births, :size => 1 %></td></tr>
+			<tr><td>Age:</td> <td><%= f.text_field :age, :size => 1 %></td></tr>
+			<tr class="odd"><td>Sex: 
+				</td><td><%= f.radio_button :marriage_status, 'Male' %>
+				<%= label :marriage_status_male, "Male"%>
+				<%= f.radio_button :marriage_status, 'Female' %>
+				<%= label :marriage_status_female, "Female"%></td></tr>
+			
+			<tr><td>Preterm Births:</td> <td><%= f.text_field :preterm_births, :size => 1 %></td></tr>
+			<tr class="odd"><td>Miscarriages or Abortions:</td> <td><%= f.text_field :miscarriages_or_abortions, :size => 1 %></td></tr>
+			<tr><td>Ectopic Births:</td> <td><%= f.text_field :ectopic, :size => 1 %></td></tr>
+
+			<tr class="odd"><td>How long have you been trying to achieve pregnancy?</td> <td><%= f.text_field :months_trying, :size => 1 %> months</td></tr>
+			<tr><td>How long have you been trying to achieve pregnancy with current partner? </td><td><%= f.text_field :months_trying_with_partner, :size => 1 %> months</td></tr>
+
+		</table>
+
+		
+	</div>
+	
+	
+	<%#*******************************************************************
+	Page 2: Pregnancy History
+	*********************************************************************%>
+	<div id="update_history_2" class="hidden">
+		<h2><span class="icon">✎</span>Fill out pregnancy information</h2>
+		
+		<table>
+			<!--
+			<tr class="odd"><td>Have you achieved pregnancy before?</td> 
+				<td><%= f.radio_button :past_pregnancy, 'Yes', :id => 'past_pregnancy_yes' %>
+				<%= label :past_pregnancy_yes, "Yes"%>
+				<%= f.radio_button :past_pregnancy, "No", :id => 'past_pregnancy_no' %>
+				<%= label :past_pregnancy_no, "No"%></td></tr>
+				
+				<tr class=""><td>Have you achieved pregnancy before?</td> 
+					<td><%= f.text_field :past_pregnancy_count %></td></tr>
+					
+					
+				-->
+				<tr class=" odd"><td>How many times have you achieved pregnancy?</td> 
+						<td><%= f.text_field :past_pregnancy_count, :size => 1 %></td></tr>
+				
+			<tr class="hidden odd" id="past_pregnancy_sub"><td class="sub_question">How many times have you achieved pregnancy?</td> 
+					<td><%= f.text_field :past_pregnancy_count, :size => 1 %></td></tr>
+		
+		<br>
+		
+		</table>
+		
+	</div>
+	
+	
+	<%#*******************************************************************
+	Page 3: Menstrual Cycle History
+	*********************************************************************%>
+		
+	<div id="update_history_3" class="hidden">
+		<h2><span class="icon">✎</span>Fill out menstrual cycle history</h2>
+
+		<table>
+			
+			<tr class="odd"><td>At what age did you begin having periods?</td> <td><%= f.text_field :age_when_periods_start, :size => 1 %></td></tr>
+			<tr class=""><td>What is the date of your last menstrual period?</td> <td><%= f.date_select :last_menstrual_period%></td></tr>
+			<tr class="odd"><td>What is the average length of time your periods last?</td> <td><%= f.text_field :average_days_of_period, :size => 1 %> days of flow</td></tr>
+			<tr class=""><td>What is the average length of time from the start of one period to the start of the next?</td> <td><%= f.text_field :average_days_between_periods, :size => 1 %> days between periods</td></tr>
+			
+			<%# Dependent field %>
+			<tr class="odd"><td>During the last year, have your periods been regular (without medication) within 26-32 days?</td> 
+				<td><%= f.radio_button :are_periods_typical, 'Yes', :id => 'typical_periods_yes' %>
+				<%= label :are_periods_typical_yes, "Yes"%>
+				<%= f.radio_button :are_periods_typical, "No", :id => 'typical_periods_no' %>
+				<%= label :are_periods_typical_no, "No"%></td></tr>
+			<tr class="hidden odd" id="typical_periods_sub"><td class="sub_question">Have your periods always been irregular?</td> 
+					<td><%= f.radio_button :always_irregular_periods, 'Yes', :id => 'typical_periods_sub_yes' %>
+					<%= label :always_irregular_periods_yes, "Yes"%>
+					<%= f.radio_button :always_irregular_periods, "No", :id => 'typical_periods_sub_no' %>
+					<%= label :always_irregular_periods_no, "No"%></td></tr>
+			
+			<%# Dependent field %>
+			<tr><td>Do you currently require medication in order to get a period?</td> 
+				<td><%= f.radio_button :period_medication, 'Yes', :id => 'period_medication_yes' %>
+				<%= label :period_medication_yes, "Yes"%>
+				<%= f.radio_button :period_medication, "No", :id => 'period_medication_no' %>
+				<%= label :period_medication_no, "No"%></td></tr>
+				
+				<tr class="hidden" id="period_medication_sub"><td>Please check all that apply, or indicate other medication used:</td>
+				<td>
+				<div class="fix"><%= f.check_box :premarin %> Premarin</div>
+				<div class="fix"><%= f.check_box :estrace %> Estrace</div>
+				<div class="fix"><%= f.check_box :birth_control %> Birth Control Pills</div>
+				<div class="fix"><%= f.check_box :progesterone %> Progesterone</div>
+				<div class="fix"><%= f.check_box :provera %> Provera</div>
+				<div class="fix"><%= f.check_box :cycrin %> Cycrin</div>
+				<div class="fix"><%= f.check_box :aygestin %> Aygestin</div>
+				<div class="fix"><%= f.check_box :crinone %> Crinone</div>
+				<div class="fix"><%= f.check_box :prometrium %> Prometrium</div>
+				<div class="fix">Other: <%= f.text_field :other_period_medication_string %></div>
+				</td>
+				</tr>
+		</table>
+
+	</div>
+	
+	<div id="update_history_4" class="hidden">
+		<h2>Fill out gynecologic history</h2>
+
+		<table class="form">
+			<tr>
+				<td class="label">Is your pap smear current?</td><td class="value"><%= f.text_field :pap_smear_current %></td>
+			</tr>
+			<tr>
+				<td class="label">If not, when was the last pap done?</td><td class="value"><%= f.text_field :last_pap_smear %></td>
+			</tr>
+		</table>
+			
+	</div>
+	
+	<div id="update_history_5" class="hidden">
+		<h2>Fill out gynecologic history</h2>
+	</div>
+	
+	<div id="update_history_6" class="hidden">
+	</div>
+	
+	<div id="update_history_7" class="hidden">
+	</div>
+	
+	<div id="update_history_8" class="hidden">
+	</div>
+	
+	<div id="update_history_9" class="hidden">
+	</div>
+	
+	
+	<div class="navigation">
+		<span class="icon left">←</span>
+		<span class="middle"><%= f.submit :value => "Save Progress and Return to Patient Page", :id => "inline" %><span>
+		<span class="icon right">→</span>				
+	</div>
+	
+	<% end %>
+	
 </div>
-<% #@history.patient_id = @patient.id %>
-	<div class="referrer_submit_button">
-		<%= f.submit :value => "Update History" %>
-	</div>
-<% end %>
+
+<script type="text/javascript">
+	var current_page = 1;
+	
+	/**********************************************************************
+	Pregnancy Field Logic and Ajax
+	**********************************************************************/
+	$("#past_pregnancy_yes").change(function(){
+		$("#past_pregnancy_sub").toggle();
+	});
+	$("#past_pregnancy_no").change(function(){
+		$("#past_pregnancy_sub").css("display","none");
+	});
+	
+	
+	//**********************************************************************
+	
+	//**********************************************************************
+	//Menstrual Cycle Field Logic
+	//**********************************************************************
+	//regular periods?
+	$("#typical_periods_yes").change(function(){
+		$("#typical_periods_sub").css("display","none");
+//		document.getElementById("typical_periods_sub_yes").value = nil;
+//		document.getElementById("typical_periods_sub_no").value = nil;
+	});
+	$("#typical_periods_no").change(function(){
+		$("#typical_periods_sub").toggle();
+	});
+	//period medications?
+	$("#period_medication_no").change(function(){
+		$("#period_medication_sub").css("display","none");
+	});
+	$("#period_medication_yes").change(function(){
+		$("#period_medication_sub").toggle();
+	});
+	//**********************************************************************
+		
+	/**********************************************************************
+	toPage function: takes next page as argument and directs user there
+	**********************************************************************/
+	function toPage(next_page){
+		
+		//(1) Color tabs and display page
+		//***************************************************************
+		for (var i = 1; i <= 9; i++) {
+			if (i == next_page) continue;
+			div_string =  "div#update_history_" + i.toString(); 
+			tab_string = "li#update_history_" + i.toString(); 
+			$(div_string).hide();
+			$(tab_string).css("background-color","#7895a3");
+		}
+		
+		div_string =  "div#update_history_" + next_page.toString(); 
+		tab_string = "li#update_history_" + next_page.toString();
+		$(div_string).show();
+		$(tab_string).css("background-color","#325d64");
+		//***************************************************************
+
+
+		//(2) Boundary arrow logic
+		//***************************************************************
+		if (current_page == 1) {
+			$("span.left").css("visibility","visible");
+		}
+		if (current_page == 9) {
+			$("span.right").css("visibility","visible");
+		}
+		if (next_page == 1){
+			$("span.left").css("visibility","hidden");	
+		}
+		if (next_page == 9){
+			$("span.right").css("visibility","hidden");	
+		}
+		//***************************************************************
+
+		//(3) Reset current page
+		//***************************************************************
+		current_page = next_page;
+		//***************************************************************
+
+		//DB
+		$("div#test_print").html(current_page.toString());
+
+	}
+
+	/**********************************************************************
+	Page functionality using toPage function
+	**********************************************************************/
+	$("span.left").click(function(){
+		next = current_page - 1;
+		toPage(next);
+	});
+	$("span.right").click(function(){
+		next = current_page + 1;
+		toPage(next);
+	});
+	$("li#update_history_1").click(function(){
+	 	toPage(1);
+	});
+	$("li#update_history_2").click(function(){
+	 	toPage(2);
+	});
+	$("li#update_history_3").click(function(){
+	 	toPage(3);
+	});
+	$("li#update_history_4").click(function(){
+	 	toPage(4);
+	});
+	$("li#update_history_5").click(function(){
+	 	toPage(5);
+	});
+	$("li#update_history_6").click(function(){
+	 	toPage(6);
+	});
+	$("li#update_history_7").click(function(){
+	 	toPage(7);
+	});
+	$("li#update_history_8").click(function(){
+	 	toPage(8);
+	});
+	$("li#update_history_9").click(function(){
+	 	toPage(9);
+	});
+	//**********************************************************************
+	
+	
+	/**********************************************************************
+	DB & Miscellaneous Code
+	**********************************************************************
+	
+	for (var k = 1; k <= 9; k++) {
+		tab_string = "li#update_history_"+k.toString();
+		$(tab_string).click(function(){
+			toPage(k);
+		});
+	}
+	
+	$("#test").change(function(){
+		$("div#test_print").html(document.getElementById("test").value);
+		
+	});
+
+	
+	**********************************************************************/
+	
+	
+	
+
+</script>
+

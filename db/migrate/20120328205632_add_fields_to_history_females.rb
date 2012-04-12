@@ -19,6 +19,9 @@ class AddFieldsToHistoryFemales < ActiveRecord::Migration
   add_column :history_females, :months_trying_with_partner, :integer
   
   #pregnancies
+  add_column :history_females, :past_pregnancy, :boolean
+  add_column :history_females, :past_pregnancy_count, :integer
+  
   #pregnancy table
   
   #menstrual cycle

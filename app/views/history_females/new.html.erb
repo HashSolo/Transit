@@ -2,15 +2,25 @@
 
 	<!--<h1>Female Patient History</h1>-->
 
-	<%= form_for([@case, @patient, @history]) do |f| %>
+	<div id="test_print">
+		TEST
+	</div>
 
+	<%= form_for([@case, @patient, @history]) do |f| %>
+	
+	<div class="navigation">
+		<span class="icon left">←</span>
+		<span class="middle"><%= f.submit :value => "Save Progress and Return to Patient Page", :id => "inline" %><span>
+		<span class="icon right">→</span>				
+	</div>
 
 	<div id="update_history_1" class="">
 		<h2><span class="icon">✎</span>Fill out patient information</h2>
 		
+		
 	
 		<table>
-			<tr class="odd"><td>Name:</td><td><%= f.text_field :name %></td></tr>
+			<tr class="odd"><td>Name:</td><td><%= f.text_field :name, :id => 'test' %></td></tr>
 			<tr><td>Occupation:</td> <td><%= f.text_field :occupation %></td></tr>
 			<tr class="odd"><td>Height:</td> <td><%= f.text_field :height_ft, :size => 1 %> ft 
 						<%= f.text_field :height_in, :size => 1 %> in</td></tr>
@@ -41,9 +51,11 @@
 		<h2><span class="icon">✎</span>Fill out pregnancy information</h2>
 	</div>
 	
+	
+	<%#**************Menstrual Cycle History Form**************%>
+	
 	<div id="update_history_3" class="hidden">
 		<h2><span class="icon">✎</span>Fill out menstrual cycle history</h2>
-
 
 		<table>
 			
@@ -51,25 +63,27 @@
 			<tr class=""><td>What is the date of your last menstrual period?</td> <td><%= f.date_select :last_menstrual_period%></td></tr>
 			<tr class="odd"><td>What is the average length of time your periods last?</td> <td><%= f.text_field :average_days_of_period, :size => 1 %> days of flow</td></tr>
 			<tr class=""><td>What is the average length of time from the start of one period to the start of the next?</td> <td><%= f.text_field :average_days_between_periods, :size => 1 %> days between periods</td></tr>
+			
+			<%# Dependent field %>
 			<tr class="odd"><td>During the last year, have your periods been regular (without medication) within 26-32 days?</td> 
-				<td><%= f.radio_button :are_periods_typical, 'Yes' %>
+				<td><%= f.radio_button :are_periods_typical, 'Yes', :id => 'typical_periods_yes' %>
 				<%= label :are_periods_typical_yes, "Yes"%>
-				<%= f.radio_button :are_periods_typical, "No" %>
+				<%= f.radio_button :are_periods_typical, "No", :id => 'typical_periods_no' %>
 				<%= label :are_periods_typical_no, "No"%></td></tr>
-			<tr class="odd"><td class="sub_question">If no, have your periods always been irregular?</td> 
-					<td><%= f.radio_button :always_irregular_periods, 'Yes' %>
+			<tr class="hidden odd" id="typical_periods_sub"><td class="sub_question">Have your periods always been irregular?</td> 
+					<td><%= f.radio_button :always_irregular_periods, 'Yes', :id => 'typical_periods_sub_yes' %>
 					<%= label :always_irregular_periods_yes, "Yes"%>
-					<%= f.radio_button :always_irregular_periods, "No" %>
+					<%= f.radio_button :always_irregular_periods, "No", :id => 'typical_periods_sub_no' %>
 					<%= label :always_irregular_periods_no, "No"%></td></tr>
 			
-			
+			<%# Dependent field %>
 			<tr><td>Do you currently require medication in order to get a period?</td> 
-				<td><%= f.radio_button :period_medication, 'Yes' %>
+				<td><%= f.radio_button :period_medication, 'Yes', :id => 'period_medication_yes' %>
 				<%= label :period_medication_yes, "Yes"%>
-				<%= f.radio_button :period_medication, "No" %>
+				<%= f.radio_button :period_medication, "No", :id => 'period_medication_no' %>
 				<%= label :period_medication_no, "No"%></td></tr>
 				
-				<tr><td class="sub_question">If yes, please check all that apply:</td>
+				<tr class="hidden" id="period_medication_sub"><td>Please check all that apply, or indicate other medication used:</td>
 				<td>
 				<div class="fix"><%= f.check_box :premarin %> Premarin</div>
 				<div class="fix"><%= f.check_box :estrace %> Estrace</div>
@@ -85,30 +99,6 @@
 				</tr>
 		</table>
 
- 		<!--
-		<table class="form">
-			<tr>
-				<td class="label">What age did you start having periods?</td><td class="value"><%= f.text_field :age_when_periods_start%></td>
-			</tr>
-			<tr>
-				<td class="label">What is the date of your last menstrual period?</td><td class="value"><%= f.text_field :last_menstrual_period %></td>
-			</tr>
-			
-			<tr>
-				<td class="label">If you take medication, please check all that apply </td>
-				<td class="value"><%= f.check_box :premarin %> Premarin</td>
-				<td class="value"><%= f.check_box :estrace %> Estrace</td>
-				<td class="value"><%= f.check_box :birth_control %> Birth Control Pills</td>
-				<td class="value"><%= f.check_box :progesterone %> Progesterone</td>
-				<td class="value"><%= f.check_box :provera %> Provera</td>
-				<td class="value"><%= f.check_box :cycrin %> Cycrin</td>
-				<td class="value"><%= f.check_box :aygestin %> Aygestin</td>
-				<td class="value"><%= f.check_box :crinone %> Crinone</td>
-				<td class="value"><%= f.check_box :prometrium %> Prometrium</td>
-				
-			
-			</tr>
-		-->
 	</div>
 	
 	<div id="update_history_4" class="hidden">
@@ -141,8 +131,11 @@
 	<div id="update_history_9" class="hidden">
 	</div>
 	
-	<div class="referrer_submit_button">
-		<%= f.submit :value => "Save History" %>
+	
+	<div class="navigation">
+		<span class="icon left">←</span>
+		<span class="middle"><%= f.submit :value => "Save Progress and Return to Patient Page", :id => "inline" %><span>
+		<span class="icon right">→</span>				
 	</div>
 	
 	<% end %>
@@ -150,73 +143,140 @@
 </div>
 
 <script type="text/javascript">
+	var current_page = 1;
+	
+	//**********************************************************************
+	//Menstrual Cycle Field Logic
+	//**********************************************************************
+	//regular periods?
+	$("#typical_periods_yes").change(function(){
+		$("#typical_periods_sub").css("display","none");
+//		document.getElementById("typical_periods_sub_yes").value = nil;
+//		document.getElementById("typical_periods_sub_no").value = nil;
+	});
+	$("#typical_periods_no").change(function(){
+		$("#typical_periods_sub").toggle();
+	});
+	//period medications?
+	$("#period_medication_no").change(function(){
+		$("#period_medication_sub").css("display","none");
+	});
+	$("#period_medication_yes").change(function(){
+		$("#period_medication_sub").toggle();
+	});
+	//**********************************************************************
 
-$(document).ready(function(){
 	
+	/**********************************************************************
+	toPage function: takes next page as argument and directs user there
+	**********************************************************************/
+	function toPage(next_page){
+		
+		//(1) Color tabs and display page
+		//***************************************************************
+		for (var i = 1; i <= 9; i++) {
+			if (i == next_page) continue;
+			div_string =  "div#update_history_" + i.toString(); 
+			tab_string = "li#update_history_" + i.toString(); 
+			$(div_string).hide();
+			$(tab_string).css("background-color","#7895a3");
+		}
+		
+		div_string =  "div#update_history_" + next_page.toString(); 
+		tab_string = "li#update_history_" + next_page.toString();
+		$(div_string).show();
+		$(tab_string).css("background-color","#325d64");
+		//***************************************************************
+
+
+		//(2) Boundary arrow logic
+		//***************************************************************
+		if (current_page == 1) {
+			$("span.left").css("visibility","visible");
+		}
+		if (current_page == 9) {
+			$("span.right").css("visibility","visible");
+		}
+		if (next_page == 1){
+			$("span.left").css("visibility","hidden");	
+		}
+		if (next_page == 9){
+			$("span.right").css("visibility","hidden");	
+		}
+		//***************************************************************
+
+		//(3) Reset current page
+		//***************************************************************
+		current_page = next_page;
+		//***************************************************************
+
+		//DB
+		$("div#test_print").html(current_page.toString());
+
+	}
+
+	/**********************************************************************
+	Page functionality using toPage function
+	**********************************************************************/
+	$("span.left").click(function(){
+		next = current_page - 1;
+		toPage(next);
+	});
+	$("span.right").click(function(){
+		next = current_page + 1;
+		toPage(next);
+	});
 	$("li#update_history_1").click(function(){
-	  $("div#update_history_1").show();
-	  $("li#update_history_1").css("background-color","#325d64");
-	  $("div#update_history_2").hide();
-	  $("li#update_history_2").css("background-color","#7895a3");	  
-	  $("div#update_history_3").hide();
-	  $("li#update_history_3").css("background-color","#7895a3");	         			
-	  $("div#update_history_4").hide();
-	  $("li#update_history_4").css("background-color","#7895a3");
-   	  $("div#update_history_5").hide();
-	  $("li#update_history_5").css("background-color","#7895a3");	  
-	  $("div#update_history_6").hide();
-	  $("li#update_history_6").css("background-color","#7895a3");	     			
-	  $("div#update_history_7").hide();
-	  $("li#update_history_7").css("background-color","#7895a3");
-	  $("div#update_history_8").hide();
-	  $("li#update_history_8").css("background-color","#7895a3");	
-	  $("div#update_history_9").hide();
-	  $("li#update_history_9").css("background-color","#7895a3");
+	 	toPage(1);
 	});
-	
 	$("li#update_history_2").click(function(){
-      $("div#update_history_1").hide();
-	  $("li#update_history_1").css("background-color","#7895a3");
-      $("div#update_history_2").hide();
-      $("li#update_history_2").css("background-color","#325d64");	  
-      $("div#update_history_3").show();
-      $("li#update_history_3").css("background-color","#7895a3");	         			
-	  $("div#update_history_4").hide();
-	  $("li#update_history_4").css("background-color","#7895a3");
-	  $("div#update_history_5").hide();
-      $("li#update_history_5").css("background-color","#7895a3");	  
-	  $("div#update_history_6").hide();
-	  $("li#update_history_6").css("background-color","#7895a3");	     			
-	  $("div#update_history_7").hide();
-	  $("li#update_history_7").css("background-color","#7895a3");
-	  $("div#update_history_8").hide();
-	  $("li#update_history_8").css("background-color","#7895a3");	
-	  $("div#update_history_9").hide();
-	  $("li#update_history_9").css("background-color","#7895a3");
+	 	toPage(2);
 	});
-	
 	$("li#update_history_3").click(function(){
-	  $("div#update_history_1").hide();
-	  $("li#update_history_1").css("background-color","#7895a3");
-	  $("div#update_history_2").hide();
-	  $("li#update_history_2").css("background-color","#7895a3");	  
-	  $("div#update_history_3").show();
- 	  $("li#update_history_3").css("background-color","#325d64");	         			
-	  $("div#update_history_4").hide();
-	  $("li#update_history_4").css("background-color","#7895a3");
-   	  $("div#update_history_5").hide();
-	  $("li#update_history_5").css("background-color","#7895a3");	  
-	  $("div#update_history_6").hide();
-	  $("li#update_history_6").css("background-color","#7895a3");	     			
-	  $("div#update_history_7").hide();
-	  $("li#update_history_7").css("background-color","#7895a3");
-	  $("div#update_history_8").hide();
-	  $("li#update_history_8").css("background-color","#7895a3");	
-	  $("div#update_history_9").hide();
-	  $("li#update_history_9").css("background-color","#7895a3");
+	 	toPage(3);
 	});
+	$("li#update_history_4").click(function(){
+	 	toPage(4);
+	});
+	$("li#update_history_5").click(function(){
+	 	toPage(5);
+	});
+	$("li#update_history_6").click(function(){
+	 	toPage(6);
+	});
+	$("li#update_history_7").click(function(){
+	 	toPage(7);
+	});
+	$("li#update_history_8").click(function(){
+	 	toPage(8);
+	});
+	$("li#update_history_9").click(function(){
+	 	toPage(9);
+	});
+	//**********************************************************************
 	
-})
+	
+	/**********************************************************************
+	DB & Miscellaneous Code
+	**********************************************************************
+	
+	for (var k = 1; k <= 9; k++) {
+		tab_string = "li#update_history_"+k.toString();
+		$(tab_string).click(function(){
+			toPage(k);
+		});
+	}
+	
+	$("#test").change(function(){
+		$("div#test_print").html(document.getElementById("test").value);
+		
+	});
+
+	
+	**********************************************************************/
+	
+	
+	
 
 </script>
 
