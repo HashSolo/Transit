@@ -12,11 +12,12 @@ class HistoryMalesController < ApplicationController
     @title = "New History Successfully Added"
     @case = Case.find(params[:case_id])
     @history = HistoryMale.new(params[:history_male])
-    @history.patient_id = params[:patient_id]
+    @patient = Patient.find(params[:patient_id])
+    @history.patient_id = @patient.id
     if @history.save
 
       flash[:success] = "New History Successfully Added"
-      redirect_to case_patients_path(@case.id)
+      redirect_to case_patient_path(params[:case_id], params[:patient_id])
 
     else
       @title = "Error"       

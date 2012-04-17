@@ -10,7 +10,10 @@
 			<td class="label"><%= f.label :first_name %></td><td class="value"><%= f.text_field :first_name %></td>
 		</tr>
 		<tr>
-			<td class="label"><%= f.label :sex %></td><td class="value"><%= f.text_field :sex %></td>
+			<td class="label"><%= f.label :sex %></td><td class="value"><%= f.radio_button :sex, 'Female' %>
+			<%= label :sex_female, "Female"%>
+			<%= f.radio_button :sex, "Male" %>
+			<%= label :sex_male, "Male"%></td>
 		</tr>
 		<tr>
 			<td class="label"><%= f.label :date_of_birth %></td><td class="value"><%= f.date_select :date_of_birth %></td>

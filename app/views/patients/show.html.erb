@@ -43,7 +43,7 @@
 		<% # store patient id in patients helper %>
 
 		<%= link_to "Fill out Patient History", 
-		new_case_patient_history_male_path(@case.id) %>
+		new_case_patient_history_male_path(@case.id, @patient.id) %>
 		
 	<% else %>
 

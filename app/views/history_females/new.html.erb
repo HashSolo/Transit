@@ -14,11 +14,13 @@
 		<span class="icon right">→</span>				
 	</div>
 
+
+	<%#*******************************************************************
+	Page 1: General
+	*********************************************************************%>
 	<div id="update_history_1" class="">
 		<h2><span class="icon">✎</span>Fill out patient information</h2>
-		
-		
-	
+			
 		<table>
 			<tr class="odd"><td>Name:</td><td><%= f.text_field :name, :id => 'test' %></td></tr>
 			<tr><td>Occupation:</td> <td><%= f.text_field :occupation %></td></tr>
@@ -29,11 +31,11 @@
 			<tr><td>Race:</td> <td><%= f.text_field :race %></td></tr>
 			<tr class="odd"><td>Term Births:</td> <td><%= f.text_field :term_births, :size => 1 %></td></tr>
 			<tr><td>Age:</td> <td><%= f.text_field :age, :size => 1 %></td></tr>
-			<tr class="odd"><td>Sex: 
-				</td><td><%= f.radio_button :marriage_status, 'Male' %>
-				<%= label :marriage_status_male, "Male"%>
-				<%= f.radio_button :marriage_status, 'Female' %>
-				<%= label :marriage_status_female, "Female"%></td></tr>
+			<tr class="odd"><td>Marital Status: 
+				</td><td><%= f.radio_button :marriage_status, 'Married' %>
+				<%= label :marriage_status_married, "Married"%>
+				<%= f.radio_button :marriage_status, 'Single' %>
+				<%= label :marriage_status_single, "Single"%></td></tr>
 			
 			<tr><td>Preterm Births:</td> <td><%= f.text_field :preterm_births, :size => 1 %></td></tr>
 			<tr class="odd"><td>Miscarriages or Abortions:</td> <td><%= f.text_field :miscarriages_or_abortions, :size => 1 %></td></tr>
@@ -47,13 +49,38 @@
 		
 	</div>
 	
+	
+	<%#*******************************************************************
+	Page 2: Pregnancy History
+	*********************************************************************%>
 	<div id="update_history_2" class="hidden">
 		<h2><span class="icon">✎</span>Fill out pregnancy information</h2>
+		
+		<table>
+
+			
+			<tr class="odd"><td>Have you achieved pregnancy before?
+				</td> 
+				<td><%= f.radio_button :past_pregnancy, 'Yes', :id => 'past_pregnancy_yes' %>
+				<%= label :past_pregnancy_yes, "Yes"%>
+				<%= f.radio_button :past_pregnancy, "No", :id => 'past_pregnancy_no' %>
+				<%= label :past_pregnancy_no, "No"%></td></tr>
+			<tr class="hidden odd" id="past_pregnancy_sub"><td class="">How many times have you achieved pregnancy?</td> 
+					<td><%= f.text_field :past_pregnancy_count, :size => 1, :id => 'past_pregnancy_count' %></td></tr>
+			
+		
+		</table>
+		<div id="pregnancy_table">
+			
+		</div>
+		
 	</div>
 	
 	
-	<%#**************Menstrual Cycle History Form**************%>
-	
+	<%#*******************************************************************
+	Page 3: Menstrual Cycle History
+	*********************************************************************%>
+		
 	<div id="update_history_3" class="hidden">
 		<h2><span class="icon">✎</span>Fill out menstrual cycle history</h2>
 
@@ -145,14 +172,27 @@
 <script type="text/javascript">
 	var current_page = 1;
 	
+	$(document).ready(function(){
+		toPage(1);	
+	});
+	
+	/**********************************************************************
+	Pregnancy Field Logic and Ajax
+	**********************************************************************/
+	/*
+	
+	Coming Soon
+	
+	*/
+	
+	//**********************************************************************
+	
 	//**********************************************************************
 	//Menstrual Cycle Field Logic
 	//**********************************************************************
 	//regular periods?
 	$("#typical_periods_yes").change(function(){
 		$("#typical_periods_sub").css("display","none");
-//		document.getElementById("typical_periods_sub_yes").value = nil;
-//		document.getElementById("typical_periods_sub_no").value = nil;
 	});
 	$("#typical_periods_no").change(function(){
 		$("#typical_periods_sub").toggle();
@@ -165,8 +205,7 @@
 		$("#period_medication_sub").toggle();
 	});
 	//**********************************************************************
-
-	
+		
 	/**********************************************************************
 	toPage function: takes next page as argument and directs user there
 	**********************************************************************/

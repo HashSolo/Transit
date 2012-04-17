@@ -40,7 +40,6 @@ class HistoryFemalesController < ApplicationController
     @case = Case.find(params[:case_id])
     @history = HistoryFemale.find(params[:id])
     @patient = Patient.find(@history.patient_id)
-    #Patient.find(params[:patient_id])
   end
   
   def edit
@@ -48,6 +47,21 @@ class HistoryFemalesController < ApplicationController
     @case = Case.find(params[:case_id])
     @history = HistoryFemale.find(params[:id])
     @patient = Patient.find(@history.patient_id)
+    
+    if !(params[:count].nil?)
+      count = params[:count]
+      for i in 1..count
+        @pregnancy = Pregnancy.new(:history_female_id => @history.id)
+        @pregnancy.save
+        @pregnancies << @pregnancy
+      end
+    end
+  
+    respond_to do |format|
+      format.html {}
+      format.json { render :json => @pregnancies }
+    end
+  
   end
   
   def update
@@ -58,7 +72,7 @@ class HistoryFemalesController < ApplicationController
   	  if @history.update_attributes(params[:history_female])
   	    flash[:success] = "Medical Info updated"
   	    redirect_to case_patient_history_female_path(@case.id, @patient.id, @history.id)
-  	  else
+    	  else
   	    @title = "Edit Patient"
   	    render 'edit'
   	  end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120330201730) do
+ActiveRecord::Schema.define(:version => 20120416223044) do
 
   create_table "allergies", :force => true do |t|
     t.integer  "history_female_id"
@@ -514,6 +514,38 @@ ActiveRecord::Schema.define(:version => 20120330201730) do
     t.boolean  "prior_infertility"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.string   "occupation"
+    t.integer  "height_ft"
+    t.integer  "height_in"
+    t.boolean  "weight_change"
+    t.integer  "weight"
+    t.date     "birth_date"
+    t.string   "race"
+    t.integer  "age"
+    t.boolean  "past_pregnancy"
+    t.integer  "past_pregnancy_count"
+    t.boolean  "medical_conditions_tf"
+    t.boolean  "medications_tf"
+    t.boolean  "herbal_medications"
+    t.integer  "herbal_amount"
+    t.boolean  "surgeries_tf"
+    t.boolean  "stds_tf"
+    t.boolean  "allergies_tf"
+    t.boolean  "mumps"
+    t.integer  "mumps_age"
+    t.boolean  "erections_difficulty"
+    t.boolean  "impregnation_difficulty"
+    t.boolean  "sperm_donor"
+    t.boolean  "hormone_treatments"
+    t.boolean  "vasectomy"
+    t.boolean  "testicles_surgery"
+    t.boolean  "testicles_undescended"
+    t.boolean  "testicles_trauma"
+    t.boolean  "testicles_swelling"
+    t.boolean  "testicles_twist"
+    t.boolean  "white_cells"
+    t.boolean  "prostate_infection"
   end
 
   create_table "medical_conditions", :force => true do |t|
