@@ -9,9 +9,7 @@
 			<table class="form">
 				<tr>	
 					<td class="label">Email:</td>
-					<td class="value"><%= fields_for @user do |g| %>
-						<%= g.text_field :email %>
-						<% end %>
+					<td class="value"><%= @user.email %>					
 					</td>	
 				</tr>
 			</table>
@@ -24,11 +22,7 @@
 				<table class="form">
 					<tr>
 						<td class="label">Referring MD:</td>
-						<% referrers_select = "<option value = ''>No Referrer</option>" %>
-							<% @referrers.each do |g| 
-								referrers_select += "<option value='#{g.id}'>#{g.first_name} #{g.last_name}</option>"
-							end %>
-						<td class="value"><%= f.select(:referrer_id, referrers_select) %></td>
+						<td class="value"><%= f.select(:referrer_id, options_for_select(@referrers.collect {|g| ["#{g.first_name} #{g.last_name}", g.id]})) %></td>
 					</tr>
 				</table>
 			</div>
@@ -43,7 +37,7 @@
 			<table class="form">
 				<tr>
 					<td class="label">Case clinician:</td>
-					<td class="value"><%= f.select(:clinician_id, options_for_select(@clinicians.collect {|g| [g.first_name, g.last_name]}, @clinician)) %></td>
+					<td class="value"><%= f.select(:clinician_id, options_for_select(@clinicians.collect {|g| ["#{g.first_name} #{g.last_name}", g.id]})) %></td>
 				</tr>
 			</table>
 		</div>
@@ -55,29 +49,13 @@
 			<table class="form">
 			<tr>	
 				<td class="label">Date:</td>	
-				<td class="value"><%= fields_for @appointment do |g| %>
-					<%= g.date_select :date_and_time %></td>
+				<td class="value"><%= @appointment.date_and_time %></td>
 			</tr>
-			<tr>
-				<td class="label">Time:</td>
-				<td class="value">
-					<%= g.time_select :date_and_time, :ignore_date => true %></td>
-			</tr>
-			<tr>
-				<td class="label">Physician:</td>	
-				<% clinicians_select = "<option value = ''>No Clinician</option>" %>
-				<% @clinicians.each do |h| 
-					clinicians_select += "<option value='#{h.id}'>#{h.first_name} #{h.last_name}</option>"
-				end %>
-				<td class="value"><%= g.select(:clinician_id, clinicians_select) %></td>
-			</tr>
+
 			</table>
 		</div>
 	</div>
 	</div>
-
-	<% end %>
-
 
 		
 	<%= f.submit "Update Case", :class => "case_button" %>

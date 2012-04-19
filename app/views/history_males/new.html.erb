@@ -31,9 +31,9 @@
 						<%= f.text_field :height_in, :size => 1 %> in</td></tr>
 			<tr class=""><td>Has your weight changed?
 				</td> 
-				<td><%= f.radio_button :weight_change, 'Yes' %>
+				<td><%= f.radio_button :weight_change, :true %>
 					<%= label :weight_change_yes, "Yes"%>
-					<%= f.radio_button :weight_change, "No" %>
+					<%= f.radio_button :weight_change, :false %>
 					<%= label :weight_change_no, "No"%></td></tr>			
 			<tr class="odd"><td>Weight:</td> <td><%= f.text_field :weight, :size => 1 %> lbs</td></tr>
 			<tr class=""><td>What is your date of birth?</td> <td><%= f.date_select :birth_date %></td></tr>
@@ -70,31 +70,30 @@
 		%>
 		
 		<table>
-			<tr class="odd"><td>Do you have any difficulty with erections?</td><td><%= f.radio_button :erections_difficulty, 'Yes' %><%= label :erections_difficulty_yes, "Yes"%> <%= f.radio_button :erections_difficulty, "No" %><%= label :erections_difficulty_no, "No"%></td></tr>
+			<tr class="odd"><td>Do you have any difficulty with erections?</td><td><%= f.radio_button :erections_difficulty, 'Yes' %><%= label :erections_difficulty_yes, :true %> <%= f.radio_button :erections_difficulty, :false %><%= label :erections_difficulty_no, "No"%></td></tr>
 			
-			<tr class=""><td>Have you previously had difficulty impregnating a partner?</td><td><%= f.radio_button :impregnation_difficulty, 'Yes' %><%= label :impregnation_difficulty_yes, "Yes"%> <%= f.radio_button :impregnation_difficulty, "No" %><%= label :impregnation_difficulty_no, "No"%></td></tr>
+			<tr class=""><td>Have you previously had difficulty impregnating a partner?</td><td><%= f.radio_button :impregnation_difficulty, 'Yes' %><%= label :impregnation_difficulty_yes, :true %> <%= f.radio_button :impregnation_difficulty, :false %><%= label :impregnation_difficulty_no, "No"%></td></tr>
 			
-			<tr class="odd"><td>Have you donated sperm?</td><td><%= f.radio_button :sperm_donor, 'Yes' %><%= label :sperm_donor_yes, "Yes"%> <%= f.radio_button :sperm_donor, "No" %><%= label :sperm_donor_no, "No"%></td></tr>
+			<tr class="odd"><td>Have you donated sperm?</td><td><%= f.radio_button :sperm_donor, :true %><%= label :sperm_donor_yes, "Yes"%> <%= f.radio_button :sperm_donor, :false %><%= label :sperm_donor_no, "No"%></td></tr>
 			
-			<tr class=""><td>Have you ever required hormone treatment(s)?</td><td><%= f.radio_button :hormone_treatments, 'Yes' %><%= label :hormone_treatments_yes, "Yes"%> <%= f.radio_button :hormone_treatments, "No" %><%= label :hormone_treatments_no, "No"%></td></tr>
+			<tr class=""><td>Have you ever required hormone treatment(s)?</td><td><%= f.radio_button :hormone_treatments, :true %><%= label :hormone_treatments_yes, "Yes"%> <%= f.radio_button :hormone_treatments, :false %><%= label :hormone_treatments_no, "No"%></td></tr>
 			
-			<tr class="odd"><td>Have you ever had a vasectomy?</td><td><%= f.radio_button :vasectomy, 'Yes' %><%= label :vasectomy_yes, "Yes"%> <%= f.radio_button :vasectomy, "No" %><%= label :vasectomy_no, "No"%></td></tr>
+			<tr class="odd"><td>Have you ever had a vasectomy?</td><td><%= f.radio_button :vasectomy, :true %><%= label :vasectomy_yes, "Yes"%> <%= f.radio_button :vasectomy, :false %><%= label :vasectomy_no, "No"%></td></tr>
 			
-			<tr class=""><td>Have you ever had testicular surgery?</td><td><%= f.radio_button :testicles_surgery, 'Yes' %><%= label :testicles_surgery_yes, "Yes"%> <%= f.radio_button :testicles_surgery, "No" %><%= label :testicles_surgery_no, "No"%></td></tr>
+			<tr class=""><td>Have you ever had testicular surgery?</td><td><%= f.radio_button :testicles_surgery, :true %><%= label :testicles_surgery_yes, "Yes"%> <%= f.radio_button :testicles_surgery, :false %><%= label :testicles_surgery_no, "No"%></td></tr>
 			
-			<tr class="odd"><td>Have you had undescended testicles?</td><td><%= f.radio_button :weight_change, 'Yes' %><%= label :weight_change_yes, "Yes"%> <%= f.radio_button :weight_change, "No" %><%= label :weight_change_no, "No"%></td></tr>
+			<tr class="odd"><td>Have you had undescended testicles?</td><td><%= f.radio_button :weight_change, :true %><%= label :weight_change_yes, "Yes"%> <%= f.radio_button :weight_change, :false %><%= label :weight_change_no, "No"%></td></tr>
 			
-			<tr class=""><td>Have you had trauma to the testicles?</td><td><%= f.radio_button :testicles_trauma, 'Yes' %><%= label :testicles_trauma_yes, "Yes"%> <%= f.radio_button :testicles_trauma, "No" %><%= label :testicles_trauma_no, "No"%></td></tr>
+			<tr class=""><td>Have you had trauma to the testicles?</td><td><%= f.radio_button :testicles_trauma, :true %><%= label :testicles_trauma_yes, "Yes"%> <%= f.radio_button :testicles_trauma, :false %><%= label :testicles_trauma_no, "No"%></td></tr>
 			
-			<tr class="odd"><td>Have you had painful swelling of the testicles?</td><td><%= f.radio_button :testicles_swelling, 'Yes' %><%= label :testicles_swelling_yes, "Yes"%> <%= f.radio_button :testicles_swelling, "No" %><%= label :testicles_swelling_no, "No"%></td></tr>
+			<tr class="odd"><td>Have you had painful swelling of the testicles?</td><td><%= f.radio_button :testicles_swelling, :true %><%= label :testicles_swelling_yes, "Yes"%> <%= f.radio_button :testicles_swelling, :false %><%= label :testicles_swelling_no, "No"%></td></tr>
 			
-			<tr class=""><td>Have you had torsion (twisting) of the testicles?</td><td><%= f.radio_button :testicles_twist, 'Yes' %><%= label :testicles_twist_yes, "Yes"%> <%= f.radio_button :testicles_twist, "No" %><%= label :testicles_twist_no, "No"%></td></tr>
+			<tr class=""><td>Have you had torsion (twisting) of the testicles?</td><td><%= f.radio_button :testicles_twist, :true %><%= label :testicles_twist_yes, "Yes"%> <%= f.radio_button :testicles_twist, :false %><%= label :testicles_twist_no, "No"%></td></tr>
 			
-			<tr class=""><td>Have you ever had white blood cells in your semen?</td><td><%= f.radio_button :white_cells, 'Yes' %><%= label :white_cells_yes, "Yes"%> <%= f.radio_button :white_cells, "No" %><%= label :white_cells_no, "No"%></td></tr>
+			<tr class="odd"><td>Have you ever had white blood cells in your semen?</td><td><%= f.radio_button :white_cells, :true %><%= label :white_cells_yes, "Yes"%> <%= f.radio_button :white_cells, :false %><%= label :white_cells_no, "No"%></td></tr>
 			
-			<tr class=""><td>Have you ever had a prostate infection?</td><td><%= f.radio_button :prostate_infection, 'Yes' %><%= label :prostate_infection_yes, "Yes"%> <%= f.radio_button :prostate_infection, "No" %><%= label :prostate_infection_no, "No"%></td></tr>				
+			<tr class=""><td>Have you ever had a prostate infection?</td><td><%= f.radio_button :prostate_infection, :true %><%= label :prostate_infection_yes, "Yes"%> <%= f.radio_button :prostate_infection, :false %><%= label :prostate_infection_no, "No"%></td></tr>				
 					
-			
 			
 		</table>
 		

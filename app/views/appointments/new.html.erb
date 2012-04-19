@@ -1,0 +1,56 @@
+<div class="appointment_form">
+
+<%#
+
+t.integer :case_id
+t.integer :clinician_id
+t.datetime :date_and_time
+t.string :appointment_type
+	
+
+%>
+
+<%= form_for @appointment do |f| %>
+
+<table>
+		
+		<tr>
+			<td class="label">Appointment clinician:</td>
+			<td class="value"><%= f.select(:clinician_id, options_for_select(@clinicians.collect {|g| ["#{g.first_name} #{g.last_name}", g.id]})) %></td>
+		</tr>
+		
+		<tr>	
+			<td class="label">Date:</td>	
+			<td class="value">
+				<%= f.date_select :date_and_time %></td>
+		</tr>
+		<tr>
+			<td class="label">Time:</td>
+			<td class="value">
+				<%= f.time_select :date_and_time, :ignore_date => true %></td>
+		</tr>
+	
+		<tr><td class="label">Appointment Type</td> 
+				<td class="value"><%= f.radio_button :appointment_type, "Consultation" %>
+				<%= label :appointment_type, "Consultation"%>
+				<%= f.radio_button :appointment_type, "Hormone Treatment" %>
+				<%= label :appointment_type, "Hormone Treatment"%></td></tr>
+	
+</table>
+
+	<h2>Select Case</h2>
+	
+	<ul>
+	<% @cases.each do |c|%>
+	
+	<il><%= " ID: #{c.id}, User Account: #{User.find(c.user_id).email}"%>			</il>
+	<br>
+	<% end %>
+	</ul>
+	
+	<%= f.submit "Schedule Appointment"%>
+	
+	
+<% end %>
+
+</div>

@@ -518,7 +518,7 @@ ActiveRecord::Schema.define(:version => 20120416223044) do
     t.string   "occupation"
     t.integer  "height_ft"
     t.integer  "height_in"
-    t.boolean  "weight_change"
+    t.boolean  "change_weight"
     t.integer  "weight"
     t.date     "birth_date"
     t.string   "race"

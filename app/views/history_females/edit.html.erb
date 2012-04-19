@@ -61,9 +61,9 @@
 			
 			<tr class="odd"><td>Have you achieved pregnancy before?
 				</td> 
-				<td><%= f.radio_button :past_pregnancy, 'Yes', :id => 'past_pregnancy_yes' %>
+				<td><%= f.radio_button :past_pregnancy, :true, :id => 'past_pregnancy_yes' %>
 				<%= label :past_pregnancy_yes, "Yes"%>
-				<%= f.radio_button :past_pregnancy, "No", :id => 'past_pregnancy_no' %>
+				<%= f.radio_button :past_pregnancy, :false, :id => 'past_pregnancy_no' %>
 				<%= label :past_pregnancy_no, "No"%></td></tr>
 			<tr class="hidden odd" id="past_pregnancy_sub"><td class="">How many times have you achieved pregnancy?</td> 
 					<td><%= f.text_field :past_pregnancy_count, :size => 1, :id => 'past_pregnancy_count' %></td></tr>
@@ -87,32 +87,25 @@
 		<table>
 			
 			<tr class="odd"><td>At what age did you begin having periods?</td> <td><%= f.text_field :age_when_periods_start, :size => 1 %></td></tr>
+			
+			
 			<tr class=""><td>What is the date of your last menstrual period?</td> <td><%= f.date_select :last_menstrual_period%></td></tr>
+			
+			
 			<tr class="odd"><td>What is the average length of time your periods last?</td> <td><%= f.text_field :average_days_of_period, :size => 1 %> days of flow</td></tr>
+			
+			
 			<tr class=""><td>What is the average length of time from the start of one period to the start of the next?</td> <td><%= f.text_field :average_days_between_periods, :size => 1 %> days between periods</td></tr>
 			
-			<%# Dependent field %>
-			<tr class="odd"><td>During the last year, have your periods been regular (without medication) within 26-32 days?</td> 
-				<td><%= f.radio_button :are_periods_typical, 'Yes', :id => 'typical_periods_yes' %>
-				<%= label :are_periods_typical_yes, "Yes"%>
-				<%= f.radio_button :are_periods_typical, "No", :id => 'typical_periods_no' %>
-				<%= label :are_periods_typical_no, "No"%></td></tr>
-			<tr class="hidden odd" id="typical_periods_sub"><td class="sub_question">Have your periods always been irregular?</td> 
-					<td><%= f.radio_button :always_irregular_periods, 'Yes', :id => 'typical_periods_sub_yes' %>
-					<%= label :always_irregular_periods_yes, "Yes"%>
-					<%= f.radio_button :always_irregular_periods, "No", :id => 'typical_periods_sub_no' %>
-					<%= label :always_irregular_periods_no, "No"%></td></tr>
 			
+			<tr class="odd"><td>During the last year, have your periods been regular (without medication) within 26-32 days?</td><td><%= f.radio_button :are_periods_typical, :true, :id => 'typical_periods_yes' %><%= label :are_periods_typical_yes, "Yes"%> <%= f.radio_button :are_periods_typical, :false, :id => 'typical_periods_no' %><%= label :are_periods_typical_no, "No"%></td></tr>
 			<%# Dependent field %>
-			<tr><td>Do you currently require medication in order to get a period?</td> 
-				<td><%= f.radio_button :period_medication, 'Yes', :id => 'period_medication_yes' %>
-				<%= label :period_medication_yes, "Yes"%>
-				<%= f.radio_button :period_medication, "No", :id => 'period_medication_no' %>
-				<%= label :period_medication_no, "No"%></td></tr>
-				
-				<tr class="hidden" id="period_medication_sub"><td>Please check all that apply, or indicate other medication used:</td>
-				<td>
-				<div class="fix"><%= f.check_box :premarin %> Premarin</div>
+			<tr class="hidden odd" id="typical_periods_sub"><td class="sub_question">Have your periods always been irregular?</td><td><%= f.radio_button :always_irregular_periods, :true, :id => 'typical_periods_sub_yes' %><%= label :always_irregular_periods_yes, "Yes"%> <%= f.radio_button :always_irregular_periods, :false, :id => 'typical_periods_sub_no' %><%= label :always_irregular_periods_no, "No"%></td></tr>
+			
+
+			<tr><td>Do you currently require medication in order to get a period?</td><td><%= f.radio_button :period_medication, :true, :id => 'period_medication_yes' %><%= label :period_medication_yes, "Yes"%> <%= f.radio_button :period_medication, :false, :id => 'period_medication_no' %><%= label :period_medication_no, "No"%></td></tr>
+			<%# Dependent field %>	
+				<tr class="hidden" id="period_medication_sub"><td>Please check all that apply, or indicate other medication used:</td><td><div class="fix"><%= f.check_box :premarin %> Premarin</div>
 				<div class="fix"><%= f.check_box :estrace %> Estrace</div>
 				<div class="fix"><%= f.check_box :birth_control %> Birth Control Pills</div>
 				<div class="fix"><%= f.check_box :progesterone %> Progesterone</div>
@@ -173,7 +166,30 @@
 	var current_page = 1;
 	
 	$(document).ready(function(){
-		toPage(1);	
+		toPage(1);
+		
+		/**********************************************************************
+		Pregnancy Field Logic
+		**********************************************************************/
+		if (document.getElementById("past_pregnancy_yes").checked) {
+			$("#past_pregnancy_sub").show();
+		}
+		
+		/**********************************************************************
+		Menstrual Cycle Field Logic
+		**********************************************************************/
+
+		if (document.getElementById("typical_periods_no").checked) {
+			$("#typical_periods_sub").show();
+		}
+
+		if (document.getElementById("period_medication_yes").checked) {
+			$("#period_medication_sub").show();			
+		}
+
+
+		//**********************************************************************
+			
 	});
 	
 	/**********************************************************************
@@ -251,19 +267,19 @@
 	
 	//**********************************************************************
 	
-	//**********************************************************************
-	//Menstrual Cycle Field Logic
-	//**********************************************************************
+	/**********************************************************************
+	Menstrual Cycle Field Logic
+	**********************************************************************/
 	//regular periods?
 	$("#typical_periods_yes").change(function(){
-		$("#typical_periods_sub").css("display","none");
+		$("#typical_periods_sub").hide();
 	});
 	$("#typical_periods_no").change(function(){
 		$("#typical_periods_sub").toggle();
 	});
 	//period medications?
 	$("#period_medication_no").change(function(){
-		$("#period_medication_sub").css("display","none");
+		$("#period_medication_sub").hide();
 	});
 	$("#period_medication_yes").change(function(){
 		$("#period_medication_sub").toggle();
@@ -312,9 +328,6 @@
 		//***************************************************************
 		current_page = next_page;
 		//***************************************************************
-
-		//DB
-		$("div#test_print").html(current_page.toString());
 
 	}
 

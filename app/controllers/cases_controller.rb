@@ -33,25 +33,36 @@ class CasesController < ApplicationController
 	  #will create a helper to make a random pswd generator
 	  @user.password = "foobar"
 	  @user.password_confirmation = "foobar"
+	  @user.save
 	  
-	  @case = @user.cases.build(params[:case])
+	  @case = Case.new(params[:case])
+	  @case.save
+	  @user.cases << @case
 	  @case.clinician_id = params[:case][:clinician_id]
 	  @case.referrer_id = params[:case][:referrer_id]
+
 	  
+	  #@case = @user.cases.build(params[:case])
+	  #@case.clinician_id = params[:case][:clinician_id]
+	  #@case.referrer_id = params[:case][:referrer_id]
 	  
-	  if @user.save
-	    @appointment = @case.appointments.build(params[:appointment])
-	    if @appointment.save
+	  @appointment = Appointment.new(params[:appointment])
+	  @appointment.save
+	  @case.appointments << @appointment
+	  
+	  if @case.save
+	   # @appointment = @case.appointments.build(params[:appointment])
+	    #if @appointment.save
 	      @title = "New Case!"
 	      flash[:success] = "New Case Successfully Created"
 	      redirect_to case_path(@case)
-	    else
-	      @title = "Error"
-	      @clinicians = Clinician.all
-        @referrers = Referrer.all
-        @appointment = Appointment.new  
-  	    render 'new'
-      end
+	    #else
+	    #  @title = "Error"
+	    #  @clinicians = Clinician.all
+      #  @referrers = Referrer.all
+      #  @appointment = Appointment.new  
+  	  #  render 'new'
+    #  end
 	  else
 	    @title = "Error"
 	    @clinicians = Clinician.all
@@ -78,7 +89,11 @@ class CasesController < ApplicationController
   
   def update
 	  @case = Case.find(params[:id])
-	  if @case.update_attributes(params[:case])
+	  @case.clinician_id = params[:case][:clinician_id]
+	  @case.referrer_id = params[:case][:referrer_id]
+	  
+	  if @case.update_attributes(params[:case]) #&& @user.update_attributes(params[:user])
+	  
 	    flash[:success] = "Case updated."
 	    redirect_to case_path(@case)
 	  else

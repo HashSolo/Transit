@@ -24,11 +24,7 @@
 				<table class="form">
 					<tr>
 						<td class="label">Referring MD:</td>
-						<% referrers_select = "<option value = ''>No Referrer</option>" %>
-							<% @referrers.each do |g| 
-								referrers_select += "<option value='#{g.id}'>#{g.first_name} #{g.last_name}</option>"
-							end %>
-						<td class="value"><%= f.select(:referrer_id, referrers_select) %></td>
+						<td class="value"><%= f.select(:referrer_id, options_for_select( @referrers.collect {|g| ["#{g.first_name} #{g.last_name}", g.id]})) %></td>
 					</tr>
 				</table>
 			</div>
@@ -43,11 +39,7 @@
 			<table class="form">
 				<tr>
 					<td class="label">Case clinician:</td>
-					<% clinicians_select = "<option value = ''>No Clinician</option>" %>
-					<% @clinicians.each do |g| 
-						clinicians_select += "<option value='#{g.id}'>#{g.first_name} #{g.last_name}</option>"
-					end %>
-					<td class="value"><%= f.select(:clinician_id, clinicians_select) %></td>
+					<td class="value"><%= f.select(:clinician_id, options_for_select( @clinicians.collect {|g| ["#{g.first_name} #{g.last_name}", g.id]} )) %></td>
 				</tr>
 			</table>
 		</div>
@@ -69,11 +61,7 @@
 			</tr>
 			<tr>
 				<td class="label">Physician:</td>	
-				<% clinicians_select = "<option value = ''>No Clinician</option>" %>
-				<% @clinicians.each do |h| 
-					clinicians_select += "<option value='#{h.id}'>#{h.first_name} #{h.last_name}</option>"
-				end %>
-				<td class="value"><%= g.select(:clinician_id, clinicians_select) %></td>
+				<td class="value"><%= g.select(:clinician_id, options_for_select(@clinicians.collect {|h| ["#{h.first_name} #{h.last_name}", h.id]})) %></td>
 			</tr>
 			</table>
 		</div>

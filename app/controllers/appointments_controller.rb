@@ -30,9 +30,24 @@ class AppointmentsController < ApplicationController
   
   def new
     @title = "Add New Employee"
+    @appointment = Appointment.new
+    @clinicians = Clinician.all
+    @cases = Case.all
   end
   
   def create
+    @appointment = Appointment.new(params[:appointment])
+    
+    if @appointment.save
+      @title = "New Appointment Scheduled"
+      redirect_to appointments_path
+    else
+      @title = "Error"
+      @appointment = Appointment.new
+      @clinicians = Clinician.all
+      @cases = Case.all
+      render 'new'
+    end
   end
   
   def edit

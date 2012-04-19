@@ -6,7 +6,7 @@ class AddFieldsToHistoryMales < ActiveRecord::Migration
     add_column :history_males, :occupation, :string
     add_column :history_males, :height_ft, :integer
     add_column :history_males, :height_in, :integer
-    add_column :history_males, :weight_change, :boolean
+    add_column :history_males, :change_weight, :boolean
     add_column :history_males, :weight, :integer
     add_column :history_males, :birth_date, :date
     add_column :history_males, :race, :string
