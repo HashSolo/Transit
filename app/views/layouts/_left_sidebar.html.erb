@@ -9,6 +9,12 @@
 					</ul>
 				</li>
 			</ul>
+			
+<%#*************************************************************
+Case Toolbar
+*************************************************************%>			
+			
+			
 		<% elsif is_controller_active?('cases') || is_controller_active?('patients') || is_controller_active?('history_males') || is_controller_active?('history_females') #The following is the left sidebar for a general case %>
 			<% if ( (is_controller_active?('cases') && is_action_active?('edit')) || is_action_active?('show')) || is_controller_active?('patients') #To be shown for case=>edit, case=>show, and patients contoller %>
 			<ul>
@@ -37,6 +43,11 @@
 				<li class="option <%= is_state_active?('referrers','new') %>"><%= link_to new_referrer_path do |f| %><span class="text">Add a New Referrer</span><span class="icon">u</span><% end %></li>				
 			</ul>
 		
+		
+<%#*************************************************************
+Appointment Toolbar
+*************************************************************%>
+					
 		<% elsif is_controller_active?('appointments') %>
 			<div class="appointment_matrix">
 				<h1>Intelligent Scheduler</h1>
@@ -56,6 +67,11 @@
 			</ul>
 		<% end %>
 		
+
+
+<%#*************************************************************
+History Toolbar
+*************************************************************%>
 
 <% #patient history toolbar%>
 

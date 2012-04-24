@@ -25,27 +25,38 @@ header nav.header span.home_icon a {text-decoration:none;color:#ffffff;}
 header nav.header span.log_out {border: solid 2px;font-size:12px;display:inline;float:right;padding:0px;vertical-align:bottom;}
 header nav.header span.log_out a {text-decoration:none;color:#ffffff;}
 header nav.header span.log_out span.icon {font-size:8px;}
-
 header nav.header span.log_out ul li {list-style-type:none;padding:0px;}
 header nav.header span.log_out ul li:hover {list-style-type:none;}
 header nav.header span.log_out ul li.menu {display:none;font-size:12px;} 
-header nav.header span.log_out ul li a span{padding:0px;}
+header nav.header span.log_out ul li a span {padding:0px;}
+header div.sub_header {z-index:-1;position:absolute;top:50px;width:100%;height:20px;background:#325d5d;display:block;}
+header span.left {margin-left:20%;}
+header span.tab {z-index:2;background:#325d5d;vertical-align:top;text-align:left;display:inline-block;width:16%;font-size:16px;padding:0px;color:#ffffff;}
+header span.tab a {text-decoration:none;color:#ffffff;}
+header span.tab ul {border: solid 0px black;}
+header span.tab ul li {list-style-type:none;}
+header span.tab ul li:hover {list-style-type:none;}
+header span.tab ul li.calendar_menu, 
+header span.tab ul li.case_menu, 
+header span.tab ul li.clinic_menu, 
+header span.tab ul li.search_menu {display:none;font-size:12px;} 
+header span.tab ul li.calendar_menu:hover, 
+header span.tab ul li.case_menu:hover, 
+header span.tab ul li.clinic_menu:hover, 
+header span.tab ul li.search_menu:hover {background:#7895a3;}
+header span.tab span {width:auto;padding:0px;margin-left:auto;}
+/*Toolbar modules... mainly for debugging*/
+div.toolbar_module {width:100%;background:yellow;}
+div.toolbar_module span{width:30%;margin-left:5%;font-size:20px;}
 
-header nav.sub_header {height:auto;background:#325d5d;display:block;}
-header nav.sub_header span.left {margin-left:20%;}
-header nav.sub_header span {vertical-align:top;text-align:left;display:inline-block;width:16%;font-size:16px;padding:3px 3px;color:#ffffff;}
-header nav.sub_header span a {text-decoration:none;color:#ffffff;}
-header nav.sub_header span ul li {list-style-type:none;}
-header nav.sub_header span ul li:hover {list-style-type:none;background:#7895a3;}
-header nav.sub_header span ul li.case_menu {display:none;font-size:12px;} 
-header nav.sub_header span ul li.search_menu {display:none;font-size:12px;} 
-header nav.sub_header span span {width:auto;padding:0px;margin-left:auto;}
 
 /*selected headers
 header nav.header span.selected{background:#325d5d;border:4px double #7895a3;}
-*/
+
 
 nav.header ul li a {text-decoration:none;color:#ffffff;display:block;height:70px;}
+*/
+
 
 /*Old Header
 header {padding:0px;margin:0px;display:inline-block;float:left;width:100%;position:relative;height:100px;}

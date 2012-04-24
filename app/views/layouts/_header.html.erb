@@ -1,4 +1,5 @@
 <header >
+	
 		<% if signed_in? %>
 			<nav class="header">
 				<span class="home_icon"><%= link_to user_path(current_user) do |l| %><span class="icon">⌂</span>  <h2>Transit</h2><% end %> </span>
@@ -7,39 +8,46 @@
 				
 				<span class="log_out"><%= link_to '#' do |l| %><span class=""><%= "#{current_user.email}"%></span> <span class="icon">&#8595</span>  <% end %>	<span> 
 				
-			
-			<!--
-				<span class="log_out">
-				<ul>
-				<li><%= link_to '#' do |l| %><span class=""><%= "#{current_user.email}"%></span> <span class="icon">&#8595</span>  <% end %>
- 			</li>
-				<li class="menu"><%= link_to '#' do |l| %><span class="">Log out</span>   <% end %>
- 			</li>
-			<li class="menu"><%= link_to '#' do |l| %><span class="">Log out</span>   <% end %>
-		</li>
-		</ul>
-				</span> 
-			-->
-				
 			</nav>
 				
 				
 
-			<nav class="sub_header">
+			<div class="sub_header">
+			</div>
+
 								
 					<% if is_controller_active?('clinicians') || is_controller_active?('referrers') 
 						css_var = "selected"
 						else 
 						css_var = "" 
 						end %>
+
+<!-- ********************************************************
+Calendar Tab
+**********************************************************-->
 				
-				<span class="<%= is_state_active?('appointments','index') %> left"><%= link_to appointments_path do |l| %><span class="icon">⌚</span>   <span class="">Calendar</span><% end %></span>
+				<span id="calendar_tab" class="tab <%= is_state_active?('appointments','index') %> left">
 				
-				<!-- ********************************************************
-				Case Tab
-				**********************************************************-->
+				<ul>
+				
+				<li><%= link_to appointments_path do |l| %><span class="icon">⌚</span>   <span class="">Calendar</span><% end %></li>
+				
+				<li class="calendar_menu"><%= link_to '#' do |l| %><span>Daily</span><% end %></li>
+				
+				<li class="calendar_menu"><%= link_to '#' do |l| %><span>Full</span><% end %></li>
+				
+				<li class="calendar_menu"><%= link_to '#' do |l| %><span>Personal</span><% end %></li>
+				
+				<li class="calendar_menu"><%= link_to '#' do |l| %><span>Clinic</span><% end %></li>
+			
+				</ul>
+				</span>
+				
+<!-- ********************************************************
+Case Tab
+**********************************************************-->
 						
-				<span id="case_tab" class="<%= is_state_active?('cases','index') %>">
+				<span id="case_tab" class="tab <%= is_state_active?('cases','index') %>">
 				<ul>
 					
 				<li><%= link_to cases_path do |l| %><span class="icon">l</span>   <span class="">Cases</span><% end %></li>
@@ -51,56 +59,52 @@
 				</ul>
 				</span>
 				
+<!-- ********************************************************
+Clinic Tab
+**********************************************************-->				
 				
+				<span id="clinic_tab" class="tab <%= is_state_active?('cases','index') %> ">
 				
-				<span class="<%= is_state_active?('cases','index') %> "><%= link_to "#" do |l| %><span class="icon">B</span>   <span class="">Clinic</span><% end %></span>
-						
-				<span id="search_tab" class="<%= is_state_active?('cases','index') %> ">
 				<ul>
 				
-				<!-- ********************************************************
-				Case Tab
-				**********************************************************-->
+				<li><%= link_to "#" do |l| %><span class="icon">B</span>   <span class="">Clinic</span><% end %></li>
+				
+				<li class="clinic_menu"><%= link_to "#" do |l| %><span class="">Chat</span><% end %></li>
+				
+				
+				</ul>
+				
+				</span>
+		
+<!-- ********************************************************
+Search Tab
+**********************************************************-->	
+						
+				<span id="search_tab" class=" tab <%= is_state_active?('cases','index') %> ">
+				<ul>
 				
 				<li><%= link_to "#" do |l| %><span class="icon">z</span>   <span class="">Search</span><% end %></li>
 				
 				<li class="search_menu"><%= link_to "#" do |l| %><span>for cases</span><% end %></li>
 				<li class="search_menu"><%= link_to "#" do |l| %><span>for patients</span><% end %></li>
 				<li class="search_menu"><%= link_to "#" do |l| %><span>for clinicians</span><% end %></li>
-					
-			</nav>
-											
-						
-				<!--					
-
-						<li class="home_icon"><%= link_to user_path(current_user) do |l| %><span class="icon">⌂</span><h2>Transit</h2><% end %></li>
-																	
-						
-						<li class="header_button header_right "><%= link_to signout_path do |l| %><span class="icon">⊝</span><span class="text_label">Sign Out</span><% end %></li>
-						
-						<li class="<%= is_state_active?('users','edit') %> header_right "><%= link_to edit_user_path(current_user) do |l| %><span class="icon">⚙</span><span class="text_label">Account Settings</span><% end %></li>
-						
-						<% if is_controller_active?('clinicians') || is_controller_active?('referrers') 
-							css_var = "selected"
-							else 
-							css_var = "" 
-							end %>
-						
-						<li class="<%= css_var %> header_right "><%= link_to clinicians_path do |l| %><span class="icon">u</span><span class="text_label">Practice Admin</span><% end %></li>						
-						
-						<li class="<%= is_state_active?('#','#') %> header_right "><%= link_to '#' do |l| %><span class="icon">C</span><span class="text_label">Reports</span><% end %></li>
-
-						<li class="<%= is_state_active?('cases','index') %> header_right "><%= link_to cases_path do |l| %><span class="icon">z</span><span class="text_label">Case Lookup</span><% end %></li>
-						
-						<li class="<%= is_state_active?('appointments','index') %> header_right "><%= link_to appointments_path do |l| %><span class="time_icon"><%= Time.now.strftime('%b') %> <%= Time.now.day %></span><span class="text_label">Calendar</span><% end %></li>
-
-												
-						<li class="<%= is_state_active?('cases','new') %> header_right "><%= link_to new_case_path do |l| %><span class="icon">⊕</span><span class="text_label">New Case</span><% end %></li>
-		
-
-				
+			
 				</ul>
-		-->
+				
+				</span>
+				
+<!-- ********************************************************
+Toolbar Modules: mainly for debugging purposes
+**********************************************************-->
+<%#
+<div class="toolbar_module">
+	<span id="left">Left</span>
+	<span id="left_right">Left and Right</span>
+	<span id="none">None</span>
+	<span></span>
+</div>
+%>
+
 		<% else %>
 			<h1><%= link_to "Transit", root_path %></h1>
 		<% end %>
@@ -109,20 +113,36 @@
 
 <script type="text/javascript">
 
+$('#calendar_tab').hover(function(){
+	$('.calendar_menu').show(1000);
+//	$('.sub_header').css('height','auto');
+}	,function(){
+	  $(".calendar_menu").hide(1000);
+//	  $('.sub_header').css('height','auto');
+	});
+
 $('#case_tab').hover(function(){
 	$('.case_menu').show(1000);
-	$('.sub_header').css('height','auto');
+//	$('.sub_header').css('height','auto');
 }	,function(){
 	  $(".case_menu").hide(1000);
-	  $('.sub_header').css('height','auto');
+//	  $('.sub_header').css('height','auto');
+	});
+	
+$('#clinic_tab').hover(function(){
+	$('.clinic_menu').show(1000);
+//	$('.sub_header').css('height','auto');
+}	,function(){
+	  $(".clinic_menu").hide(1000);
+//	  $('.sub_header').css('height','auto');
 	});
 	
 $('#search_tab').hover(function(){
 	$('.search_menu').show(1000);
-	$('.sub_header').css('height','auto');
+//	$('.sub_header').css('height','auto');
 }	,function(){
 	  $(".search_menu").hide(1000);
-	  $('.sub_header').css('height','auto');
+//	  $('.sub_header').css('height','auto');
 	});
 	
 $('.log_out').hover(function(){
