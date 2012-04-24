@@ -46,4 +46,38 @@ $(document).ready(function(){
 	});
 });
 
+$('#my').click(function(){
+	matrix_tab("my");
+});
+$('#clinic').click(function(){
+	matrix_tab("clinic");
+});
+$('#daily').click(function(){
+	matrix_tab("daily");
+});
+$('#weekly').click(function(){
+	matrix_tab("weekly");
+});
+
+function matrix_tab(tab) {
+	
+	if (tab == "my") {
+		$("#my").css("background-color","#325d64");
+		$("#clinic").css("background-color","#7895a3");	
+	}
+	else if (tab == "clinic") {
+		$("#my").css("background-color","#7895a3");
+		$("#clinic").css("background-color","#325d64");
+	}
+	else if (tab == "daily") {
+		$("#daily").css("background-color","#325d64")
+		$("#weekly").css("background-color","#7895a3")
+	}
+	else if (tab == "weekly") {
+		$("#daily").css("background-color","#7895a3")
+		$("#weekly").css("background-color","#325d64")
+	}
+	
+};
+
 </script>

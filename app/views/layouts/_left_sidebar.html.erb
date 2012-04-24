@@ -39,9 +39,10 @@
 		
 		<% elsif is_controller_active?('appointments') %>
 			<div class="appointment_matrix">
+				<h1>Intelligent Scheduler</h1>
 				<table>
-					<tr><td>My Schedule</td><td>Clinic Schedule</td></tr>
-					<tr><td>Daily</td><td>Weekly</td></tr>
+					<tr><td id="my">My </td><td id="clinic">Clinic </td></tr>
+					<tr><td id="daily">Daily</td><td id="weekly">Weekly</td></tr>
 				</table>	
 			</div>
 			<div class="calendar_container">	

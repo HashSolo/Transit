@@ -16,7 +16,38 @@ h1.admin_title {margin:24px;margin-top:12px;border-bottom:1px solid #cccccc;}
 /*content view*/
 div.content_view {display:inline-block;width:100%;float:left;padding-top:10px;height:100%;min-height:400px;}
 
-/*Header*/
+/*New Header*/
+header {padding:0px;margin:0px;display:inline-block;width:100%;position:relative;}
+header nav.header {height:auto;background:#7895a3;display:block;}
+header nav.header span.home_icon {display:inline-block;border: solid 2px #000000;color:#ffffff;font-size:40px;width:16%;vertical-align:bottom;}
+header nav.header span.home_icon h2 {font-size:26px;display:inline-block;}
+header nav.header span.home_icon a {text-decoration:none;color:#ffffff;}
+header nav.header span.log_out {border: solid 2px;font-size:12px;display:inline;float:right;padding:0px;vertical-align:bottom;}
+header nav.header span.log_out a {text-decoration:none;color:#ffffff;}
+header nav.header span.log_out span.icon {font-size:8px;}
+
+header nav.header span.log_out ul li {list-style-type:none;padding:0px;}
+header nav.header span.log_out ul li:hover {list-style-type:none;}
+header nav.header span.log_out ul li.menu {display:none;font-size:12px;} 
+header nav.header span.log_out ul li a span{padding:0px;}
+
+header nav.sub_header {height:auto;background:#325d5d;display:block;}
+header nav.sub_header span.left {margin-left:20%;}
+header nav.sub_header span {vertical-align:top;text-align:left;display:inline-block;width:16%;font-size:16px;padding:3px 3px;color:#ffffff;}
+header nav.sub_header span a {text-decoration:none;color:#ffffff;}
+header nav.sub_header span ul li {list-style-type:none;}
+header nav.sub_header span ul li:hover {list-style-type:none;background:#7895a3;}
+header nav.sub_header span ul li.case_menu {display:none;font-size:12px;} 
+header nav.sub_header span ul li.search_menu {display:none;font-size:12px;} 
+header nav.sub_header span span {width:auto;padding:0px;margin-left:auto;}
+
+/*selected headers
+header nav.header span.selected{background:#325d5d;border:4px double #7895a3;}
+*/
+
+nav.header ul li a {text-decoration:none;color:#ffffff;display:block;height:70px;}
+
+/*Old Header
 header {padding:0px;margin:0px;display:inline-block;float:left;width:100%;position:relative;height:100px;}
 header h1 {padding:0px;margin:0px;display:inline-block;float:left;width:100%;text-align:center;}
 nav.header {padding:0px;margin:0px;display:inline-block;width:100%;float:left;height:100px;border-bottom:1px solid #cccccc;z-index:10;}
@@ -28,12 +59,13 @@ nav.header ul li span.icon {display:inline-block;width:100%;padding-top:15px;}
 nav.header ul li span.time_icon {display:inline-block;width:100%;padding-top:15px;font-weight:bold;}
 nav.header ul li.header_left {border:0px solid #ffffff;background:#ffffff;color:#7895a3;float:left;width:13.667%;text-align:left;font-size:30px;font-family:'Trebuchet MS', Arial, sans-serif;padding-left:20px;line-height:70px;padding-top:0px;height:70px;}
 nav.header ul li.header_left span.icon {display:inline;color:#7895a3;font-size:40px;}
-nav.header ul li.header_left h2 {display:inline-block;width:20%;font-size:28px;margin-left:10px;color:#7895a3;}
+nav.header ul li.header_left h2 {display:inline-block;width:16%;font-size:22px;margin-left:5px;color:#7895a3;}
 nav.header ul li.header_right {float:right;text-align:center;font-size:24px;width:9%;margin-left:1%;}
 nav.header ul li.header_right.selected {background:#325d5d;border:4px double #7895a3;}
 nav.header ul li a {text-decoration:none;color:#ffffff;display:block;height:70px;}
-/*selected headers*/
-nav.header ul li.selected{background:#325d5d;border:4px double #7895a3;}
+*/
+
+
 
 
 /*Footer*/
@@ -56,13 +88,26 @@ div.left_sidebar ul li span.text {float:left;padding-left:18px;}
 div.left_sidebar ul li span.icon {float:right;padding-right:18px;}
 div.left_sidebar ul li.header {text-align:center;color:#7895a3;font-weight:bold;border-bottom:3px double #7895a3;width:100%;margin-left:0;margin-right:0;position:relative;top:0;left:0;margin-left:0;margin-right:0;font-size:20px;border:4px double #7895a3;background:#ffffff;}
 
+/*Right Sidebar*/
+div.right_sidebar {display:inline-block;width:100%;height:100%;border:1px black;float:right;position:relative;background:#ffffff;}
+div.right_sidebar ul {padding:0px;margin:0px;display:inline-block;float:right;width:99%;height:100%;}
+div.right_sidebar ul li {padding:0px;margin:0px;display:inline-block;float:right;width:96%;list-style-type:none;height:40px;border-bottom:1px solid #ffffff;margin-left:2%;margin-right:2%;line-height:40px;color:#ffffff;font-size:14px;border:4px double #325d5d;margin-top:6px;margin-bottom:6px;background:#7895a3;text-align:center;}
+div.right_sidebar ul li a {text-decoration:none;color:#ffffff;}
+div.right_sidebar ul li.option {cursor:pointer;}
+div.right_sidebar ul li.option:hover {background:#325d5d;border:4px double #7895a3;}	
+div.right_sidebar ul li.option.selected {background:#325d5d;border:4px double #7895a3;}	
+div.right_sidebar ul li span.text {float:left;padding-right:18px;}
+div.right_sidebar ul li span.icon {float:right;padding-right:18px;}
+div.right_sidebar ul li.header {text-align:center;color:#7895a3;font-weight:bold;border-bottom:3px double #7895a3;width:100%;margin-left:0;margin-right:0;position:relative;top:0;left:0;margin-left:0;margin-right:0;font-size:20px;border:4px double #7895a3;background:#ffffff;}
+
+
 /*Left sidebare appointmnent*/
 div.left_sidebar ul li.left_side_schedule {height:100%;display:inline-block;height:360px;}
 div.left_sidebar ul li.left_side_schedule ul {display:inline-block;width:100%;padding:0px;margin:0px;height:360px;border:0px solid #789d53;}
 div.left_sidebar ul li.left_side_schedule ul li {display:inline-block;width:100%;padding:0px;margin:0px;height:100%;list-style-type:none;border:0px solid #7895a3;height:360px;}
 
 /*Content View*/
-div.content_view {display:inline-block;width:100%;min-height:450px;float:left;position:relative;border-left:1px solid #cccccc;}
+div.content_view {display:inline-block;width:100%;min-height:450px;float:left;position:relative;border-left:1px solid #cccccc;border-right:1px solid #cccccc;}
 
 /*Sign in*/
 div.sign_in {padding:0px;margin:auto;width:100%;height:80px;background:#7895a3;}
@@ -197,8 +242,10 @@ div.appointment_form table tr td div.fix {white-space:nowrap;display:inline;}
 
 /*Appointment Index*/
 div.appointment_matrix table {width:100%;}
-div.appointment_matrix table tr {border: black 2px solid;}
-div.appointment_matrix table tr td{width:45%;background-color:#7895a3;padding: 10px 10px;}
+div.appointment_matrix h1 {width:100%;text-align:center;}
+div.appointment_matrix table tr {}
+div.appointment_matrix table tr td{width:45%;text-align:center;background-color:#7895a3;
+								margin: 10px 10px;padding: 20px 10px;border: black 1px solid;}
 
 
 /*DB*/

@@ -1,9 +1,80 @@
 <header >
 		<% if signed_in? %>
 			<nav class="header">
-				<ul>	
+				<span class="home_icon"><%= link_to user_path(current_user) do |l| %><span class="icon">⌂</span>  <h2>Transit</h2><% end %> </span>
+			
+			
+				
+				<span class="log_out"><%= link_to '#' do |l| %><span class=""><%= "#{current_user.email}"%></span> <span class="icon">&#8595</span>  <% end %>	<span> 
+				
+			
+			<!--
+				<span class="log_out">
+				<ul>
+				<li><%= link_to '#' do |l| %><span class=""><%= "#{current_user.email}"%></span> <span class="icon">&#8595</span>  <% end %>
+ 			</li>
+				<li class="menu"><%= link_to '#' do |l| %><span class="">Log out</span>   <% end %>
+ 			</li>
+			<li class="menu"><%= link_to '#' do |l| %><span class="">Log out</span>   <% end %>
+		</li>
+		</ul>
+				</span> 
+			-->
+				
+			</nav>
+				
+				
+
+			<nav class="sub_header">
+								
+					<% if is_controller_active?('clinicians') || is_controller_active?('referrers') 
+						css_var = "selected"
+						else 
+						css_var = "" 
+						end %>
+				
+				<span class="<%= is_state_active?('appointments','index') %> left"><%= link_to appointments_path do |l| %><span class="icon">⌚</span>   <span class="">Calendar</span><% end %></span>
+				
+				<!-- ********************************************************
+				Case Tab
+				**********************************************************-->
+						
+				<span id="case_tab" class="<%= is_state_active?('cases','index') %>">
+				<ul>
+					
+				<li><%= link_to cases_path do |l| %><span class="icon">l</span>   <span class="">Cases</span><% end %></li>
+				
+				<li class="case_menu"><%= link_to cases_path do |l| %><span>All cases</span><% end %></li>
+				
+				<li class="case_menu"><%= link_to new_case_path do |l| %><span>New case</span><% end %></li>
+							
+				</ul>
+				</span>
+				
+				
+				
+				<span class="<%= is_state_active?('cases','index') %> "><%= link_to "#" do |l| %><span class="icon">B</span>   <span class="">Clinic</span><% end %></span>
+						
+				<span id="search_tab" class="<%= is_state_active?('cases','index') %> ">
+				<ul>
+				
+				<!-- ********************************************************
+				Case Tab
+				**********************************************************-->
+				
+				<li><%= link_to "#" do |l| %><span class="icon">z</span>   <span class="">Search</span><% end %></li>
+				
+				<li class="search_menu"><%= link_to "#" do |l| %><span>for cases</span><% end %></li>
+				<li class="search_menu"><%= link_to "#" do |l| %><span>for patients</span><% end %></li>
+				<li class="search_menu"><%= link_to "#" do |l| %><span>for clinicians</span><% end %></li>
+					
+			</nav>
 											
-						<li class="header_button header_left left_nav"><%= link_to user_path(current_user) do |l| %><span class="icon">⌂</span><h2>Transit</h2><% end %></li>
+						
+				<!--					
+
+						<li class="home_icon"><%= link_to user_path(current_user) do |l| %><span class="icon">⌂</span><h2>Transit</h2><% end %></li>
+																	
 						
 						<li class="header_button header_right "><%= link_to signout_path do |l| %><span class="icon">⊝</span><span class="text_label">Sign Out</span><% end %></li>
 						
@@ -25,11 +96,42 @@
 
 												
 						<li class="<%= is_state_active?('cases','new') %> header_right "><%= link_to new_case_path do |l| %><span class="icon">⊕</span><span class="text_label">New Case</span><% end %></li>
+		
+
 				
 				</ul>
-			</nav>
+		-->
 		<% else %>
 			<h1><%= link_to "Transit", root_path %></h1>
 		<% end %>
 		
 </header>
+
+<script type="text/javascript">
+
+$('#case_tab').hover(function(){
+	$('.case_menu').show(1000);
+	$('.sub_header').css('height','auto');
+}	,function(){
+	  $(".case_menu").hide(1000);
+	  $('.sub_header').css('height','auto');
+	});
+	
+$('#search_tab').hover(function(){
+	$('.search_menu').show(1000);
+	$('.sub_header').css('height','auto');
+}	,function(){
+	  $(".search_menu").hide(1000);
+	  $('.sub_header').css('height','auto');
+	});
+	
+$('.log_out').hover(function(){
+	$('.menu').show(1000);
+	//$('.menu').css('height','auto');
+}	,function(){
+	  $(".menu").hide(1000);
+	  //$('.sub_header').css('height','auto');
+	});
+
+
+</script>
