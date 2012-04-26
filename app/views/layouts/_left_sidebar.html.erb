@@ -1,54 +1,51 @@
 <div class="left_sidebar">
-		
-		<% if is_controller_active?('users') && is_action_active?('show') #This would be the home page... %>
-			<ul>
-				<li class="header">Today's Schedule</li>
-				<li class="left_side_schedule">
-					<ul>
-						<li>Appointment Mockup List</li>
-					</ul>
-				</li>
-			</ul>
+
+<div id="debug">
+	
+</div>
+
+<%
+header = ""
+tabs = Array.new
+icons = Array.new
+links = Array.new
+ids = Array.new
+%>	
 			
 <%#*************************************************************
 Case Toolbar
 *************************************************************%>			
+		
+		<% if is_controller_active?('patients') || is_active?('cases#show') || is_active?('history_female#show') || is_active?('history_female#show') %>	
 			
+			<% header = "Case Toolbar"%>
+			<% tabs = Array['Overview','Patients','Diagnosis','Stimulation','Embryology','Appointments','Follow Up'] %>
+			<% icons = Array['E','u','✎','⌚','s','l', '✔'] %>
+			<% links = Array['/cases/'+"#{@case.id}",'/cases/'+"#{@case.id}"+'/patients','#','#','#','#','#'] %>
+			<% ids = Array["","","","","","","",] %>							
+
+		<% end %>	
+		
+<%#*************************************************************
+Clinic Toolbar
+*************************************************************%>
+
+		<% if is_controller_active?('clinicians') || is_controller_active?('referrers') %>
 			
-		<% elsif is_controller_active?('cases') || is_controller_active?('patients') || is_controller_active?('history_males') || is_controller_active?('history_females') #The following is the left sidebar for a general case %>
-			<% if ( (is_controller_active?('cases') && is_action_active?('edit')) || is_action_active?('show')) || is_controller_active?('patients') #To be shown for case=>edit, case=>show, and patients contoller %>
-			<ul>
-				<li class="header">Case #: <%= @case.id %></li>
-				<li class="option <%= is_state_active?('cases','show') %>" ><%= link_to case_path(@case) do |f| %><span class="text">Overview</span><span class="icon">E</span><% end %></li>
-				<li class="option"><%= link_to case_patients_path(@case.id) do |f| %><span class="text">Patients</span><span class="icon">u</span><% end %></li>
-				<li class="option"><span class="text">Diagnosis</span><span class="icon">✎</span></li>
-				<li class="option"><span class="text">Stimulation</span><span class="icon">⌚</span></li>
-				<li class="option"><span class="text">Embryology</span><span class="icon">s</span></li>
-				<li class="option"><span class="text">Appointments</span><span class="icon">l</span></li>
-				<li class="option"><span class="text">Follow Up</span><span class="icon">✔</span></li>
-			</ul>
-			<% elsif (is_controller_active?('cases') && is_action_active?('index')) #What to show during the index (case search) view %>
-				<h1>Case Lookup</h1>
-			<% elsif is_controller_active?('cases') && (is_action_active?('new') || is_action_active?('create')) #What to show during the new case view %>
-				<ul>
-					<li class="header">Create a New Case</li>
-					<li class="option"><%= link_to new_clinician_path do |f| %><span class="text">Add a New Clinician</span><span class="icon">u</span><% end %></li>
-					<li class="option"><%= link_to new_referrer_path do |f| %><span class="text">Add a New Referrer</span><span class="icon">u</span><% end %></li>
-				</ul>
-			<% end %>
-		<% elsif is_controller_active?('clinicians') || is_controller_active?('referrers') %>
-			<ul>
-				<li class="option <%= is_state_active?('clinicians','index') %>"><%= link_to clinicians_path do |f| %><span class="text">View All Clinicians</span><span class="icon">u</span><% end %></li>
-				<li class="option <%= is_state_active?('clinicians','new') %>"><%= link_to new_clinician_path do |f| %><span class="text">Add a New Clinician</span><span class="icon">u</span><% end %></li>
-				<li class="option <%= is_state_active?('referrers','new') %>"><%= link_to new_referrer_path do |f| %><span class="text">Add a New Referrer</span><span class="icon">u</span><% end %></li>				
-			</ul>
+			<% header = "Clinic Toolbar"%>
+			<% tabs = Array['Clinician list','New clinician','New referrer'] %>
+			<% icons = Array[nil,nil,nil] %>
+			<% links = Array['/clinicians','/clinicians/new','/referrers/new'] %>
+			<% ids = Array[nil,nil,nil] %>
+			
+		<% end %>
 		
 		
 <%#*************************************************************
-Appointment Toolbar
+Calendar Toolbar
 *************************************************************%>
 					
-		<% elsif is_controller_active?('appointments') %>
+		<% if is_active?('appointments#index') %>
 			<div class="appointment_matrix">
 				<h1>Intelligent Scheduler</h1>
 				<table>
@@ -70,43 +67,109 @@ Appointment Toolbar
 
 
 <%#*************************************************************
-History Toolbar
+Female History Toolbar(s)
 *************************************************************%>
 
-<% #patient history toolbar%>
+<% if is_active?('history_females#new') || is_active?('history_females#edit') %>
 
-<% if is_controller_active?('history_females') %>
-
-<ul>
-	<li class="header">Female History</li>
-	<li class="option" id="update_history_1"><span class="text">Basic</span></li>
-	<li class="option"id="update_history_2"><span class="text">Pregnancy History</span></li>
-	<li class="option"id="update_history_3"><span class="text">Menstrual Cycle</span></li>
-	<li class="option"id="update_history_4"><span class="text">Gynecologic History</span></li>
-	<li class="option"id="update_history_5"><span class="text">Medical History</span></li>
-	<li class="option"id="update_history_6"><span class="text">Environmental Factors</span></li>
-	<li class="option"id="update_history_7"><span class="text">Genetic/Family History</span></li>
-	<li class="option"id="update_history_8" ><span class="text">Infertility Tests</span></li>
-	<li class="option" id="update_history_9"><span class="text">Infertility Treatments</span></li>
-</ul>
+<% header = "History Toolbar"%>
+<% tabs = Array['Basic','Pregnancy History','Menstrual Cycle','Gynecologic History','Medical History',
+				'Environmental Factors','Genetic/Family History','Infertility Tests','Infertility Treatments'] %>
+<% icons = Array[nil,nil,nil,nil,nil,nil,nil,nil,nil] %>
+<% links = Array[nil,nil,nil,nil,nil,nil,nil,nil,nil] %>
+<% ids = Array["update_history_1","update_history_2","update_history_3","update_history_4","update_history_5",
+				"update_history_6","update_history_7","update_history_8","update_history_9"] %>
 
 <% end %>
-<% if is_controller_active?('history_males') %>
 
-<ul>
-	<li class="header">Male History</li>
-	<li class="option" id="update_history_1"><span class="text">Basic</span></li>
-	<li class="option"id="update_history_2"><span class="text">Pregnancy History</span></li>
-	<li class="option"id="update_history_3"><span class="text">Medical History</span></li>
-	<li class="option"id="update_history_4"><span class="text">Environmental Factors</span></li>
-	<li class="option"id="update_history_5"><span class="text">Genetic and Family History</span></li>
-	<li class="option"id="update_history_6"><span class="text">Male Infertility Tests</span></li>
-</ul>
+<%#*************************************************************
+Male History Toolbar(s)
+*************************************************************%>
+
+<% if is_active?('history_males#new') || is_active?('history_males#edit') %>
+
+<% tabs = Array['Basic','Pregnancy History','Medical History', 'Environmental Factors','Genetic/Family History',' Male Infertility Tests'] %>
+<% icons = Array[nil,nil,nil,nil,nil,nil] %>
+<% links = Array[nil,nil,nil,nil,nil,nil] %>
+<% ids = Array["update_history_1","update_history_2","update_history_3",
+				"update_history_4","update_history_5", "update_history_6"] %>
 
 <% end %>
+
+<%#*************************************************************
+Generates left sidebar with unordered list html
+*************************************************************%>
+
+<ul>					
+	
+	<% for i in 0..(tabs.length - 1) %>
+	
+		<% if links[i].nil? %>
+		
+		<li id='<%= "#{ids[i]}" %>' class="option"><span class="text"> <%="#{tabs[i]}"%></span><span class="icon"> <%="#{icons[i]}"%></span></li>
+		
+		<% elsif %>
+	
+		<li id='<%= "#{ids[i]}" %>' class="option"><a href= <%="#{links[i]}"%> ><span class="text"> <%="#{tabs[i]}"%></span><span class="icon"> <%="#{icons[i]}"%></span></a></li>
+		
+		<% end %>
+	
+	<% end %>
+	
+
+</ul>
 
 </div>
 
 <script type="text/javascript">
+
+
+//$(document).ready(function(){
+
+//	header = document.getElementById("toggle_header").innerHTML;
+	
+//	if (document.getElementById("toggle_header").change()) {
+//		header = document.getElementById("toggle_header").innerHTML.toString();
+//	}
+	
+	//header = header.toString();
+	
+	//document.getElementById("debug").innerHTML = document.getElementById("toggle_header").innerHTML.toString();	
+	//document.getElementById("toggle_header").innerHTML;
+	//document.getElementById("debug").innerHTML = x;
+	
+	
+/*	
+	if (code == 1) {
+		document.getElementById("debug").innerHTML=x;
+		default_left = 3;
+		default_right = 0;
+		toolbar_config(3,0);
+	
+	}
+	if (x == History Toolbar) {
+		document.getElementById("debug").innerHTML=x;
+		
+		default_left = 4;
+		default_right = 0;
+		toolbar_config(4,0);
+		
+	}
+	if (x == Clinic Toolbar) {
+		document.getElementById("debug").innerHTML=x;
+		
+		default_left = 1;
+		default_right = 0;
+		toolbar_config(1,0);
+		
+	}
+	
+//	toolbar_config(3,0);
+	
+	
+});
+*/
+
+
 
 </script>

@@ -4,9 +4,9 @@ module PagesHelper
 		pagecontroller = params[:controller]
 		actionandcontroller = pagecontroller + "#" + pageaction
 		if actionandcontroller == page_name
-			"active"
+      true
 		else
-			""
+			false
 		end
 	end
 	

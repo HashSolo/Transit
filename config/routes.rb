@@ -5,6 +5,7 @@ Transit::Application.routes.draw do
 	resources :referrers
 	resources :appointments
 	
+	
 	resources :cases do
 	  resources :patients do
       resources :history_females

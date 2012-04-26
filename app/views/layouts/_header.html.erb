@@ -15,12 +15,13 @@
 			<div class="sub_header">
 			</div>
 
-								
+					<!--			
 					<% if is_controller_active?('clinicians') || is_controller_active?('referrers') 
 						css_var = "selected"
 						else 
 						css_var = "" 
 						end %>
+					-->
 
 <!-- ********************************************************
 Calendar Tab
@@ -67,7 +68,7 @@ Clinic Tab
 				
 				<ul>
 				
-				<li><%= link_to "#" do |l| %><span class="icon">B</span>   <span class="">Clinic</span><% end %></li>
+				<li><%= link_to clinicians_path do |l| %><span class="icon">B</span>   <span class="">Clinic</span><% end %></li>
 				
 				<li class="clinic_menu"><%= link_to "#" do |l| %><span class="">Chat</span><% end %></li>
 				
@@ -92,6 +93,26 @@ Search Tab
 				</ul>
 				
 				</span>
+				
+<!-- ********************************************************
+Sub header
+**********************************************************-->
+<div class="left">
+	<span id= "navigation"></span>
+	<span id="toolbar_toggle"> 
+		<!--<span class="text">Generic Toolbar</span><span class="icon">&#8592&#8592</span>-->
+	</span>
+	
+	
+</div>
+<div class="middle">
+	<span></span>
+</div>
+<div class="right">
+	<span></span>
+	<span></span>
+</div>
+				
 				
 <!-- ********************************************************
 Toolbar Modules: mainly for debugging purposes

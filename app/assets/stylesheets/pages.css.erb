@@ -30,6 +30,7 @@ header nav.header span.log_out ul li:hover {list-style-type:none;}
 header nav.header span.log_out ul li.menu {display:none;font-size:12px;} 
 header nav.header span.log_out ul li a span {padding:0px;}
 header div.sub_header {z-index:-1;position:absolute;top:50px;width:100%;height:20px;background:#325d5d;display:block;}
+
 header span.left {margin-left:20%;}
 header span.tab {z-index:2;background:#325d5d;vertical-align:top;text-align:left;display:inline-block;width:16%;font-size:16px;padding:0px;color:#ffffff;}
 header span.tab a {text-decoration:none;color:#ffffff;}
@@ -45,6 +46,25 @@ header span.tab ul li.case_menu:hover,
 header span.tab ul li.clinic_menu:hover, 
 header span.tab ul li.search_menu:hover {background:#7895a3;}
 header span.tab span {width:auto;padding:0px;margin-left:auto;}
+
+header div {height:100px;border-bottom:solid 1px;display:inline-block;}
+header div.left {width:16%;border-right:solid 1px #cccccc;}
+header div.middle {width:65%}
+header div.right {width:16%;border-left:solid 1px #cccccc;}
+/*
+header div span#navigation,
+header div span#toolbar_toggle {width:100%;display:block;border:solid 1px red;}
+header div span#toolbar_toggle span {font-size:10px;}
+header div span#toolbar_toggle {border:none;border:solid 1px red;margin:0px;padding:0px;font-size:10px;background:white;color:black;}
+
+header div span#toolbar_toggle span {margin-right:0px;}
+header div span#toolbar_toggle:hover {cursor:pointer;}
+*/
+
+div.left_sidebar ul li#toolbar_toggle {border:none;border-bottom:solid 1px;float:right;margin:0px;padding:0px;font-size:10px;background:white;color:black;height:30px;}
+div.left_sidebar ul li#toolbar_toggle span {padding:0px;display:inline;position:relative;float:right;}
+div.left_sidebar ul li#toolbar_toggle:hover {cursor:pointer;}
+
 /*Toolbar modules... mainly for debugging*/
 div.toolbar_module {width:100%;background:yellow;}
 div.toolbar_module span{width:30%;margin-left:5%;font-size:20px;}
@@ -98,6 +118,9 @@ div.left_sidebar ul li.option.selected {background:#325d5d;border:4px double #78
 div.left_sidebar ul li span.text {float:left;padding-left:18px;}
 div.left_sidebar ul li span.icon {float:right;padding-right:18px;}
 div.left_sidebar ul li.header {text-align:center;color:#7895a3;font-weight:bold;border-bottom:3px double #7895a3;width:100%;margin-left:0;margin-right:0;position:relative;top:0;left:0;margin-left:0;margin-right:0;font-size:20px;border:4px double #7895a3;background:#ffffff;}
+div.left_sidebar ul li#toolbar_toggle {border:none;border-bottom:solid 1px;float:right;margin:0px;padding:0px;font-size:10px;background:white;color:black;height:30px;}
+div.left_sidebar ul li#toolbar_toggle span {padding:0px;display:inline;position:relative;float:right;}
+div.left_sidebar ul li#toolbar_toggle:hover {cursor:pointer;}
 
 /*Right Sidebar*/
 div.right_sidebar {display:inline-block;width:100%;height:100%;border:1px black;float:right;position:relative;background:#ffffff;}

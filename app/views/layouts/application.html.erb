@@ -72,23 +72,13 @@
 
 <script type="text/javascript">
 
+var default_left = 0;
+var default_right = 0;
+
 $(document).ready(function(){
-	toolbar_config(3,0);
+/*	toolbar_config(default_left, default_right);*/
 });
 
-/*
-$('span#left').click(function(){	
-	left();
-});
-
-$('span#left_right').click(function(){	
-	left_right();
-});
-
-$('span#left').click(function(){	
-	left();
-});
-*/
 
 /**********************************************************************
 toolbar_config function: takes left and right sidebar parameters to set the 
@@ -141,20 +131,6 @@ function toolbar_config(left, right){
 	}
 	
 };
-
-/*
-function left(){
-	$('#left_sidebar').removeClass('grid_2');
-	$('#left_sidebar').addClass('grid_4');
-	$('#right_sidebar').hide();
-}
-
-function left_right(){
-	$('#left_sidebar').removeClass('grid_4');
-	$('#left_sidebar').addClass('grid_2');
-	$('#right_sidebar').show();
-}
-*/
 
 
 </script>
