@@ -8,7 +8,7 @@ Upper header Section: includes Transit home icon and user icon
 		
 		
 			<nav class="header">
-				<span class="home_icon"><%= link_to user_path(current_user) do |l| %><span class="icon">⌂</span>  <h2>Transit</h2><% end %> </span>
+				<span class="home_icon"><%= link_to user_path(current_user) do |l| %><span class="icon">⌂</span>  <h2>transit</h2><% end %> </span>
 			
 			
 				
@@ -61,7 +61,7 @@ Tab II: Case tab
 				<span id="case_tab" class="tab <%= is_state_active?('cases','index') %>">
 				<ul>
 					
-				<li><%= link_to cases_path do |l| %><span class="icon">l</span>   <span class="">Cases</span><% end %></li>
+				<li><%= link_to cases_path do |l| %><span class="icon">l</span>   <span class="">IVF</span><% end %></li>
 				
 				<li class="case_menu"><%= link_to cases_path do |l| %><span>All cases</span><% end %></li>
 				
@@ -114,22 +114,29 @@ Sub-header Section: organized into 3 components
 	<div id= "navigation"><span class="icon">&#8592</span><span class="icon">&#927</span><span class="icon">&#8594</span></div>
 	
 	<div id="toolbar_toggle"> 
-		<span id"toolbar_header" class="text">Toolbar</span><span id="toolbar_arrow" class="icon">&#8592&#8592</span>
+		<span id="toolbar_header" class="text"></span><span id="toolbar_arrow" class="icon">&#8592&#8592</span>
 	</div>	
 </div>
 <div class="middle">
-	<span></span>
+	<div class="vertical-border">
+		<h1 id="page_title"></h1>	
+	</div>
+	<div class="underline"></div>
 </div>
 <div class="right">
 	<div id= "clock"><span class="icon">⌚</span></div>
 	<div id="time">
-	<span> 4/26/12</span>	
-	<span> 5:30pm</span>	
+	<span> <%= "#{Time.now.strftime('%m')}/#{Time.now.strftime('%d')}/#{Time.now.strftime('%Y')}" %></span>	
+	<span> <%= "#{Time.zone.now.hour}:#{Time.zone.now.min}"%><%#= ":#{Time.zone.now.sec}"%></span>	
 	</div>
 	<div id="schedule_toggle"> 
 		<span id"toolbar_header" class="text">Appointments</span> 
 		<span id="schedule_arrow"class="icon">&#8594&#8594</span>
 	</div>
+</div>
+	
+<div class="header_close">
+</div>
 
 <div id="debug">
 </div>
@@ -141,6 +148,14 @@ Sub-header Section: organized into 3 components
 </header>
 
 <script type="text/javascript">
+
+function toolbar_header(header) {
+	$('#toolbar_header').html(header);
+}
+function page_title(title) {
+	$('#page_title').html(title);
+}
+
 
 $('#calendar_tab').hover(function(){
 	$('.calendar_menu').show(1000);

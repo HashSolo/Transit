@@ -39,3 +39,32 @@
 		</div>
 		</div>
 </div>
+
+<script type="text/javascript">
+
+var default_left;
+var default_right;
+
+$(document).ready(function(){
+
+	default_left=2;
+	default_right=2;
+	toolbar_config(default_left, default_right);
+
+	toolbar_header("Home");
+	page_title("Profile");
+});
+
+
+/**********************************************************************
+Interactive left and right toolbars
+**********************************************************************/
+$('#toolbar_toggle').click(function(){
+	toolbar_toggle(default_left, default_right);	
+});
+$('#schedule_toggle').click(function(){
+	appointment_toggle(default_left, default_right);	
+});
+
+
+</script>

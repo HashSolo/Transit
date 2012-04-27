@@ -1,9 +1,4 @@
 <div class="history_form">
-
-
-	<div id="test_print">
-		TEST
-	</div>
 	
 	<%= form_for([@case, @patient, @history]) do |f| %>
 	
@@ -150,8 +145,30 @@
 	
 	var current_page = 1;
 	
+	var current_page = 1;
+	var default_left;
+	var default_right;
+	
 	$(document).ready(function(){
+		
+		default_left=2;
+		default_right=2;
+		toolbar_config(default_left, default_right);
+
+		toolbar_header("History Forms");
+		page_title("Male Patient History | New Form ");
+		
 		toPage(1);	
+	});
+	
+	/**********************************************************************
+	Interactive left and right toolbars
+	**********************************************************************/
+	$('#toolbar_toggle').click(function(){
+		toolbar_toggle(default_left, default_right);	
+	});
+	$('#schedule_toggle').click(function(){
+		appointment_toggle(default_left, default_right);	
 	});
 	
 	/**********************************************************************

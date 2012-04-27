@@ -36,15 +36,21 @@ var default_right;
 
 $(document).ready(function(){
 
-	default_left=3;
-	default_right=1;
+	default_left=2;
+	default_right=2;
 	toolbar_config(default_left, default_right);
+
+	toolbar_header("Clinic Toolbar");
+	page_title("New Clinician");
 });
 
+
+/**********************************************************************
+Interactive left and right toolbars
+**********************************************************************/
 $('#toolbar_toggle').click(function(){
 	toolbar_toggle(default_left, default_right);	
 });
-
 $('#schedule_toggle').click(function(){
 	appointment_toggle(default_left, default_right);	
 });
