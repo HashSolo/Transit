@@ -1,6 +1,12 @@
 <header >
 	
 		<% if signed_in? %>
+		
+<%#*************************************************************
+Upper header Section: includes Transit home icon and user icon
+***************************************************************%>		
+		
+		
 			<nav class="header">
 				<span class="home_icon"><%= link_to user_path(current_user) do |l| %><span class="icon">⌂</span>  <h2>Transit</h2><% end %> </span>
 			
@@ -23,9 +29,13 @@
 						end %>
 					-->
 
-<!-- ********************************************************
-Calendar Tab
-**********************************************************-->
+<%#*************************************************************
+Middle header Section: includes main tab toolbar
+***************************************************************%>
+
+<%#*************************************************************
+Tab I: Calendar tab
+***************************************************************%>
 				
 				<span id="calendar_tab" class="tab <%= is_state_active?('appointments','index') %> left">
 				
@@ -44,9 +54,9 @@ Calendar Tab
 				</ul>
 				</span>
 				
-<!-- ********************************************************
-Case Tab
-**********************************************************-->
+<%#*************************************************************
+Tab II: Case tab
+***************************************************************%>
 						
 				<span id="case_tab" class="tab <%= is_state_active?('cases','index') %>">
 				<ul>
@@ -60,9 +70,9 @@ Case Tab
 				</ul>
 				</span>
 				
-<!-- ********************************************************
-Clinic Tab
-**********************************************************-->				
+<%#*************************************************************
+Tab III: Clnic tab
+***************************************************************%>				
 				
 				<span id="clinic_tab" class="tab <%= is_state_active?('cases','index') %> ">
 				
@@ -76,10 +86,10 @@ Clinic Tab
 				</ul>
 				
 				</span>
-		
-<!-- ********************************************************
-Search Tab
-**********************************************************-->	
+	
+<%#*************************************************************
+Tab IV: Search tab
+***************************************************************%>	
 						
 				<span id="search_tab" class=" tab <%= is_state_active?('cases','index') %> ">
 				<ul>
@@ -94,37 +104,35 @@ Search Tab
 				
 				</span>
 				
-<!-- ********************************************************
-Sub header
-**********************************************************-->
+<%#*************************************************************
+Sub-header Section: organized into 3 components
+	-Left: navigation and toolbar toggle tools
+	-Middle: Title section
+	-Right: Clock and schedule toolbar toggle
+***************************************************************%>
 <div class="left">
-	<span id= "navigation"></span>
-	<span id="toolbar_toggle"> 
-		<!--<span class="text">Generic Toolbar</span><span class="icon">&#8592&#8592</span>-->
-	</span>
+	<div id= "navigation"><span class="icon">&#8592</span><span class="icon">&#927</span><span class="icon">&#8594</span></div>
 	
-	
+	<div id="toolbar_toggle"> 
+		<span id"toolbar_header" class="text">Toolbar</span><span id="toolbar_arrow" class="icon">&#8592&#8592</span>
+	</div>	
 </div>
 <div class="middle">
 	<span></span>
 </div>
 <div class="right">
-	<span></span>
-	<span></span>
+	<div id= "clock"><span class="icon">⌚</span></div>
+	<div id="time">
+	<span> 4/26/12</span>	
+	<span> 5:30pm</span>	
+	</div>
+	<div id="schedule_toggle"> 
+		<span id"toolbar_header" class="text">Appointments</span> 
+		<span id="schedule_arrow"class="icon">&#8594&#8594</span>
+	</div>
+
+<div id="debug">
 </div>
-				
-				
-<!-- ********************************************************
-Toolbar Modules: mainly for debugging purposes
-**********************************************************-->
-<%#
-<div class="toolbar_module">
-	<span id="left">Left</span>
-	<span id="left_right">Left and Right</span>
-	<span id="none">None</span>
-	<span></span>
-</div>
-%>
 
 		<% else %>
 			<h1><%= link_to "Transit", root_path %></h1>
@@ -136,42 +144,32 @@ Toolbar Modules: mainly for debugging purposes
 
 $('#calendar_tab').hover(function(){
 	$('.calendar_menu').show(1000);
-//	$('.sub_header').css('height','auto');
 }	,function(){
 	  $(".calendar_menu").hide(1000);
-//	  $('.sub_header').css('height','auto');
 	});
 
 $('#case_tab').hover(function(){
 	$('.case_menu').show(1000);
-//	$('.sub_header').css('height','auto');
 }	,function(){
 	  $(".case_menu").hide(1000);
-//	  $('.sub_header').css('height','auto');
 	});
 	
 $('#clinic_tab').hover(function(){
 	$('.clinic_menu').show(1000);
-//	$('.sub_header').css('height','auto');
 }	,function(){
 	  $(".clinic_menu").hide(1000);
-//	  $('.sub_header').css('height','auto');
 	});
 	
 $('#search_tab').hover(function(){
 	$('.search_menu').show(1000);
-//	$('.sub_header').css('height','auto');
 }	,function(){
 	  $(".search_menu").hide(1000);
-//	  $('.sub_header').css('height','auto');
 	});
 	
 $('.log_out').hover(function(){
 	$('.menu').show(1000);
-	//$('.menu').css('height','auto');
 }	,function(){
 	  $(".menu").hide(1000);
-	  //$('.sub_header').css('height','auto');
 	});
 
 

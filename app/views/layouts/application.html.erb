@@ -72,19 +72,15 @@
 
 <script type="text/javascript">
 
-var default_left = 0;
-var default_right = 0;
-
-$(document).ready(function(){
-/*	toolbar_config(default_left, default_right);*/
-});
-
-
 /**********************************************************************
 toolbar_config function: takes left and right sidebar parameters to set the 
 widths of the left and right toolbars, and the middle content
 **********************************************************************/
 function toolbar_config(left, right){
+	
+	$('#left_sidebar').removeClass("hidden");
+	$('#right_sidebar').removeClass("hidden");	
+	$('#middle_content').removeClass("hidden");
 	
 	//left toolbar
 	for (var i = 1; i <= 12; i++) {
@@ -94,7 +90,7 @@ function toolbar_config(left, right){
 	}
 	
 	if (left == 0) {
-		$('#left_sidebar').hide();
+		$('#left_sidebar').addClass("hidden");
 	} else {
 	grid_left = "grid_" + left.toString();
 		$('#left_sidebar').addClass(grid_left);
@@ -108,7 +104,7 @@ function toolbar_config(left, right){
 	}
 	
 	if (right == 0) {
-		$('#right_sidebar').hide();
+		$('#right_sidebar').addClass("hidden");
 	} else {
 	grid_right = "grid_" + right.toString();
 		$('#right_sidebar').addClass(grid_right);
@@ -124,13 +120,78 @@ function toolbar_config(left, right){
 	}
 	
 	if (middle == 0) {
-		$('#middle_content').hide();
+		$('#middle_content').addClass("hidden");
 	} else {
 	grid_middle = "grid_" + middle.toString();
 		$('#middle_content').addClass(grid_middle);
 	}
 	
 };
+
+/**********************************************************************
+toolbar_toggle and appointment_toggle functions: toggle the left and 
+right sidebars, respectively, and restructure the page using the 
+default sidebar parameters and calling the toolbar_config function
+**********************************************************************/
+function toolbar_toggle(left, right) {
+	
+	left_toggle = false;
+	if ( (left != 0) && $('#left_sidebar').hasClass("hidden")) {
+		left_toggle = true;	
+	}
+	right_toggle = false;
+	if ( (right != 0) && $('#right_sidebar').hasClass("hidden")) {
+		right_toggle = true;	
+	}	
+	
+	
+	if (left_toggle == true) {
+		if (right_toggle == true) {
+			toolbar_config(left, 0);
+		}else{
+			toolbar_config(left, right);
+		}
+		$("#toolbar_arrow").html('&#8592&#8592');		
+	}else{		
+		if (right_toggle == true) {
+			toolbar_config(0, 0);
+		}else{			
+			toolbar_config(0, right);		
+		}
+		$("#toolbar_arrow").html('&#8594&#8594');
+	}	
+	
+
+}
+function appointment_toggle(left, right) {
+	
+	left_toggle = false;
+	if ( (left != 0) && $('#left_sidebar').hasClass("hidden")) {
+		left_toggle = true;	
+	}
+	right_toggle = false;
+	if ( (right != 0) && $('#right_sidebar').hasClass("hidden")) {
+		right_toggle = true;	
+	}
+	
+	if (right_toggle == true) {
+		if (left_toggle == true){
+			toolbar_config(0, right);
+		}else{
+			toolbar_config(left, right);
+		}
+		$("#schedule_arrow").html('&#8594&#8594');
+	}else{
+		right_toggle = true;
+		if (left_toggle == true){
+			toolbar_config(0, 0);
+		}else{
+			toolbar_config(left, 0);
+		}
+		$("#schedule_arrow").html('&#8592&#8592');		
+	}
+
+}
 
 
 </script>

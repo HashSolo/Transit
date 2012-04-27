@@ -54,3 +54,26 @@ t.string :appointment_type
 <% end %>
 
 </div>
+
+<script type="text/javascript">
+
+var default_left;
+var default_right;
+
+$(document).ready(function(){
+
+	default_left=3;
+	default_right=1;
+	toolbar_config(default_left, default_right);
+});
+
+$('#toolbar_toggle').click(function(){
+	toolbar_toggle(default_left, default_right);	
+});
+
+$('#schedule_toggle').click(function(){
+	appointment_toggle(default_left, default_right);	
+});
+
+
+</script>

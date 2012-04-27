@@ -3,12 +3,15 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 /*Globals*/
 html {height:100%;font-family:'Trebuchet MS', Arial, sans-serif;}
 body {height:100%;margin:0;padding:0;font-family:'Trebuchet MS', Arial, sans-serif;}
 div.content {display:inline-block;float:left;width:100%;position:relative;min-height:100%;}
 div.middle_content {display:inline-block;width:100%;float:left;position:relative;height:100%;margin-top:5px;}
 
+/*debug*/
+div#debug {width:100%;background:yellow;}
 
 /*Admin Title*/
 h1.admin_title {margin:24px;margin-top:12px;border-bottom:1px solid #cccccc;}
@@ -16,21 +19,25 @@ h1.admin_title {margin:24px;margin-top:12px;border-bottom:1px solid #cccccc;}
 /*content view*/
 div.content_view {display:inline-block;width:100%;float:left;padding-top:10px;height:100%;min-height:400px;}
 
-/*New Header*/
+/******************************************************************************
+Header: Has an upper, middle and lower section. Since this header is present
+throughout the views, it is designed to be as useful and interative as possible.
+******************************************************************************/
+/*Upper header section*/
 header {padding:0px;margin:0px;display:inline-block;width:100%;position:relative;}
 header nav.header {height:auto;background:#7895a3;display:block;}
-header nav.header span.home_icon {display:inline-block;border: solid 2px #000000;color:#ffffff;font-size:40px;width:16%;vertical-align:bottom;}
+header nav.header span.home_icon {display:inline-block;border: solid 0px #000000;color:#ffffff;font-size:40px;width:16%;vertical-align:bottom;}
 header nav.header span.home_icon h2 {font-size:26px;display:inline-block;}
 header nav.header span.home_icon a {text-decoration:none;color:#ffffff;}
-header nav.header span.log_out {border: solid 2px;font-size:12px;display:inline;float:right;padding:0px;vertical-align:bottom;}
+header nav.header span.log_out {border: solid 0px;font-size:12px;display:inline;float:right;padding:0px;vertical-align:bottom;}
 header nav.header span.log_out a {text-decoration:none;color:#ffffff;}
 header nav.header span.log_out span.icon {font-size:8px;}
 header nav.header span.log_out ul li {list-style-type:none;padding:0px;}
 header nav.header span.log_out ul li:hover {list-style-type:none;}
 header nav.header span.log_out ul li.menu {display:none;font-size:12px;} 
 header nav.header span.log_out ul li a span {padding:0px;}
-header div.sub_header {z-index:-1;position:absolute;top:50px;width:100%;height:20px;background:#325d5d;display:block;}
-
+/*Middle header section with primary Transit tabs*/
+header div.sub_header {z-index:-1;position:absolute;top:46px;width:100%;height:20px;background:#325d5d;display:block;}
 header span.left {margin-left:20%;}
 header span.tab {z-index:2;background:#325d5d;vertical-align:top;text-align:left;display:inline-block;width:16%;font-size:16px;padding:0px;color:#ffffff;}
 header span.tab a {text-decoration:none;color:#ffffff;}
@@ -46,36 +53,31 @@ header span.tab ul li.case_menu:hover,
 header span.tab ul li.clinic_menu:hover, 
 header span.tab ul li.search_menu:hover {background:#7895a3;}
 header span.tab span {width:auto;padding:0px;margin-left:auto;}
-
-header div {height:100px;border-bottom:solid 1px;display:inline-block;}
-header div.left {width:16%;border-right:solid 1px #cccccc;}
+/*Sub header section*/
+/*Left part of subheader which includes the navigation and toolbar toggle tools*/
+/*header div.sub_header {border-bottom:1px solid black;width:100;padding:0px;margin:0px;}*/
+header div.left,
+header div.middle,
+header div.right {border-bottom:1px black solid;margin:0px;height:55px;display:inline-block;}
+header div.left {border-right:1px solid #cccccc;width:16%;padding:0px;}
 header div.middle {width:65%}
-header div.right {width:16%;border-left:solid 1px #cccccc;}
-/*
-header div span#navigation,
-header div span#toolbar_toggle {width:100%;display:block;border:solid 1px red;}
-header div span#toolbar_toggle span {font-size:10px;}
-header div span#toolbar_toggle {border:none;border:solid 1px red;margin:0px;padding:0px;font-size:10px;background:white;color:black;}
+header div.right {border-right:1px solid #cccccc;border-left:1px solid #cccccc;width:16%;}
+header div.left div#navigation {border:solid 0px red;margin-top:10px;width:100%;display:inline-block;padding:0px;font-size:30px;height:20px}
+header div.left div#navigation span {border:solid 0px blue;display:inline;margin-left:15px;margin-top:15px;}
+header div.left div#toolbar_toggle {border:solid 0px red;background:#cccccc;width:100%;display:inline-block;margin-top:10px;padding:0px;border-top:1px solid #cccccc;font-size:10px;height:12px;}
+header div.left div#toolbar_toggle span {margin-right:2px;float:right;margin-left:auto;}
+/*Right part of subheader which includes the clock and schedule toggle tools*/
+header div.right div#clock {border:solid 0px red;margin-top:10px;width:40%;display:inline-block;padding:0px;font-size:20px;height:20px}
+header div.right div#clock span {border:solid 0px blue;display:inline;margin-left:12px;margin-top:15px;font-size:30px;height:35px}
+header div.right div#time {border:solid 0px red;border:solid 0px red;margin-top:2px;width:50%;display:inline-block;font-size:14px;height:20px}
+header div.right div#time span {width:100%;}
+header div.right div#schedule_toggle {border:solid 0px red;background:#cccccc;width:100%;display:inline-block;margin-top:10px;padding:0px;border-top:1px solid #cccccc;font-size:10px;height:12px;}
+header div.right div#schedule_toggle span {margin-left:2px;float:left;margin-left:auto;}
 
-header div span#toolbar_toggle span {margin-right:0px;}
-header div span#toolbar_toggle:hover {cursor:pointer;}
-*/
-
-div.left_sidebar ul li#toolbar_toggle {border:none;border-bottom:solid 1px;float:right;margin:0px;padding:0px;font-size:10px;background:white;color:black;height:30px;}
-div.left_sidebar ul li#toolbar_toggle span {padding:0px;display:inline;position:relative;float:right;}
-div.left_sidebar ul li#toolbar_toggle:hover {cursor:pointer;}
 
 /*Toolbar modules... mainly for debugging*/
 div.toolbar_module {width:100%;background:yellow;}
 div.toolbar_module span{width:30%;margin-left:5%;font-size:20px;}
-
-
-/*selected headers
-header nav.header span.selected{background:#325d5d;border:4px double #7895a3;}
-
-
-nav.header ul li a {text-decoration:none;color:#ffffff;display:block;height:70px;}
-*/
 
 
 /*Old Header
@@ -122,6 +124,7 @@ div.left_sidebar ul li#toolbar_toggle {border:none;border-bottom:solid 1px;float
 div.left_sidebar ul li#toolbar_toggle span {padding:0px;display:inline;position:relative;float:right;}
 div.left_sidebar ul li#toolbar_toggle:hover {cursor:pointer;}
 
+
 /*Right Sidebar*/
 div.right_sidebar {display:inline-block;width:100%;height:100%;border:1px black;float:right;position:relative;background:#ffffff;}
 div.right_sidebar ul {padding:0px;margin:0px;display:inline-block;float:right;width:99%;height:100%;}
@@ -135,7 +138,7 @@ div.right_sidebar ul li span.icon {float:right;padding-right:18px;}
 div.right_sidebar ul li.header {text-align:center;color:#7895a3;font-weight:bold;border-bottom:3px double #7895a3;width:100%;margin-left:0;margin-right:0;position:relative;top:0;left:0;margin-left:0;margin-right:0;font-size:20px;border:4px double #7895a3;background:#ffffff;}
 
 
-/*Left sidebare appointmnent*/
+/*Left sidebar appointmnent*/
 div.left_sidebar ul li.left_side_schedule {height:100%;display:inline-block;height:360px;}
 div.left_sidebar ul li.left_side_schedule ul {display:inline-block;width:100%;padding:0px;margin:0px;height:360px;border:0px solid #789d53;}
 div.left_sidebar ul li.left_side_schedule ul li {display:inline-block;width:100%;padding:0px;margin:0px;height:100%;list-style-type:none;border:0px solid #7895a3;height:360px;}
