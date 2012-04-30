@@ -19,6 +19,17 @@ h1.admin_title {margin:24px;margin-top:12px;border-bottom:1px solid #cccccc;}
 /*content view*/
 div.content_view {display:inline-block;width:100%;float:left;padding-top:10px;height:100%;min-height:400px;}
 
+/*Application html
+div#left_sidebar {
+	transition: width 2s;
+	-moz-transition: width 2s;
+	-webkit-transition: width 2s; 
+	-o-transition: width 2s;
+	transition: display 2s;
+	
+}
+*/
+
 /******************************************************************************
 Header: Has an upper, middle and lower section. Since this header is present
 throughout the views, it is designed to be as useful and interative as possible.
@@ -59,9 +70,9 @@ header span.tab span {width:auto;padding:0px;margin-left:auto;}
 header div.left,
 header div.middle,
 header div.right {border-bottom:0px #325d5d solid;margin:0px;height:55px;display:inline-block;}
-header div.left {border-right:0px solid #325d5d;border-left:4px solid #cccccc;width:16%;padding-bottom:0px;}
+header div.left {border-right:0px solid #325d5d;margin-top:0px;border-left:4px solid #cccccc;width:16%;padding-bottom:0px;}
 header div.middle {width:65%}
-header div.right {margin-left:0px;padding-left:-2px;padding-right:0px;border-left:4px solid #cccccc;width:16%;}
+header div.right {margin-left:0px;padding-left:-2px;padding-right:0px;border-left:4px solid #cccccc;height:57px;width:16%;}
 header div.left div#navigation {border:solid 0px red;margin-top:10px;width:100%;display:inline-block;padding:0px;font-size:30px;height:20px}
 header div.left div#navigation span {border:solid 0px blue;display:inline;margin-left:15px;margin-top:15px;}
 header div.left div#toolbar_toggle {margin-left:-4px;border:solid 0px red;background:#cccccc;width:100%;display:inline-block;margin-top:10px;padding:0px;border-top:1px solid #cccccc;font-size:10px;height:12px;}
@@ -76,7 +87,7 @@ header div.right div#clock {border:solid 0px red;margin-top:10px;width:40%;displ
 header div.right div#clock span {border:solid 0px blue;display:inline;margin-left:12px;margin-top:15px;font-size:30px;height:35px}
 header div.right div#time {border:solid 0px red;border:solid 0px red;margin-top:2px;width:50%;display:inline-block;font-size:14px;height:20px}
 header div.right div#time span {width:100%;}
-header div.right div#schedule_toggle {margin-left:-2px;border:solid 0px red;background:#cccccc;width:100%;display:inline-block;margin-top:10px;padding:0px;border-top:1px solid #cccccc;font-size:10px;height:12px;}
+header div.right div#schedule_toggle {margin-left:-2px;border:solid 0px red;background:#cccccc;width:100%;display:inline-block;margin-top:10px;padding-left:0px;border-top:1px solid #cccccc;font-size:10px;height:12px;}
 header div.right div#schedule_toggle span {margin-left:2px;float:left;margin-left:auto;}
 header div.header_close {margin-top:0px;vertical-align:top;position:relative;height:1px;width:100%;background:black;}
 
