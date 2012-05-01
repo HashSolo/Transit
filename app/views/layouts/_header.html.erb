@@ -12,16 +12,37 @@ Upper header Section: includes Transit home icon and user icon
 			
 			
 				
-				<span class="log_out"><%= link_to '#' do |l| %><span class=""><%= "#{current_user.email}"%></span> <span class="icon">&#8595</span>  <% end %>	<span> 
+				<span class="log_out">
+				
+					<ul>
+						<li><%= link_to '#' do |l| %><span class=""><%= "#{current_user.email}"%></span> <span class="icon">&#8595</span>  <% end %></li>
+						<li class="logout_menu"><%= link_to '#' do |l| %><span>Settings</span><% end %></li>
+
+						<li class="logout_menu"><%= link_to '#' do |l| %><span>Logout</span><% end %></li>
+						
+						
+					</ul>
+						
+				<span> 
+				
+					<span id="calendar_tab" class="tab <%= is_state_active?('appointments','index') %> left">
+
+						<ul>
+									<li><%= link_to appointments_path do |l| %><span class="icon">⌚</span>   <span class="">Calendar</span><% end %></li>
+									<li class="calendar_menu"><%= link_to '#' do |l| %><span>Daily</span><% end %></li>
+
+									<li class="calendar_menu"><%= link_to '#' do |l| %><span>Full</span><% end %></li>
+				
+				
+				
 				
 			</nav>
 				
 				
-
+<%#
 			<div class="sub_header">
-				Git test code
 			</div>
-
+%>
 					<!--			
 					<% if is_controller_active?('clinicians') || is_controller_active?('referrers') 
 						css_var = "selected"
@@ -34,76 +55,105 @@ Upper header Section: includes Transit home icon and user icon
 Middle header Section: includes main tab toolbar
 ***************************************************************%>
 
-<%#*************************************************************
-Tab I: Calendar tab
-***************************************************************%>
-				
-				<span id="calendar_tab" class="tab <%= is_state_active?('appointments','index') %> left">
-				
-				<ul>
-				
-				<li><%= link_to appointments_path do |l| %><span class="icon">⌚</span>   <span class="">Calendar</span><% end %></li>
-				
-				<li class="calendar_menu"><%= link_to '#' do |l| %><span>Daily</span><% end %></li>
-				
-				<li class="calendar_menu"><%= link_to '#' do |l| %><span>Full</span><% end %></li>
-				
-				<li class="calendar_menu"><%= link_to '#' do |l| %><span>Personal</span><% end %></li>
-				
-				<li class="calendar_menu"><%= link_to '#' do |l| %><span>Clinic</span><% end %></li>
-			
-				</ul>
-				</span>
-				
-<%#*************************************************************
-Tab II: Case tab
-***************************************************************%>
-						
-				<span id="case_tab" class="tab <%= is_state_active?('cases','index') %>">
-				<ul>
-					
-				<li><%= link_to cases_path do |l| %><span class="icon">l</span>   <span class="">IVF</span><% end %></li>
-				
-				<li class="case_menu"><%= link_to cases_path do |l| %><span>All cases</span><% end %></li>
-				
-				<li class="case_menu"><%= link_to new_case_path do |l| %><span>New case</span><% end %></li>
-							
-				</ul>
-				</span>
-				
-<%#*************************************************************
-Tab III: Clnic tab
-***************************************************************%>				
-				
-				<span id="clinic_tab" class="tab <%= is_state_active?('cases','index') %> ">
-				
-				<ul>
-				
-				<li><%= link_to clinicians_path do |l| %><span class="icon">B</span>   <span class="">Clinic</span><% end %></li>
-				
-				<li class="clinic_menu"><%= link_to "#" do |l| %><span class="">Chat</span><% end %></li>
-				
-				
-				</ul>
-				
-				</span>
+<div class="mid_header"> 
+</div>
+	<%#*************************************************************
+	Tab I: Navigation Tool
+	***************************************************************%>
 	
-<%#*************************************************************
-Tab IV: Search tab
-***************************************************************%>	
-						
-				<span id="search_tab" class=" tab <%= is_state_active?('cases','index') %> ">
-				<ul>
-				
-				<li><%= link_to "#" do |l| %><span class="icon">z</span>   <span class="">Search</span><% end %></li>
-				
-				<li class="search_menu"><%= link_to "#" do |l| %><span>for cases</span><% end %></li>
-				<li class="search_menu"><%= link_to "#" do |l| %><span>for patients</span><% end %></li>
-				<li class="search_menu"><%= link_to "#" do |l| %><span>for clinicians</span><% end %></li>
-			
-				</ul>
-				
-				</span>
+	<span id="navigation_tab" class="tab">
+		<span class="navigation_tool">
+		
+		<%= link_to '#' do |l| %>	
+		<span class="icon">&#8592</span>
+		<%end%>
+		
+		<%= link_to '#' do |l| %>			
+		<span class="icon">&#8594</span>
+		<%end%>
+		
+		</span>
+	</span>
+	
+	<%#*************************************************************
+	Tab II: Calendar tab
+	***************************************************************%>
+
+	<span id="calendar_tab" class="tab <%= is_state_active?('appointments','index') %> left">
+
+		<ul>
+					<li><%= link_to appointments_path do |l| %><span class="icon">⌚</span>   <span class="">Calendar</span><% end %></li>
+					<li class="calendar_menu"><%= link_to '#' do |l| %><span>Daily</span><% end %></li>
+
+					<li class="calendar_menu"><%= link_to '#' do |l| %><span>Full</span><% end %></li>
+
+					<li class="calendar_menu"><%= link_to '#' do |l| %><span>Personal</span><% end %></li>
+
+					<li class="calendar_menu"><%= link_to '#' do |l| %><span>Clinic</span><% end %></li>
+
+		</ul>
+	</span>
+
+	<%#*************************************************************
+	Tab III: Case tab
+	***************************************************************%>
+
+					<span id="case_tab" class="tab <%= is_state_active?('cases','index') %>">
+					<ul>
+
+					<li><%= link_to cases_path do |l| %><span class="icon">l</span>   <span class="">IVF</span><% end %></li>
+
+					<li class="case_menu"><%= link_to cases_path do |l| %><span>All cases</span><% end %></li>
+
+					<li class="case_menu"><%= link_to new_case_path do |l| %><span>New case</span><% end %></li>
+
+					</ul>
+					</span>
+
+	<%#*************************************************************
+	Tab IV: Clinic tab
+	***************************************************************%>				
+
+					<span id="clinic_tab" class="tab <%= is_state_active?('cases','index') %> ">
+
+					<ul>
+
+					<li><%= link_to clinicians_path do |l| %><span class="icon">B</span>   <span class="">Clinic</span><% end %></li>
+
+					<li class="clinic_menu"><%= link_to "#" do |l| %><span class="">Chat</span><% end %></li>
+
+
+					</ul>
+
+					</span>
+
+	<%#*************************************************************
+	Tab V: Search tab
+	***************************************************************%>	
+
+					<span id="search_tab" class=" tab <%= is_state_active?('cases','index') %> ">
+					<ul>
+
+					<li><%= link_to "#" do |l| %><span class="icon">z</span>   <span class="">Search</span><% end %></li>
+
+					<li class="search_menu"><%= link_to "#" do |l| %><span>for cases</span><% end %></li>
+					<li class="search_menu"><%= link_to "#" do |l| %><span>for patients</span><% end %></li>
+					<li class="search_menu"><%= link_to "#" do |l| %><span>for clinicians</span><% end %></li>
+
+					</ul>
+
+					</span>	
+
+	<%#*************************************************************
+	Tab VI: Clock tab
+	***************************************************************%>	
+	
+	<span class="tab clock"> <%= "#{Time.zone.now.hour}:#{Time.zone.now.min}  "%><%= "|  #{Time.now.strftime('%m')}/#{Time.now.strftime('%d')}/#{Time.now.strftime('%Y')}" %></span>	
+	
+	
+	
+
+
 				
 <%#*************************************************************
 Sub-header Section: organized into 3 components
@@ -111,6 +161,28 @@ Sub-header Section: organized into 3 components
 	-Middle: Title section
 	-Right: Clock and schedule toolbar toggle
 ***************************************************************%>
+
+
+
+<div class="sub_header">
+	
+	<div id="toolbar_toggle"> 
+			<span id="toolbar_arrow" class="icon">&#8592&#8592</span><span id="toolbar_header" class="text">Toolbar</span>
+	</div>
+	
+	<div class="middle">
+			<h1 id="js_page_title"></h1>	
+	</div>
+	<div id="schedule_toggle"> 
+		<span id="toolbar_header" class="text">Appointments</span> 
+		<span id="schedule_arrow"class="icon">&#8594&#8594</span>
+	</div>
+		
+</div>
+
+
+
+<!--
 <div class="left">
 	<div id= "navigation"><span class="icon">&#8592</span><span class="icon">&#927</span><span class="icon">&#8594</span></div>
 	
@@ -135,6 +207,7 @@ Sub-header Section: organized into 3 components
 		<span id="schedule_arrow"class="icon">&#8594&#8594</span>
 	</div>
 </div>
+-->
 	
 <div class="header_close">
 </div>
@@ -150,42 +223,279 @@ Sub-header Section: organized into 3 components
 
 <script type="text/javascript">
 
-function toolbar_header(header) {
-	$('#toolbar_header').html(header);
-}
+/**********************************************************************
+Header module: function set_headers sets the title and toolbar header
+of a given page
+**********************************************************************/
+function set_headers(title, header){
+	page_title(title);
+	toolbar_header(header);
+};
 function page_title(title) {
-	$('#page_title').html(title);
-}
+	$('#js_page_title').html(title);
+};
+function toolbar_header(header) {
+	$('#js_toolbar_header').html(header);
+};
 
-
-$('#calendar_tab').hover(function(){
-	$('.calendar_menu').show(1000);
+/**********************************************************************
+Drop down lists in mid-header section
+**********************************************************************/
+$('.log_out').hover(function(){
+	$('.logout_menu').show(300);
 }	,function(){
-	  $(".calendar_menu").hide(1000);
+	  $(".logout_menu").hide(300);
 	});
 
-$('#case_tab').hover(function(){
-	$('.case_menu').show(1000);
+$('#calendar_tab').hover(function(){
+	$('.calendar_menu').show(300);
 }	,function(){
-	  $(".case_menu").hide(1000);
+	  $(".calendar_menu").hide(300);
+	});
+	
+$('#case_tab').hover(function(){
+	$('.case_menu').show(300);
+}	,function(){
+	  $(".case_menu").hide(300);
 	});
 	
 $('#clinic_tab').hover(function(){
-	$('.clinic_menu').show(1000);
+	$('.clinic_menu').show(300);
 }	,function(){
-	  $(".clinic_menu").hide(1000);
+	  $(".clinic_menu").hide(300);
+	});
+			
+$('#search_tab').hover(function(){
+	$('.search_menu').show(300);
+}	,function(){
+	  $(".search_menu").hide(300);
 	});
 	
-$('#search_tab').hover(function(){
-	$('.search_menu').show(1000);
-}	,function(){
-	  $(".search_menu").hide(1000);
+	
+/**********************************************************************
+Interactive toolbar module: allows user to interact with the toolbars
+**********************************************************************/
+/**********************************************************************
+toolbar_config function: takes left and right sidebar parameters to set the 
+widths of the left and right toolbars, and the middle content
+**********************************************************************/
+function toolbar_config(left, right){
+
+	$('#left_sidebar').removeClass("hidden");
+	$('#right_sidebar').removeClass("hidden");	
+	$('#middle_content').removeClass("hidden");
+
+//left toolbar
+	for (var i = 1; i <= 12; i++) {
+		if (i == left) continue;
+		grid_left = "grid_" + i.toString();
+		$('#left_sidebar').removeClass(grid_left);
+	}
+
+	if (left == 0) {
+		$('#left_sidebar').addClass("hidden");
+	} else {
+	grid_left = "grid_" + left.toString();
+		$('#left_sidebar').addClass(grid_left);
+	}
+
+	//right toolbar
+	for (var i = 1; i <= 12; i++) {
+		if (i == right) continue;
+			grid_right = "grid_" + i.toString();
+			$('#right_sidebar').removeClass(grid_right);
+		}
+
+	if (right == 0) {
+		$('#right_sidebar').addClass("hidden");
+	} else {
+	grid_right = "grid_" + right.toString();
+		$('#right_sidebar').addClass(grid_right);
+	}
+
+	//middle content
+	middle = 12 - (left + right);
+	//right toolbar
+	for (var i = 1; i <= 12; i++) {
+		if (i == middle) continue;
+		grid_middle = "grid_" + i.toString();
+		$('#middle_content').removeClass(grid_middle);
+	}
+
+	if (middle == 0) {
+		$('#middle_content').addClass("hidden");
+	} else {
+	grid_middle = "grid_" + middle.toString();
+		$('#middle_content').addClass(grid_middle);
+	}
+
+};
+
+/**********************************************************************
+toolbar_toggle and appointment_toggle functions: toggle the left and 
+right sidebars, respectively, and restructure the page using the 
+default sidebar parameters and calling the toolbar_config function
+**********************************************************************/
+function toolbar_toggle(left, right) {
+
+	left_toggle = false;
+	if ( (left != 0) && $('#left_sidebar').hasClass("hidden")) {
+		left_toggle = true;	
+	}
+	right_toggle = false;
+	if ( (right != 0) && $('#right_sidebar').hasClass("hidden")) {
+		right_toggle = true;	
+	}	
+
+
+	if (left_toggle == true) {
+		if (right_toggle == true) {
+			toolbar_config(left, 0);
+		}else{
+			toolbar_config(left, right);
+		}
+		$("#toolbar_arrow").html('&#8592&#8592');		
+	}else{		
+		if (right_toggle == true) {
+			toolbar_config(0, 0);
+		}else{			
+			toolbar_config(0, right);		
+		}
+		$("#toolbar_arrow").html('&#8594&#8594');
+	}	
+
+
+}
+function appointment_toggle(left, right) {
+
+	left_toggle = false;
+	if ( (left != 0) && $('#left_sidebar').hasClass("hidden")) {
+		left_toggle = true;	
+	}
+	right_toggle = false;
+	if ( (right != 0) && $('#right_sidebar').hasClass("hidden")) {
+		right_toggle = true;	
+	}
+		if (right_toggle == true) {
+		if (left_toggle == true){
+			toolbar_config(0, right);
+		}else{
+			toolbar_config(left, right);
+		}
+		$("#schedule_arrow").html('&#8594&#8594');
+	}else{
+		right_toggle = true;
+		if (left_toggle == true){
+			toolbar_config(0, 0);
+		}else{
+			toolbar_config(left, 0);
+		}
+		$("#schedule_arrow").html('&#8592&#8592');		
+	}
+
+}
+
+
+/*
+$("#calendar_tab").mouseenter(function(){
+	$('.calendar_menu').show(300);  
+}); 
+$("#calendar_tab").mouseenter(function(){
+	$('#calendar_drop').show(300);  
+});
+$("#calendar_tab").mouseout(function(){
+	$('#calendar_drop').hide(300);  
+});
+*/
+/*$("#calendar_tab").mouseout(function(){
+	$('#calendar_drop').hide(300);  
+});
+
+$("#calendar_tab").mouseleave(function(){
+	$('#calendar_drop').hide(300);  
+});
+
+$("#calendar_tab").mouseleave(function(){
+	$("calendar_drop").mouseleave(function(){
+		$('#calendar_drop').hide(300);  		
 	});
+});
+$("#calendar_drop").mouseenter(function(){
+	$('#calendar_drop').show(300);  
+});
+*/
+/*
+$("#calendar_toggle").mouseleave(function(){
+	$('.calendar_menu').hide(300);  
+});
+
+$("#calendar_list").mouseleave(function(){
+	$('.calendar_menu').hide(300);  
+});
+*/
+/*
+$("#case_tab").mouseenter(function(){
+	$('.case_menu').show(300);  
+});
+$(".case_menu").mouseleave(function(){
+	$('.case_menu').hide(300);  
+});
+
+$("#clinic_tab").mouseenter(function(){
+	$('.clinic_menu').show(300);  
+});
+$(".clinic_menu").mouseleave(function(){
+	$('.clinic_menu').hide(300);  
+});
+
+
+$('#clinic_tab').hover(function(){
+	$('.clinic_menu').show(100);
+}	,function(){
+	  $(".clinic_menu").hide(100);
+	});
+
+
+$('#case_tab').hover(function(){
+	$('.case_menu').show(100);
+}	,function(){
+	  $(".case_menu").hide(100);
+	});
+
+
+
+
+$(".calendar_tab").mouseenter(function(){
+	$('.calendar_menu').show(300);  
+});
+
+$(".calendar_menu").mouseenter(function(){
+	$('.calendar_menu').show(300);  
+});
+$(".calendar_tab").mouseleave(function(){
+	$('.calendar_menu').hide(300);  
+});
+*/
+/*
+  $("p").mouseleave(function(){
+    $("p").css("background-color","#E9E9E4");
+ });
+
+$('#calendar_tab').hover(function(){
+	$('.calendar_menu').show(100);
+}	,function(){
+	  $(".calendar_menu").hide(100);
+	});
+*/
+
+
+
+
 	
 $('.log_out').hover(function(){
-	$('.menu').show(1000);
+	$('.menu').show(100);
 }	,function(){
-	  $(".menu").hide(1000);
+	  $(".menu").hide(100);
 	});
 
 

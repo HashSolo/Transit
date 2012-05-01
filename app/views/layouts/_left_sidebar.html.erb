@@ -20,7 +20,8 @@ Case Toolbar
 		<% if is_controller_active?('patients') || is_active?('cases#show') || is_active?('history_female#show') || is_active?('history_female#show') %>	
 			
 			<% tabs = Array['Overview','Patients','Diagnosis','Stimulation','Embryology','Appointments','Follow Up'] %>
-			<% icons = Array['E','u','✎','⌚','s','l', '✔'] %>
+			<% icons = Array[nil,nil,nil,nil,nil,nil,nil,] %>
+			<%#Array['E','u','✎','⌚','s','l', '✔'] %>
 			<% links = Array['/cases/'+"#{@case.id}",'/cases/'+"#{@case.id}"+'/patients','#','#','#','#','#'] %>
 			<% ids = Array["","","","","","","",] %>							
 
@@ -98,8 +99,10 @@ Male History Toolbar(s)
 Generates left sidebar with unordered list html
 *************************************************************%>
 
-<ul>					
+<ul class="round">					
 	
+	<li id='sidebar_header' class=""><span id="js_toolbar_header"class="text">Header</span></li>
+		
 	<% for i in 0..(tabs.length - 1) %>
 	
 		<% if links[i].nil? %>

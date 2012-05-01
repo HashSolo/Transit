@@ -40,33 +40,66 @@ header nav.header {height:auto;background:#7895a3;display:block;}
 header nav.header span.home_icon {display:inline-block;border: solid 0px #000000;color:#ffffff;font-size:40px;width:16%;vertical-align:bottom;}
 header nav.header span.home_icon h2 {font-size:26px;display:inline-block;}
 header nav.header span.home_icon a {text-decoration:none;color:#ffffff;}
-header nav.header span.log_out {border: solid 0px;font-size:12px;display:inline;float:right;padding:0px;vertical-align:bottom;}
+header nav.header span.log_out {border:solid 0px;font-size:12px;display:inline;float:right;
+								z-index:1;position:absolute;padding:0px;vertical-align:bottom;
+								left:820px;}
+header nav.header span.log_out ul li.logout_menu {display:none;font-size:12;text-align:left;}
+header nav.header span.log_out ul li.logout_menu span {}
+header nav.header span.log_out ul li.logout_menu:hover {background:#325d5d;}
+
 header nav.header span.log_out a {text-decoration:none;color:#ffffff;}
 header nav.header span.log_out span.icon {font-size:8px;}
 header nav.header span.log_out ul li {list-style-type:none;padding:0px;}
 header nav.header span.log_out ul li:hover {list-style-type:none;}
-header nav.header span.log_out ul li.menu {display:none;font-size:12px;} 
+header nav.header span.log_out ul li.menu {display:none;font-size:10px;} 
 header nav.header span.log_out ul li a span {padding:0px;}
 /*Middle header section with primary Transit tabs*/
-header div.sub_header {z-index:-1;position:absolute;top:46px;width:100%;height:20px;background:#325d5d;display:block;}
-header span.left {margin-left:20%;}
-header span.tab {z-index:2;background:#325d5d;vertical-align:top;text-align:left;display:inline-block;width:16%;font-size:16px;padding:0px;color:#ffffff;}
+header div.mid_header {vertical-align:bottom;z-index:-1;padding-top:1px;position:relative;
+						width:100%;height:22px;background:#325d5d;}
+header span.tab {border:red solid 1px;margin-top:2px;background:#325d5d;vertical-align:top;
+				text-align:center;display:inline-block;width:100px%;font-size:16px;padding:0px;
+				z-index:1;top:47px;position:absolute;color:#ffffff;}
+header span.tab#navigation_tab{left:50px;}
+header span.tab#calendar_tab {left:200px;}
+header span.tab#case_tab {left:370px;}
+header span.tab#clinic_tab {left:520px;}
+header span.tab#search_tab {left:650px;}
+header span.tab.clock {margin-top:0px;font-size:10px;font-family:courier;float:right;
+						left:830px;text-align:right;vertical-align:top;}
+header span.tab span.navigation_tool:hover {}
 header span.tab a {text-decoration:none;color:#ffffff;}
-header span.tab ul {border: solid 0px black;}
-header span.tab ul li {list-style-type:none;}
+header span.tab ul {z-index:1;border: solid 0px black;}
+header span.tab ul li {list-style-type:none}
 header span.tab ul li:hover {list-style-type:none;}
 header span.tab ul li.calendar_menu, 
 header span.tab ul li.case_menu, 
 header span.tab ul li.clinic_menu, 
-header span.tab ul li.search_menu {display:none;font-size:12px;} 
+header span.tab ul li.search_menu {display:none;font-size:12px;text-align:left;} 
 header span.tab ul li.calendar_menu:hover, 
 header span.tab ul li.case_menu:hover, 
 header span.tab ul li.clinic_menu:hover, 
 header span.tab ul li.search_menu:hover {background:#7895a3;}
 header span.tab span {width:auto;padding:0px;margin-left:auto;}
+
+
+
+
+
+
+/*Sub-header section*/
+header div.sub_header {border-bottom:solid #325d5d 1px;height:17px;width:100%;}
+header div.sub_header div {vertical-align:center;display:inline-block;font-size:10px;}
+header div.sub_header div#toolbar_toggle {width:16%} 
+header div.sub_header div.middle{font-size:15px;width:66%;text-align:center;}
+header div.sub_header div#schedule_toggle{border:red solid 0px;margin-top:5px;float:right;width:16%;text-align:right;margin-right:0px;}
+header div.sub_header div#schedule_toggle span{text-align:right;margin-right:0px;padding-right:0px;border:0px solid black;}
+/*header div.header_close {margin-top:0px;vertical-align:top;position:relative;height:1px;width:100%;}*/
+
+
+/*The Junkyard*/
 /*Sub header section*/
 /*Left part of subheader which includes the navigation and toolbar toggle tools*/
-/*header div.sub_header {border-bottom:1px solid black;width:100;padding:0px;margin:0px;}*/
+/*header div.sub_header {border-bottom:1px solid black;width:100;padding:0px;margin:0px;}
 header div.left,
 header div.middle,
 header div.right {border-bottom:0px #325d5d solid;margin:0px;height:55px;display:inline-block;}
@@ -77,25 +110,19 @@ header div.left div#navigation {border:solid 0px red;margin-top:10px;width:100%;
 header div.left div#navigation span {border:solid 0px blue;display:inline;margin-left:15px;margin-top:15px;}
 header div.left div#toolbar_toggle {margin-left:-4px;border:solid 0px red;background:#cccccc;width:100%;display:inline-block;margin-top:10px;padding:0px;border-top:1px solid #cccccc;font-size:10px;height:12px;}
 header div.left div#toolbar_toggle span {margin-right:2px;float:right;margin-left:auto;}
-/*Middle header section containing page title*/
+/*Middle header section containing page title
 header div.middle {margin-bottom:-2px;border-left:4px solid #325d5d;border-right:0px solid #325d5d;vertical-align:top;}
 header div.middle div.vertical-border {height:44px;border-left:0px solid #325d5d;margin-left:12.25%}
 header div.middle div.vertical-border h1 {margin-top:15px;border:0px solid #cccccc;padding:0%;display:inline-block;font-size:20px;}
-header div.middle div.underline {margin-left:-4px;border-right:5px;height:13px;width:100%;background:#325d5d;}
-/*Right part of subheader which includes the clock and schedule toggle tools*/
+header div.middle div.underline {margin-left:-4px;border-right:5px;height:13px;width:100%;background:#325d5d;}*/
+/*Right part of subheader which includes the clock and schedule toggle tools
 header div.right div#clock {border:solid 0px red;margin-top:10px;width:40%;display:inline-block;padding:0px;font-size:20px;height:20px}
 header div.right div#clock span {border:solid 0px blue;display:inline;margin-left:12px;margin-top:15px;font-size:30px;height:35px}
 header div.right div#time {border:solid 0px red;border:solid 0px red;margin-top:2px;width:50%;display:inline-block;font-size:14px;height:20px}
 header div.right div#time span {width:100%;}
 header div.right div#schedule_toggle {margin-left:-2px;border:solid 0px red;background:#cccccc;width:100%;display:inline-block;margin-top:10px;padding-left:0px;border-top:1px solid #cccccc;font-size:10px;height:12px;}
 header div.right div#schedule_toggle span {margin-left:2px;float:left;margin-left:auto;}
-header div.header_close {margin-top:0px;vertical-align:top;position:relative;height:1px;width:100%;background:black;}
-
-/*Toolbar modules... mainly for debugging*/
-div.toolbar_module {width:100%;background:yellow;}
-div.toolbar_module span{width:30%;margin-left:5%;font-size:20px;}
-
-
+*/
 /*Old Header
 header {padding:0px;margin:0px;display:inline-block;float:left;width:100%;position:relative;height:100px;}
 header h1 {padding:0px;margin:0px;display:inline-block;float:left;width:100%;text-align:center;}
@@ -125,10 +152,22 @@ nav.footer ul {padding:0px;margin:0px;display:inline-block;float:left;width:100%
 nav.footer ul li {padding:0px;margin:0px;display:inline-block;float:left;width:100%;list-style-type:none;}
 
 
-/*Left Sidebar*/
+div.left_sidebar {display:inline-block;width:100%;height:100%;position:relative;background:#ffffff;}
+div.left_sidebar ul {background:#325d5d;width:100%;min-height:500px;padding:0px;margin:0px;display:inline-block;}
+div.left_sidebar ul li {vertical-align:bottom;border:0px solid yellow;text-align:left;height:15px;
+						font-size:10px;border-bottom:#cccccc 0px solid;width:100%;list-style-type:none;}
+div.left_sidebar ul li.option:hover{background:white;color:#325d5d;}
+div.left_sidebar ul li a {color:black;text-decoration:none;}
+div.left_sidebar ul li span {padding-left:2px;display:inline-block;border:red 0px solid;}
+div.left_sidebar ul li span.text {color:white;margin-top:0px;}
+div.left_sidebar ul li.option:hover span.text {color:#325d5d;}
+div.left_sidebar ul li#sidebar_header{border:red solid 0px;text-align:center;font:bold;} 
+div.left_sidebar ul li span.icon {}
+
+/*Old Left Sidebar
 div.left_sidebar {display:inline-block;width:100%;height:100%;float:left;position:relative;background:#ffffff;}
 div.left_sidebar ul {padding:0px;margin:0px;display:inline-block;float:left;width:99%;height:100%;}
-div.left_sidebar ul li {padding:0px;margin:0px;display:inline-block;float:left;width:96%;list-style-type:none;height:40px;border-bottom:1px solid #ffffff;margin-left:2%;margin-right:2%;line-height:40px;color:#ffffff;font-size:14px;border:4px double #325d5d;margin-top:6px;margin-bottom:6px;background:#7895a3;text-align:center;}
+div.left_sidebar ul li {padding:0px;margin:0px;display:inline-block;float:left;width:99%;list-style-type:none;height:40px;border-bottom:1px solid #ffffff;margin-left:0%;margin-right:0%;line-height:40px;color:#ffffff;font-size:14px;text-align:center;}
 div.left_sidebar ul li a {text-decoration:none;color:#ffffff;}
 div.left_sidebar ul li.option {cursor:pointer;}
 div.left_sidebar ul li.option:hover {background:#325d5d;border:4px double #7895a3;}	
@@ -139,10 +178,10 @@ div.left_sidebar ul li.header {text-align:center;color:#7895a3;font-weight:bold;
 div.left_sidebar ul li#toolbar_toggle {border:none;border-bottom:solid 1px;float:right;margin:0px;padding:0px;font-size:10px;background:white;color:black;height:30px;}
 div.left_sidebar ul li#toolbar_toggle span {padding:0px;display:inline;position:relative;float:right;}
 div.left_sidebar ul li#toolbar_toggle:hover {cursor:pointer;}
-
+*/
 
 /*Right Sidebar*/
-div.right_sidebar {display:inline-block;width:100%;height:100%;border:1px black;float:right;position:relative;background:#ffffff;}
+div.right_sidebar {display:inline-block;width:100%;height:100%;float:left;position:relative;background:#ffffff;}
 div.right_sidebar ul {padding:0px;margin:0px;display:inline-block;float:right;width:99%;height:100%;}
 div.right_sidebar ul li {padding:0px;margin:0px;display:inline-block;float:right;width:96%;list-style-type:none;height:40px;border-bottom:1px solid #ffffff;margin-left:2%;margin-right:2%;line-height:40px;color:#ffffff;font-size:14px;border:4px double #325d5d;margin-top:6px;margin-bottom:6px;background:#7895a3;text-align:center;}
 div.right_sidebar ul li a {text-decoration:none;color:#ffffff;}
@@ -154,13 +193,15 @@ div.right_sidebar ul li span.icon {float:right;padding-right:18px;}
 div.right_sidebar ul li.header {text-align:center;color:#7895a3;font-weight:bold;border-bottom:3px double #7895a3;width:100%;margin-left:0;margin-right:0;position:relative;top:0;left:0;margin-left:0;margin-right:0;font-size:20px;border:4px double #7895a3;background:#ffffff;}
 
 
-/*Left sidebar appointmnent*/
+/*Left sidebar appointmnent
 div.left_sidebar ul li.left_side_schedule {height:100%;display:inline-block;height:360px;}
 div.left_sidebar ul li.left_side_schedule ul {display:inline-block;width:100%;padding:0px;margin:0px;height:360px;border:0px solid #789d53;}
 div.left_sidebar ul li.left_side_schedule ul li {display:inline-block;width:100%;padding:0px;margin:0px;height:100%;list-style-type:none;border:0px solid #7895a3;height:360px;}
+*/
+
 
 /*Content View*/
-div.content_view {display:inline-block;width:100%;min-height:450px;float:left;position:relative;border-left:1px solid #cccccc;border-right:1px solid #cccccc;}
+div.content_view {display:inline-block;width:100%;min-height:450px;float:left;position:relative;border-left:0px solid #cccccc;border-right:0px solid #cccccc;}
 
 /*Sign in*/
 div.sign_in {padding:0px;margin:auto;width:100%;height:80px;background:#7895a3;}
