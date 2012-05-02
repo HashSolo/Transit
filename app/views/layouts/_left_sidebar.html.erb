@@ -19,13 +19,43 @@ Case Toolbar
 		
 		<% if is_controller_active?('patients') || is_active?('cases#show') || is_active?('history_female#show') || is_active?('history_female#show') %>	
 			
+			<ul class="round">					
+
+				<li id='sidebar_header' class=""><span id="js_toolbar_header"class="text">Header</span><span class="icon"></span></li>
+
+
+				<li id='' class="option"><%= link_to case_path(@case.id) do |l|%><span class="icon">&#8594</span><span class="text"> Overview</span></a><% end %></li>
+				
+				<li id='' class="option"><%= link_to '#' do |l|%><span class="icon">&#8594</span><span class="text"> Billing</span><% end %></li>
+				
+				
+				<li id='' class="option"><%= link_to case_patients_path(@case.id) do |l|%><span class="icon">&#8594</span><span class="text"> Patients</span><% end %></li>
+				<li id='' class="option"><span class="icon">&#8594</span><span class="text"> Diagnosis</span></li>
+				<li id='' class="option"><a href='#'><span class="icon">&#8594</span><span class="text"> Stimulation</span></a></li>
+				<li id='' class="option"><span class="icon">&#8594</span><span class="text"> Embryology</span></li>
+				<li id='' class="option"><a href='#'><span class="icon">&#8594</span><span class="text"> Appointments</span></a></li>
+				<li id='' class="option"><a href='#'><span class="icon">&#8594</span><span class="text"> Follow Up</span></a></li>
+				<li id='' class="option"><%= link_to new_case_appointment_path(@case.id) do |l| %><span class="icon">&#8594</span><span class="text"> New Appointment</span></a><% end %></li>
+			
+<%#new_case_appointments_path(@case.id)%>			
+			
+			</ul>
+			
+			
+			
+			<!--
+			
 			<% tabs = Array['Overview','Patients','Diagnosis','Stimulation','Embryology','Appointments','Follow Up'] %>
-			<% icons = Array[nil,nil,nil,nil,nil,nil,nil,] %>
+			<% icons = Array['E','u','✎','⌚','s','&#8594', '✔'] %>
+				
+				<%# '&#8595','&#8595','&#8595','&#8595','&#8595','&#8595','&#8595'] %>
 			<%#Array['E','u','✎','⌚','s','l', '✔'] %>
 			<% links = Array['/cases/'+"#{@case.id}",'/cases/'+"#{@case.id}"+'/patients','#','#','#','#','#'] %>
 			<% ids = Array["","","","","","","",] %>							
 
 		<% end %>	
+		-->
+		
 		
 <%#*************************************************************
 Clinic Toolbar
@@ -99,9 +129,12 @@ Male History Toolbar(s)
 Generates left sidebar with unordered list html
 *************************************************************%>
 
+<!--
 <ul class="round">					
 	
-	<li id='sidebar_header' class=""><span id="js_toolbar_header"class="text">Header</span></li>
+	<li id='sidebar_header' class=""><span id="js_toolbar_header"class="text">Header</span><span class="icon"> &#8594</span></li>
+
+
 		
 	<% for i in 0..(tabs.length - 1) %>
 	
@@ -116,9 +149,8 @@ Generates left sidebar with unordered list html
 	
 	<li id='' class="option"><span class="text"> Customize</span><span class="icon"> </span></li>
 	
-	
-	
-
 </ul>
+-->
+
 
 </div>

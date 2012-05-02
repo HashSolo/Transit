@@ -15,7 +15,7 @@ t.string :appointment_type
 <table>
 		
 		<tr>
-			<td class="label">Appointment clinician:</td>
+			<td class="label">Add clinician:</td>
 			<td class="value"><%= f.select(:clinician_id, options_for_select(@clinicians.collect {|g| ["#{g.first_name} #{g.last_name}", g.id]})) %></td>
 		</tr>
 		
@@ -38,6 +38,7 @@ t.string :appointment_type
 	
 </table>
 
+	<!--
 	<h2>Select Case</h2>
 	
 	<ul>
@@ -47,6 +48,7 @@ t.string :appointment_type
 	<br>
 	<% end %>
 	</ul>
+	-->
 	
 	<%= f.submit "Schedule Appointment"%>
 	

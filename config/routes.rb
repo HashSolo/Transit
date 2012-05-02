@@ -3,10 +3,11 @@ Transit::Application.routes.draw do
 	resources :sessions, :only => [:new, :create, :destroy]
 	resources :clinicians
 	resources :referrers
-	resources :appointments
-	
+	resources :appointments	
+
 	
 	resources :cases do
+	resources :appointments	
 	  resources :patients do
       resources :history_females
       resources :history_males
