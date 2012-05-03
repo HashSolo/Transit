@@ -4,37 +4,35 @@
 <p>User email: <%= @user.email %></p>
 
 <% unless @clinician.nil? %>
-<p>Clinician: <%= @clinician.first_name %> </p>
+<p>Clinician: <%= @clinician.first_name %></p>
 <% end %>
 
 <% unless @referrer.nil? %>
-<p>Referrer: <%= @referrer.first_name %> </p>
+<p>Referrer: <%= @referrer.first_name %></p>
 <% end %>
 
-<%= link_to "Return to Case Page", 		
-			cases_path %>
+<%= link_to "Return to Case Page",	cases_path %>
 
-			<script type="text/javascript">
+<script type="text/javascript">
 
-			var default_left;
-			var default_right;
+var default_left;
+var default_right;
 
-			$(document).ready(function(){
+$(document).ready(function(){
 
-				default_left=2;
-				default_right=2;
-				toolbar_config(default_left, default_right);
-				toolbar_header("Case Helper");
-				page_title("Case Summary");
-			});
+	default_left=2;
+	default_right=2;
+	set_headers("Overview", "Case Toolbar");
+	set_toolbar(default_left, default_right);
+	toolbar_type("case");
+});
 
-			$('#toolbar_toggle').click(function(){
-				toolbar_toggle(default_left, default_right);	
-			});
+$('#toolbar_toggle').click(function(){
+	toolbar_toggle(default_left, default_right);	
+});
 
-			$('#schedule_toggle').click(function(){
-				appointment_toggle(default_left, default_right);	
-			});
+$('#schedule_toggle').click(function(){
+	appointment_toggle(default_left, default_right);	
+});
 
-
-			</script>
+</script>

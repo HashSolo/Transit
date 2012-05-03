@@ -59,10 +59,9 @@ $(document).ready(function(){
 
 	default_left=2;
 	default_right=2;
-	toolbar_config(default_left, default_right);
-
-	toolbar_header("Clinic Toolbar");
-	page_title("New Referrer");
+	set_headers("New Referrer","Clinic Toolbar");
+	set_toolbar(default_left, default_right);
+	toolbar_type("clinic");
 });
 
 

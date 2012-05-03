@@ -75,10 +75,9 @@
 
 				default_left=2;
 				default_right=2;
-				toolbar_config(default_left, default_right);
-
-				toolbar_header("Case Helper");
-				page_title("Patient Summary");
+				set_headers("Patient Summary","Case Toolbar");
+				set_toolbar(default_left, default_right);
+				toolbar_type("case");
 			});
 
 

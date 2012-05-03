@@ -17,50 +17,40 @@ ids = Array.new
 Case Toolbar
 *************************************************************%>			
 		
-		<% if is_controller_active?('patients') || is_active?('cases#show') || is_active?('history_female#show') || is_active?('history_female#show') %>	
+<div id="case_toolbar" class="hidden">		
+			
+			<% if is_controller_active?('patients') || is_controller_active?('appointments') || is_active?('cases#show') || is_active?('history_female#show') || is_active?('history_female#show') %>
 			
 			<ul class="round">					
 
 				<li id='sidebar_header' class=""><span id="js_toolbar_header"class="text">Header</span><span class="icon"></span></li>
 
 
-				<li id='' class="option"><%= link_to case_path(@case.id) do |l|%><span class="icon">&#8594</span><span class="text"> Overview</span></a><% end %></li>
+				<li id='case_1' class="option"><%= link_to case_path(@case.id) do |l|%><span class="icon">&#8594</span><span class="text"> Overview</span></a><% end %></li>
 				
-				<li id='' class="option"><%= link_to '#' do |l|%><span class="icon">&#8594</span><span class="text"> Billing</span><% end %></li>
+				<li id='case_2' class="option"><%= link_to '#' do |l|%><span class="icon">&#8594</span><span class="text"> Billing</span><% end %></li>
 				
 				
-				<li id='' class="option"><%= link_to case_patients_path(@case.id) do |l|%><span class="icon">&#8594</span><span class="text"> Patients</span><% end %></li>
-				<li id='' class="option"><span class="icon">&#8594</span><span class="text"> Diagnosis</span></li>
-				<li id='' class="option"><a href='#'><span class="icon">&#8594</span><span class="text"> Stimulation</span></a></li>
-				<li id='' class="option"><span class="icon">&#8594</span><span class="text"> Embryology</span></li>
-				<li id='' class="option"><a href='#'><span class="icon">&#8594</span><span class="text"> Appointments</span></a></li>
-				<li id='' class="option"><a href='#'><span class="icon">&#8594</span><span class="text"> Follow Up</span></a></li>
-				<li id='' class="option"><%= link_to new_case_appointment_path(@case.id) do |l| %><span class="icon">&#8594</span><span class="text"> New Appointment</span></a><% end %></li>
+				<li id='case_3' class="option"><%= link_to case_patients_path(@case.id) do |l|%><span class="icon">&#8594</span><span class="text"> Patients</span><% end %></li>
+				<li id='case_4' class="option"><span class="icon">&#8594</span><span class="text"> Diagnosis</span></li>
+				<li id='case_5' class="option"><a href='#'><span class="icon">&#8594</span><span class="text"> Stimulation</span></a></li>
+				<li id='case_6' class="option"><span class="icon">&#8594</span><span class="text"> Embryology</span></li>
+				<li id='case_7' class="option"><a href='#'><span class="icon">&#8594</span><span class="text"> Appointments</span></a></li>
+				<li id='case_8' class="option"><a href='#'><span class="icon">&#8594</span><span class="text"> Follow Up</span></a></li>
+				<li id='case_9' class="option"><%= link_to new_case_appointment_path(@case.id) do |l| %><span class="icon">&#8594</span><span class="text"> New Appointment</span></a><% end %></li>
 			
 <%#new_case_appointments_path(@case.id)%>			
 			
-			</ul>
-			
-			
-			
-			<!--
-			
-			<% tabs = Array['Overview','Patients','Diagnosis','Stimulation','Embryology','Appointments','Follow Up'] %>
-			<% icons = Array['E','u','✎','⌚','s','&#8594', '✔'] %>
-				
-				<%# '&#8595','&#8595','&#8595','&#8595','&#8595','&#8595','&#8595'] %>
-			<%#Array['E','u','✎','⌚','s','l', '✔'] %>
-			<% links = Array['/cases/'+"#{@case.id}",'/cases/'+"#{@case.id}"+'/patients','#','#','#','#','#'] %>
-			<% ids = Array["","","","","","","",] %>							
+	</ul>
+	
+	<% end %>
 
-		<% end %>	
-		-->
-		
+</div>		
 		
 <%#*************************************************************
 Clinic Toolbar
 *************************************************************%>
-
+<div id="clinic_toolbar" class="hidden">
 		<% if is_controller_active?('clinicians') || is_controller_active?('referrers') %>
 			
 			<% tabs = Array['Clinician list','New clinician','New referrer'] %>
@@ -69,12 +59,13 @@ Clinic Toolbar
 			<% ids = Array[nil,nil,nil] %>
 			
 		<% end %>
-		
+</div>
 		
 <%#*************************************************************
 Calendar Toolbar... this sidebar is unique and needs work
 *************************************************************%>
-					
+<div id="calendar_toolbar" class="hidden">
+			
 		<% if is_active?('appointments#index') %>
 			<div class="appointment_matrix">
 				<h1>Intelligent Scheduler</h1>
@@ -94,11 +85,13 @@ Calendar Toolbar... this sidebar is unique and needs work
 			</ul>
 		<% end %>
 		
-
+</div>
 
 <%#*************************************************************
 Female History Toolbar(s)
 *************************************************************%>
+
+<div id="female_toolbar" class="hidden">
 
 <% if is_active?('history_females#new') || is_active?('history_females#edit') %>
 
@@ -111,9 +104,13 @@ Female History Toolbar(s)
 
 <% end %>
 
+</div>
+
 <%#*************************************************************
 Male History Toolbar(s)
 *************************************************************%>
+
+<div id="male_toolbar" class="hidden">
 
 <% if is_active?('history_males#new') || is_active?('history_males#edit') %>
 
@@ -125,32 +122,25 @@ Male History Toolbar(s)
 
 <% end %>
 
-<%#*************************************************************
-Generates left sidebar with unordered list html
-*************************************************************%>
-
-<!--
-<ul class="round">					
-	
-	<li id='sidebar_header' class=""><span id="js_toolbar_header"class="text">Header</span><span class="icon"> &#8594</span></li>
-
-
-		
-	<% for i in 0..(tabs.length - 1) %>
-	
-		<% if links[i].nil? %>
-		<li id='<%= "#{ids[i]}" %>' class="option"><span class="text"> <%="#{tabs[i]}"%></span><span class="icon"> <%="#{icons[i]}"%></span></li>
-		<% elsif %>
-		<li id='<%= "#{ids[i]}" %>' class="option"><a href= <%="#{links[i]}"%> ><span class="text"> <%="#{tabs[i]}"%></span><span class="icon"> <%="#{icons[i]}"%></span></a></li>
-		<% end %>
-	
-	<% end %>
-	
-	
-	<li id='' class="option"><span class="text"> Customize</span><span class="icon"> </span></li>
-	
-</ul>
--->
-
+</div>
 
 </div>
+
+
+<script type="text/javascript">
+
+function toolbar_type(type) {
+//	set_headers("toolbar type success","toolbar type success");
+//	type = type.toString();
+	//$('#case_toolbar').hide();
+	$('#clinic_toolbar').addClass("hidden");
+	$('#calendar_toolbar').addClass("hidden");
+	$('#female_toolbar').addClass("hidden");
+	$('#male_toolbar').addClass("hidden");
+	$('#'+type.toString()+'_toolbar').removeClass("hidden");	
+	
+};
+
+
+</script>
+

@@ -66,12 +66,11 @@ var default_right;
 
 $(document).ready(function(){
 
-	default_left=2;
+	default_left=0;
 	default_right=2;
-	toolbar_config(default_left, default_right);
-	
-	toolbar_header("Toolbar");
-	page_title("Case Page");
+	set_headers("Case Page","");
+	set_toolbar(default_left, default_right);
+	toolbar_type("");
 	
 	
 });

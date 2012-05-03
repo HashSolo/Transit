@@ -15,9 +15,16 @@ t.string :appointment_type
 <table>
 		
 		<tr>
-			<td class="label">Add clinician:</td>
+			<td class="label">Select clinician:</td>
 			<td class="value"><%= f.select(:clinician_id, options_for_select(@clinicians.collect {|g| ["#{g.first_name} #{g.last_name}", g.id]})) %></td>
 		</tr>
+		
+		<!--
+		<tr>
+			<td class="label">Select patient:</td>
+			<td class="value"><%= f.select(:patient_id, options_for_select(@patients.collect {|g| ["#{g.first_name} #{g.last_name}", g.id]})) %></td>
+		</tr>
+		-->
 		
 		<tr>	
 			<td class="label">Date:</td>	
@@ -31,24 +38,41 @@ t.string :appointment_type
 		</tr>
 	
 		<tr><td class="label">Appointment Type</td> 
-				<td class="value"><%= f.radio_button :appointment_type, "Consultation" %>
-				<%= label :appointment_type, "Consultation"%>
-				<%= f.radio_button :appointment_type, "Hormone Treatment" %>
-				<%= label :appointment_type, "Hormone Treatment"%></td></tr>
+				<td class="value">
+				<div class="fix"><%= f.radio_button :appointment_type, "Initial Consultation" %>
+				<%= label :appointment_type, "Initial Consultation"%></div>
+				<div class="fix"><%= f.radio_button :appointment_type, "Financial Consultation" %>
+				<%= label :appointment_type, "Financial Consultation"%></div>
+				<div class="fix"><%= f.radio_button :appointment_type, "Day 3 Blood Test" %>
+				<%= label :appointment_type, "Day 3 Blood Test"%></div>
+				<div class="fix"><%= f.radio_button :appointment_type, "Saline Sonogram" %>
+				<%= label :appointment_type, "Saline Sonogram"%></div>
+				<div class="fix"><%= f.radio_button :appointment_type, "HSG" %>
+				<%= label :appointment_type, "HSG"%></div>
+				<div class="fix"><%= f.radio_button :appointment_type, "IVF/IUI Medication Class" %>
+				<%= label :appointment_type, "IVF/IUI Medication Class"%></div>
+				<div class="fix"><%= f.radio_button :appointment_type, "Medication Insurance Review" %>
+				<%= label :appointment_type, "Medication Insurance Review"%></div>
+				<div class="fix"><%= f.radio_button :appointment_type, "Andrology" %>
+				<%= label :appointment_type, "Andrology"%></div>
+				<div class="fix"><%= f.radio_button :appointment_type, "Retrieval" %>
+				<%= label :appointment_type, "Retrieval"%></div>
+				<div class="fix"><%= f.radio_button :appointment_type, "Transfer" %>
+				<%= label :appointment_type, "Transfer"%></div>
+				</td></tr>
 	
 </table>
 
-	<!--
 	<h2>Select Case</h2>
 	
 	<ul>
-	<% @cases.each do |c|%>
+	<% @patients.each do |c|%>
 	
-	<il><%= " ID: #{c.id}, User Account: #{User.find(c.user_id).email}"%>			</il>
+	<il><%= " ID: #{c.id}, Name: #{c.first_name} #{c.last_name}"%></il>
 	<br>
 	<% end %>
 	</ul>
-	-->
+	
 	
 	<%= f.submit "Schedule Appointment"%>
 	
@@ -64,9 +88,11 @@ var default_right;
 
 $(document).ready(function(){
 
-	default_left=3;
-	default_right=1;
-	toolbar_config(default_left, default_right);
+	default_left=2;
+	default_right=2;
+	set_headers("New Appointment","");
+	set_toolbar(default_left, default_right);
+	toolbar_type("case");
 });
 
 $('#toolbar_toggle').click(function(){
@@ -76,6 +102,5 @@ $('#toolbar_toggle').click(function(){
 $('#schedule_toggle').click(function(){
 	appointment_toggle(default_left, default_right);	
 });
-
 
 </script>

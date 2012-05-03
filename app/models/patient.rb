@@ -6,7 +6,7 @@ class Patient < ActiveRecord::Base
   has_one :history_male
   
   has_and_belongs_to_many :cases
-  
+  has_and_belongs_to_many :appointments  
   
   validates :first_name, 	:presence => true
   validates :last_name, 	:presence => true

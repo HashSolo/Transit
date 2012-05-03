@@ -25,14 +25,14 @@ Upper header Section: includes Transit home icon and user icon
 						
 				<span> 
 				
-					<span id="calendar_tab" class="tab <%= is_state_active?('appointments','index') %> left">
+			<!--		<span id="calendar_tab" class="tab <%= is_state_active?('appointments','index') %> left">
 
 						<ul>
 									<li><%= link_to appointments_path do |l| %><span class="icon">⌚</span>   <span class="">Calendar</span><% end %></li>
 									<li class="calendar_menu"><%= link_to '#' do |l| %><span>Daily</span><% end %></li>
 
 									<li class="calendar_menu"><%= link_to '#' do |l| %><span>Full</span><% end %></li>
-				
+				-->
 				
 				
 				
@@ -224,22 +224,7 @@ Sub-header Section: organized into 3 components
 <script type="text/javascript">
 
 /**********************************************************************
-Header module: function set_headers sets the title and toolbar header
-of a given page
-**********************************************************************/
-function set_headers(title, header){
-	page_title(title);
-	toolbar_header(header);
-};
-function page_title(title) {
-	$('#js_page_title').html(title);
-};
-function toolbar_header(header) {
-	$('#js_toolbar_header').html(header);
-};
-
-/**********************************************************************
-Drop down lists in mid-header section
+Drop down list JQuery
 **********************************************************************/
 $('.log_out').hover(function(){
 	$('.logout_menu').show(300);
@@ -270,29 +255,38 @@ $('#search_tab').hover(function(){
 }	,function(){
 	  $(".search_menu").hide(300);
 	});
-	
-/*	
-$('.log_out').hover(function(){
-	$('.menu').show(100);
-}	,function(){
-	  $(".menu").hide(100);
-	});
-*/	
+
+/**********************************************************************
+Header module: function set_headers sets the title and toolbar header
+when a page loads
+**********************************************************************/
+function set_headers(title, header){
+	page_title(title);
+	toolbar_header(header);
+};
+function page_title(title) {
+	$('#js_page_title').html(title);
+};
+function toolbar_header(header) {
+	$('#js_toolbar_header').html(header);
+};
+
 	
 /**********************************************************************
 Interactive toolbar module: allows user to interact with the toolbars
 **********************************************************************/
 /**********************************************************************
-toolbar_config function: takes left and right sidebar parameters to set the 
-widths of the left and right toolbars, and the middle content
+toolbar_config function: takes left and right sidebar parameters to modify application.html classes; this sets the widths of the left and right 
+toolbars, and the middle content 
 **********************************************************************/
 function toolbar_config(left, right){
 
 	$('#left_sidebar').removeClass("hidden");
+	//$('#left_sidebar').addClass("alpha");
 	$('#right_sidebar').removeClass("hidden");	
 	$('#middle_content').removeClass("hidden");
 
-//left toolbar
+	//left toolbar
 	for (var i = 1; i <= 12; i++) {
 		if (i == left) continue;
 		grid_left = "grid_" + i.toString();
@@ -301,9 +295,12 @@ function toolbar_config(left, right){
 
 	if (left == 0) {
 		$('#left_sidebar').addClass("hidden");
+	//	$('#left_sidebar').removeClass("alpha");
+		$('#middle_content').addClass("alpha");
 	} else {
 	grid_left = "grid_" + left.toString();
 		$('#left_sidebar').addClass(grid_left);
+		$('#middle_content').removeClass("alpha");
 	}
 
 	//right toolbar
@@ -315,14 +312,15 @@ function toolbar_config(left, right){
 
 	if (right == 0) {
 		$('#right_sidebar').addClass("hidden");
+		$('#middle_content').addClass("omega");
 	} else {
 	grid_right = "grid_" + right.toString();
 		$('#right_sidebar').addClass(grid_right);
+		$('#middle_content').removeClass("omega");
 	}
 
 	//middle content
 	middle = 12 - (left + right);
-	//right toolbar
 	for (var i = 1; i <= 12; i++) {
 		if (i == middle) continue;
 		grid_middle = "grid_" + i.toString();
@@ -337,6 +335,25 @@ function toolbar_config(left, right){
 	}
 
 };
+
+/**********************************************************************
+set_toolbar: sets the left and right toolbars when a page first loads;
+hides toolbar headers if necessary, then calls toolbar_config
+**********************************************************************/
+function set_toolbar(left, right) {
+	
+	if (left == 0) {
+		$('#toolbar_toggle').hide();		
+	} else {
+		$('#toolbar_toggle').show();
+	}
+	if (right == 0) {
+		$('#schedule_toggle').hide();
+	} else {
+		$('#schedule_toggle').show();
+	}
+	toolbar_config(left,right);
+}
 
 /**********************************************************************
 toolbar_toggle and appointment_toggle functions: toggle the left and 
@@ -401,8 +418,5 @@ function appointment_toggle(left, right) {
 	}
 
 }
-
-
-
 
 </script>

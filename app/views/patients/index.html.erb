@@ -133,12 +133,9 @@ $(document).ready(function(){
 
 	default_left=2;
 	default_right=2;
-	toolbar_config(default_left, default_right);
-	
-	case_id = document.getElementById("case_id").innerHTML;
-	case_id = "Case: "+case_id 
-	
-	set_headers("Patients", case_id);
+	set_headers("Patient Page","Case Toolbar");
+	set_toolbar(default_left, default_right);
+	toolbar_type("case");
 	//<%="Case: #{@case.id}"%>
 });
 

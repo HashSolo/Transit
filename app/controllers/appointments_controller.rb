@@ -30,6 +30,8 @@ class AppointmentsController < ApplicationController
   
   def new
     @title = "Add New Employee"
+    @case = Case.find(params[:case_id])
+    @patients = @case.patients
     @appointment = Appointment.new
     @clinicians = Clinician.all
     @cases = Case.all
@@ -37,6 +39,11 @@ class AppointmentsController < ApplicationController
   
   def create
     @appointment = Appointment.new(params[:appointment])
+    #if (!params[:case_id].nil?)
+    #  @case = Case.find(:case_id)
+    #end
+    #@case = Case.find(:case_id)
+    
     
     if @appointment.save
       @title = "New Appointment Scheduled"
