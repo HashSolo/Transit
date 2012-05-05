@@ -32,7 +32,7 @@ class CliniciansController < ApplicationController
 	     
   	    if @clinician.save
   	      flash[:success] = "New Clinician Successfully Created"
-  	      redirect_to @clinician
+  	      redirect_to clinicians_path
   	    else
   	      flash[:failure] = "Invalid Clinician information"
   	      @title = "Error"

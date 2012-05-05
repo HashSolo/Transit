@@ -1,0 +1,28 @@
+Clinician A
+Clinician B
+
+<script type="text/javascript">
+
+var default_left;
+var default_right;
+
+$(document).ready(function(){
+
+	default_left=2;
+	default_right=2;
+	set_headers("Clinic Page","Clinic Toolbar");
+	set_toolbar(default_left, default_right);
+	toolbar_type("clinic");
+	
+	
+});
+
+$('#toolbar_toggle').click(function(){
+	toolbar_toggle(default_left, default_right);	
+});
+
+$('#schedule_toggle').click(function(){
+	appointment_toggle(default_left, default_right);	
+});
+
+</script>

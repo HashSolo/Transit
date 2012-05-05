@@ -1,0 +1,45 @@
+<div class="appointment_show">
+	
+	<table>
+
+			<tr>
+				<td class="label">Patients</td>
+				<td class="value">
+					<ul>
+						<% @appointment.patients.each do |patient| %>
+						<li><%="#{patient.display_name}"%></li>
+						<br>	
+						<% end %>	
+					</ul>
+				</td>
+
+			</tr>
+			
+			<tr>
+				<td class="label">Clinicians</td>
+				<td class="value">
+					<ul>
+						<% @appointment.clinicians.each do |clinician| %>
+						<li><%="#{clinician.display_name}"%></li>
+						<br>	
+						<% end %>	
+					</ul>
+				</td>
+
+			</tr>
+
+			<tr>	
+				<td class="label">Date:</td>	
+				<td class="value">
+					<%= "#{@appointment.date_and_time}" %></td>
+			</tr>
+
+			<tr><td class="label">Appointment Type</td> 
+					<td class="value">
+						<%="#{@appointment.appointment_type}"%>
+					</td></tr>
+
+
+	</table>
+	
+</div>

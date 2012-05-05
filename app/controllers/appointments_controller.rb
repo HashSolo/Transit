@@ -24,35 +24,45 @@ class AppointmentsController < ApplicationController
   
   def show
     @appointment = Appointment.find(params[:id])
+    
     @datetime = @appointment.date_and_time
     @title = "Appointment for #{@datetime.strftime("%Y-%m-%d %H:%M:%S")}"
+  end
+  
+  #as implemented at http://ramblings.gibberishcode.net/archives/rails-has-and-belongs-to-many-habtm-demystified/17
+  def get_all_patients
+    @case = Case.find(params[:case_id])
+    @patients = @case.patients
+  end
+  
+  def get_all_clinicians
+    @clinicians = Clinician.all
   end
   
   def new
     @title = "Add New Employee"
     @case = Case.find(params[:case_id])
-    @patients = @case.patients
     @appointment = Appointment.new
-    @clinicians = Clinician.all
-    @cases = Case.all
+
+    
+    get_all_patients
+    get_all_clinicians
   end
   
   def create
     @appointment = Appointment.new(params[:appointment])
-    #if (!params[:case_id].nil?)
-    #  @case = Case.find(:case_id)
-    #end
-    #@case = Case.find(:case_id)
-    
+    @case = Case.find(params[:case_id])
+    @case.appointments << @appointment
+    get_all_patients
+    get_all_clinicians
     
     if @appointment.save
       @title = "New Appointment Scheduled"
-      redirect_to appointments_path
+      #render 'show'
+      redirect_to case_path(@case)
     else
       @title = "Error"
       @appointment = Appointment.new
-      @clinicians = Clinician.all
-      @cases = Case.all
       render 'new'
     end
   end

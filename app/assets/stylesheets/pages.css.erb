@@ -17,7 +17,7 @@ div#debug {width:100%;background:yellow;}
 h1.admin_title {margin:24px;margin-top:12px;border-bottom:1px solid #cccccc;}
 
 /*content view*/
-div.content_view {border:1px red solid;width:100%;padding-top:0px;height:100%;min-height:400px;}
+div.content_view {border:0px red solid;width:100%;padding-top:0px;height:100%;min-height:400px;}
 
 /*Application html
 div#left_sidebar {
@@ -36,14 +36,14 @@ throughout the views, it is designed to be as useful and interative as possible.
 ******************************************************************************/
 /*Upper header section*/
 header {padding:0px;margin:0px;display:inline-block;width:100%;position:relative;}
-header nav.header {height:auto;background:#7895a3;display:block;}
-header nav.header span.home_icon {display:inline-block;border: solid 0px #000000;color:#ffffff;font-size:40px;width:16%;vertical-align:bottom;}
-header nav.header span.home_icon h2 {font-size:26px;display:inline-block;}
+header nav.header {height:25px;;background:#7895a3;display:block;}
+header nav.header span.home_icon {top:1px;left:2px;position:absolute;display:inline-block;border: solid 0px #000000;color:#ffffff;font-size:20px;width:16%;vertical-align:bottom;}
+header nav.header span.home_icon h2 {font-size:16px;display:inline-block;}
 header nav.header span.home_icon a {text-decoration:none;color:#ffffff;}
-header nav.header span.log_out {border:solid 0px;font-size:12px;display:inline;float:right;
+header nav.header span.log_out {border:solid 0px;font-size:9px;display:inline;float:right;
 								z-index:1;position:absolute;padding:0px;vertical-align:bottom;
-								left:820px;}
-header nav.header span.log_out ul li.logout_menu {display:none;font-size:12;text-align:left;}
+								right:2px;}
+header nav.header span.log_out ul li.logout_menu {display:none;font-size:9px;text-align:left;}
 header nav.header span.log_out ul li.logout_menu span {}
 header nav.header span.log_out ul li.logout_menu:hover {background:#325d5d;}
 
@@ -55,26 +55,28 @@ header nav.header span.log_out ul li.menu {display:none;font-size:10px;}
 header nav.header span.log_out ul li a span {padding:0px;}
 /*Middle header section with primary Transit tabs*/
 header div.mid_header {vertical-align:bottom;z-index:-1;padding-top:1px;position:relative;
-						width:100%;height:22px;background:#325d5d;}
-header span.tab {border:red solid 1px;margin-top:2px;background:#325d5d;vertical-align:top;
+						width:100%;height:45px;background:#325d5d;}
+header span.tab {border:red solid 0px;margin-top:2px;background:#325d5d;
 				text-align:center;display:inline-block;width:100px%;font-size:16px;padding:0px;
-				z-index:1;top:47px;position:absolute;color:#ffffff;}
+				z-index:1;top:37px;position:absolute;color:#ffffff;}
+header span.tab#navigation_tab{border:0px red solid;}
 header span.tab#navigation_tab{left:50px;}
 header span.tab#calendar_tab {left:200px;}
 header span.tab#case_tab {left:370px;}
 header span.tab#clinic_tab {left:510px;}
 header span.tab#search_tab {left:650px;}
-header span.tab.clock {margin-top:0px;font-size:10px;font-family:courier;float:right;
+header span.tab.clock {top:25px;font-size:10px;font-family:courier;float:right;
 						left:830px;text-align:right;vertical-align:top;}
 header span.tab span.navigation_tool:hover {}
 header span.tab a {text-decoration:none;color:#ffffff;}
-header span.tab ul {z-index:1;border: solid 0px black;}
+header span.tab ul {z-index:1;position:relative;border: solid 0px black;}
 header span.tab ul li {list-style-type:none}
 header span.tab ul li:hover {list-style-type:none;}
 header span.tab ul li.calendar_menu, 
 header span.tab ul li.case_menu, 
 header span.tab ul li.clinic_menu, 
-header span.tab ul li.search_menu {display:none;font-size:12px;text-align:left;} 
+header span.tab ul li.search_menu {position:absolute;width:200px;top:30px;left:0px;background:#325d5d;display:none;font-size:16px;text-align:left;} 
+header span.tab ul li.calendar_menu {}
 header span.tab ul li.calendar_menu:hover, 
 header span.tab ul li.case_menu:hover, 
 header span.tab ul li.clinic_menu:hover, 
@@ -158,7 +160,7 @@ div.left_sidebar div#clinic_toolbar,
 div.left_sidebar div#calendar_toolbar,
 div.left_sidebar div#female_toolbar,
 div.left_sidebar div#male_toolbar {}
-div.left_sidebar ul {background:#325d5d;width:100%;min-height:500px;padding:0px;margin:0px;display:inline-block;}
+div.left_sidebar ul {background:#111111;width:100%;min-height:500px;padding:0px;margin:0px;display:inline-block;}
 div.left_sidebar ul li {vertical-align:bottom;border:0px solid yellow;text-align:left;height:15px;
 						font-size:10px;border-bottom:#cccccc 0px solid;width:100%;list-style-type:none;}
 div.left_sidebar ul li.option:hover{background:white;}
@@ -167,6 +169,10 @@ div.left_sidebar ul li a {color:black;text-decoration:none;}
 div.left_sidebar ul li span {color:white;padding-left:2px;display:inline-block;border:red 0px solid;}
 div.left_sidebar ul li span.text {margin-top:0px;}
 div.left_sidebar ul li.option span.icon {font-size:8px;}
+/*
+div.left_sidebar ul li.option.selected {background:white}
+div.left_sidebar ul li.option.selected span.text {color:#325d5d;}
+*/
 div.left_sidebar ul li.option:hover span.text {color:#325d5d;}
 div.left_sidebar ul li#sidebar_header{border:red solid 0px;text-align:center;font:bold;} 
 div.left_sidebar ul li span.icon {}
@@ -189,6 +195,9 @@ div.left_sidebar ul li#toolbar_toggle:hover {cursor:pointer;}
 
 /*Right Sidebar*/
 div.right_sidebar {display:inline-block;width:100%;height:100%;float:left;position:relative;background:#ffffff;}
+div.right_sidebar ul {min-height:500px;font-size:12px;border:1px solid red;list-style-type:none;}
+
+/*
 div.right_sidebar ul {padding:0px;margin:0px;display:inline-block;float:right;width:99%;height:100%;}
 div.right_sidebar ul li {padding:0px;margin:0px;display:inline-block;float:right;width:96%;list-style-type:none;height:40px;border-bottom:1px solid #ffffff;margin-left:2%;margin-right:2%;line-height:40px;color:#ffffff;font-size:14px;border:4px double #325d5d;margin-top:6px;margin-bottom:6px;background:#7895a3;text-align:center;}
 div.right_sidebar ul li a {text-decoration:none;color:#ffffff;}
@@ -198,7 +207,7 @@ div.right_sidebar ul li.option.selected {background:#325d5d;border:4px double #7
 div.right_sidebar ul li span.text {float:left;padding-right:18px;}
 div.right_sidebar ul li span.icon {float:right;padding-right:18px;}
 div.right_sidebar ul li.header {text-align:center;color:#7895a3;font-weight:bold;border-bottom:3px double #7895a3;width:100%;margin-left:0;margin-right:0;position:relative;top:0;left:0;margin-left:0;margin-right:0;font-size:20px;border:4px double #7895a3;background:#ffffff;}
-
+*/
 
 /*Left sidebar appointmnent
 div.left_sidebar ul li.left_side_schedule {height:100%;display:inline-block;height:360px;}
@@ -239,7 +248,8 @@ ul.index li a{color:white;text-decoration:none;font-size:25px;}
 				font-size:45px;color:white;cursor:pointer}*/
 
 /*Patient Index*/
-ul.patient_index li{list-style-type:none;margin:15px;padding:10px;background:#7895a3;border:4px double #325d5d;}
+$lighter: #7895a3;
+ul.patient_index li{list-style-type:none;margin:15px;padding:10px;background: $lighter;border-bottom:4px double #325d5d;}
 ul.patient_index li a {text-decoration:none;}
 ul.patient_index li span{display:inline-block;vertical-align:top;}
 ul.patient_index li span.left{width:20%;border:2px solid #325d5d;}
@@ -260,6 +270,7 @@ ul.patient_index li span.left span.icon_new{color:#325d5d;margin-left:25%;font-s
 ul.patient_index li span.left:hover span.icon_new{color:#7895a3;margin-left:25%;font-size:90px;}
 
 /*Case Index*/
+
 ul.case_index li{list-style-type:none;margin:15px;padding:10px;background:#7895a3;border:4px double #325d5d;}
 ul.case_index li a {text-decoration:none;}
 ul.case_index li span{display:inline-block;vertical-align:top;}

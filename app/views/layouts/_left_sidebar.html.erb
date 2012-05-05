@@ -19,9 +19,11 @@ Case Toolbar
 		
 <div id="case_toolbar" class="hidden">		
 			
-			<% if is_controller_active?('patients') || is_controller_active?('appointments') || is_active?('cases#show') || is_active?('history_female#show') || is_active?('history_female#show') %>
+			<% if is_controller_active?('patients') || is_active?('cases#show') || is_active?('history_females#show') || is_active?('history_males#show') %>
 			
-			<ul class="round">					
+			<%#is_active?('appointments#new')%>
+			
+			<ul class="">					
 
 				<li id='sidebar_header' class=""><span id="js_toolbar_header"class="text">Header</span><span class="icon"></span></li>
 
@@ -53,6 +55,19 @@ Clinic Toolbar
 <div id="clinic_toolbar" class="hidden">
 		<% if is_controller_active?('clinicians') || is_controller_active?('referrers') %>
 			
+			<ul class="">
+				
+				<li id='sidebar_header' class=""><span id="js_toolbar_header"class="text">Header</span><span class="icon"></span></li>
+
+
+				<li id='case_1' class="option"><%= link_to clinicians_path do |l|%><span class="icon">&#8594</span><span class="text">Clinic Overview</span></a><% end %></li>
+				<li id='case_2' class="option"><%= link_to new_clinician_path do |l|%><span class="icon">&#8594</span><span class="text"> Add Clinician</span><% end %></li>
+				<li id='case_3' class="option"><%= link_to new_referrer_path do |l|%><span class="icon">&#8594</span><span class="text"> Add Referrer</span><% end %></li>
+				<li id='case_4' class="option"><%= link_to '#' do |l|%><span class="icon">&#8594</span><span class="text"> Chat</span><% end %></li>
+				
+			</ul>
+			
+			
 			<% tabs = Array['Clinician list','New clinician','New referrer'] %>
 			<% icons = Array[nil,nil,nil] %>
 			<% links = Array['/clinicians','/clinicians/new','/referrers/new'] %>
@@ -66,7 +81,7 @@ Calendar Toolbar... this sidebar is unique and needs work
 *************************************************************%>
 <div id="calendar_toolbar" class="hidden">
 			
-		<% if is_active?('appointments#index') %>
+		<%# if is_active?('appointments#index') %>
 			<div class="appointment_matrix">
 				<h1>Intelligent Scheduler</h1>
 				<table>
@@ -79,11 +94,7 @@ Calendar Toolbar... this sidebar is unique and needs work
 				</div>
 			</div>
 			
-			<ul>
-				<li class="option <%= is_state_active?('appointments','index') %>"><%= link_to appointments_path do |f| %><span class="text">View Today's Schedule</span><span class="icon">⌚</span><% end %></li>
-				<li class="option <%= is_state_active?('appointments','new') %>"><%= link_to new_appointment_path do |f| %><span class="text">New Appointment</span><span class="icon">⊕</span><% end %></li>
-			</ul>
-		<% end %>
+		<%# end %>
 		
 </div>
 
@@ -132,7 +143,7 @@ Male History Toolbar(s)
 function toolbar_type(type) {
 //	set_headers("toolbar type success","toolbar type success");
 //	type = type.toString();
-	//$('#case_toolbar').hide();
+	$('#case_toolbar').addClass("hidden");
 	$('#clinic_toolbar').addClass("hidden");
 	$('#calendar_toolbar').addClass("hidden");
 	$('#female_toolbar').addClass("hidden");

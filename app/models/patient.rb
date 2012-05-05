@@ -12,5 +12,9 @@ class Patient < ActiveRecord::Base
   validates :last_name, 	:presence => true
   validates :date_of_birth, 	:presence => true
   validates :sex, 	:presence => true
+  
+  def display_name
+    "#{first_name} #{last_name}"
+  end
 
 end

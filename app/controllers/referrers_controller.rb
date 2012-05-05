@@ -17,7 +17,7 @@ class ReferrersController < ApplicationController
     @referrer = Referrer.new(params[:referrer])
     if @referrer.save
 	    flash[:success] = "New Referrer Successfully Created"
-	    redirect_to @referrer
+	    redirect_to clinicians_path
 	  else
 	    @title = "Error"
 	    render 'new'

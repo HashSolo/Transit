@@ -2,18 +2,39 @@
 	
 	<ul>
 		
-		<li class="option">	Appointment</li>
+		<% if (@appointments.nil?) %>
+			No appointments scheduled
 		
-		<li class="option">	Appointment</li>
+		<% else %>
+			<% @appointments.each do |appointment| %>
 		
-		<li class="option">	Appointment</li>
+				<li class="option">
+				<%="#{appointment.appointment_type} at #{appointment.date_and_time}"%>
+				<br>
+				with
+				<br> 
+				<% appointment.clinicians.each do |clinician| %>
+					<% if clinician == appointment.clinicians.last %>
+						<%= "#{clinician.display_name}"%>
+					<% else %>
+						<%= "#{clinician.display_name}, "%>
+					<% end %>
+				<% end %>
+				<br>
+				Patients:
+				<br>
+				<% appointment.patients.each do |patient| %>
+					<% if patient == appointment.patients.last %>
+						<%= "#{patient.display_name}"%>
+					<% else %>
+						<%= "#{patient.display_name}, "%>
+					<% end %>
+				<% end %>
+				</li>
 		
-		<li class="option">	Appointment</li>
+			<% end %>
 		
-		<li class="option">	Appointment</li>
-		
-		<li class="option">	Appointment</li>
-		
+		<% end %>
 		
 	</ul>
 	

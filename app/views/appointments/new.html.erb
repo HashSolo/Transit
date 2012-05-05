@@ -10,21 +10,39 @@ t.string :appointment_type
 
 %>
 
-<%= form_for @appointment do |f| %>
+<%= form_for [@case, @appointment] do |f| %>
 
 <table>
 		
 		<tr>
-			<td class="label">Select clinician:</td>
-			<td class="value"><%= f.select(:clinician_id, options_for_select(@clinicians.collect {|g| ["#{g.first_name} #{g.last_name}", g.id]})) %></td>
+			<td class="label">Clinicians</td>
+			<td class="value">
+				<% @clinicians.each do |clinician|%>
+					<%= check_box_tag(
+						"appointment[clinician_list][#{clinician.id}]",
+						"1",
+						@appointment.clinicians.detect{|d| d == clinician}
+					)%>
+					<%= "#{clinician.display_name}"%><br>
+				<% end %>
+			</td>
+			
 		</tr>
-		
-		<!--
+				
 		<tr>
-			<td class="label">Select patient:</td>
-			<td class="value"><%= f.select(:patient_id, options_for_select(@patients.collect {|g| ["#{g.first_name} #{g.last_name}", g.id]})) %></td>
+			<td class="label">Patients</td>
+			<td class="value">
+				<% @patients.each do |patient|%>
+					<%= check_box_tag(
+						"appointment[patient_list][#{patient.id}]",
+						"1",
+						@appointment.patients.detect{|d| d == patient}
+					)%>
+					<%= "#{patient.display_name}"%><br>
+				<% end %>
+			</td>
+			
 		</tr>
-		-->
 		
 		<tr>	
 			<td class="label">Date:</td>	
@@ -62,17 +80,6 @@ t.string :appointment_type
 				</td></tr>
 	
 </table>
-
-	<h2>Select Case</h2>
-	
-	<ul>
-	<% @patients.each do |c|%>
-	
-	<il><%= " ID: #{c.id}, Name: #{c.first_name} #{c.last_name}"%></il>
-	<br>
-	<% end %>
-	</ul>
-	
 	
 	<%= f.submit "Schedule Appointment"%>
 	

@@ -1,4 +1,5 @@
 class CasesController < ApplicationController
+  before_filter :load_schedule, :only => [:show, :edit]
   
   def index
 	  @title = "Case Lookup"
@@ -12,6 +13,9 @@ class CasesController < ApplicationController
     @referrer = Referrer.find(@case.referrer_id)
     @user = User.find(@case.user_id)
     @patients = @case.patients.all
+    
+    @appointments = @case.appointments
+    
   end
 
   def new
@@ -106,6 +110,12 @@ class CasesController < ApplicationController
 		Case.find_by_id(params[:id]).destroy
 		flash[:success] = "Case destroyed."
 		redirect_to cases_path
+  end
+  
+  private
+  
+  def load_schedule
+  @appointments = Appointment.where(:case_id => params[:id])
   end
 
 end

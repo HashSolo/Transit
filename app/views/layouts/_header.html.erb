@@ -16,23 +16,15 @@ Upper header Section: includes Transit home icon and user icon
 				
 					<ul>
 						<li><%= link_to '#' do |l| %><span class=""><%= "#{current_user.email}"%></span> <span class="icon">&#8595</span>  <% end %></li>
-						<li class="logout_menu"><%= link_to '#' do |l| %><span>Settings</span><% end %></li>
+						<li class="logout_menu"><%= link_to edit_user_path(current_user) do |l| %><span>Settings</span><% end %></li>
 
-						<li class="logout_menu"><%= link_to '#' do |l| %><span>Logout</span><% end %></li>
+						<li class="logout_menu"><%= link_to new_session_path do |l| %><span>Logout</span><% end %></li>
 						
 						
 					</ul>
 						
 				<span> 
-				
-			<!--		<span id="calendar_tab" class="tab <%= is_state_active?('appointments','index') %> left">
-
-						<ul>
-									<li><%= link_to appointments_path do |l| %><span class="icon">⌚</span>   <span class="">Calendar</span><% end %></li>
-									<li class="calendar_menu"><%= link_to '#' do |l| %><span>Daily</span><% end %></li>
-
-									<li class="calendar_menu"><%= link_to '#' do |l| %><span>Full</span><% end %></li>
-				-->
+			
 				
 				
 				
@@ -61,7 +53,7 @@ Middle header Section: includes main tab toolbar
 	Tab I: Navigation Tool
 	***************************************************************%>
 	
-	<span id="navigation_tab" class="tab">
+	<span id="navigation_tab" class="tab round">
 		<span class="navigation_tool">
 		
 		<%= link_to '#' do |l| %>	
@@ -79,17 +71,13 @@ Middle header Section: includes main tab toolbar
 	Tab II: Calendar tab
 	***************************************************************%>
 
-	<span id="calendar_tab" class="tab <%= is_state_active?('appointments','index') %> left">
+	<span id="calendar_tab" class="tab <%#= is_state_active?('appointments','index') %> left">
+
 
 		<ul>
-					<li><%= link_to appointments_path do |l| %><span class="icon">⌚</span>   <span class="">Calendar</span><% end %></li>
-					<li class="calendar_menu"><%= link_to '#' do |l| %><span>Daily</span><% end %></li>
-
-					<li class="calendar_menu"><%= link_to '#' do |l| %><span>Full</span><% end %></li>
-
-					<li class="calendar_menu"><%= link_to '#' do |l| %><span>Personal</span><% end %></li>
-
-					<li class="calendar_menu"><%= link_to '#' do |l| %><span>Clinic</span><% end %></li>
+					<li><%= link_to '#' do |l| %><span class="icon">⌚</span>   <span class="">Calendar</span><% end %></li>
+					<li class="calendar_menu">View your clinic's calendar and your personalized schedule
+					</li>
 
 		</ul>
 	</span>
@@ -103,9 +91,8 @@ Middle header Section: includes main tab toolbar
 
 					<li><%= link_to cases_path do |l| %><span class="icon">l</span>   <span class="">IVF</span><% end %></li>
 
-					<li class="case_menu"><%= link_to cases_path do |l| %><span>All cases</span><% end %></li>
+					<li class="case_menu"><%= link_to cases_path do |l| %><span>Access all current patient and IVF related forms and data</span><% end %></li>
 
-					<li class="case_menu"><%= link_to new_case_path do |l| %><span>New case</span><% end %></li>
 
 					</ul>
 					</span>
@@ -120,7 +107,7 @@ Middle header Section: includes main tab toolbar
 
 					<li><%= link_to clinicians_path do |l| %><span class="icon">B</span>   <span class="">Clinic</span><% end %></li>
 
-					<li class="clinic_menu"><%= link_to "#" do |l| %><span class="">Chat</span><% end %></li>
+					<li class="clinic_menu"><%= link_to "#" do |l| %><span class="">View and manage clinic information. See and edit clinician employees, referrers and clinic settings</span><% end %></li>
 
 
 					</ul>
@@ -136,9 +123,7 @@ Middle header Section: includes main tab toolbar
 
 					<li><%= link_to "#" do |l| %><span class="icon">z</span>   <span class="">Search</span><% end %></li>
 
-					<li class="search_menu"><%= link_to "#" do |l| %><span>for cases</span><% end %></li>
-					<li class="search_menu"><%= link_to "#" do |l| %><span>for patients</span><% end %></li>
-					<li class="search_menu"><%= link_to "#" do |l| %><span>for clinicians</span><% end %></li>
+					<li class="search_menu"><%= link_to "#" do |l| %><span>Search and browse patient, IVF, and clinician data</span><% end %></li>
 
 					</ul>
 
@@ -233,27 +218,29 @@ $('.log_out').hover(function(){
 	});
 
 $('#calendar_tab').hover(function(){
-	$('.calendar_menu').show(300);
+	$('.calendar_menu').show(600);
+//	$('#calendar_tab').css('background','#325d5d')
 }	,function(){
-	  $(".calendar_menu").hide(300);
+	  $(".calendar_menu").hide(600);
+//	  $('#calendar_tab').css('background','#7895a3')
 	});
 	
 $('#case_tab').hover(function(){
-	$('.case_menu').show(300);
+	$('.case_menu').show(600);
 }	,function(){
-	  $(".case_menu").hide(300);
+	  $(".case_menu").hide(600);
 	});
 	
 $('#clinic_tab').hover(function(){
-	$('.clinic_menu').show(300);
+	$('.clinic_menu').show(600);
 }	,function(){
-	  $(".clinic_menu").hide(300);
+	  $(".clinic_menu").hide(600);
 	});
 			
 $('#search_tab').hover(function(){
-	$('.search_menu').show(300);
+	$('.search_menu').show(600);
 }	,function(){
-	  $(".search_menu").hide(300);
+	  $(".search_menu").hide(600);
 	});
 
 /**********************************************************************
