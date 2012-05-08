@@ -1,40 +1,52 @@
 <div class="right_sidebar">
 	
-	<ul>
+	<ul class="right_sidebar">
 		
-		<% if (@appointments.nil?) %>
-			No appointments scheduled
-		
+		<% if @appointments.nil? %>
+			You have no appointments scheduled
 		<% else %>
-			<% @appointments.each do |appointment| %>
-		
-				<li class="option">
-				<%="#{appointment.appointment_type} at #{appointment.date_and_time}"%>
-				<br>
-				with
-				<br> 
-				<% appointment.clinicians.each do |clinician| %>
-					<% if clinician == appointment.clinicians.last %>
-						<%= "#{clinician.display_name}"%>
-					<% else %>
-						<%= "#{clinician.display_name}, "%>
+		<% @appointments.each do |appointment| %>
+			<% if appointment.date_and_time.nil?%>
+				<% next %>
+			<% else %>
+
+			<%= link_to case_appointment_path(appointment.case, appointment) do |l|%>
+			<li class="list">
+
+				<h1><%="#{appointment.date_and_time.strftime("%B %d, %Y")}"%><h1>
+					<%#to_formatted_s(:db)%>
+				<h2><%="#{appointment.appointment_type}"%></h2>
+			<table>
+			<% if appointment.clinicians.length > 1 %>
+			<tr>
+				<td>with</td>
+				<td><ul>
+					<% appointment.clinicians.each do |clinician| %>
+						<% if clinician == @clinician %>
+							<% next %>
+						<% else %>
+							<li><%= "#{clinician.display_name}"%></li>
+						<% end %>
 					<% end %>
-				<% end %>
-				<br>
-				Patients:
-				<br>
-				<% appointment.patients.each do |patient| %>
-					<% if patient == appointment.patients.last %>
-						<%= "#{patient.display_name}"%>
-					<% else %>
-						<%= "#{patient.display_name}, "%>
-					<% end %>
-				<% end %>
-				</li>
-		
+				</ul></td>	
+			</tr>
 			<% end %>
-		
-		<% end %>
+			<tr>
+				<td>Patients</td> 
+				<td><ul>	
+					<% appointment.patients.each do |patient| %>
+						<li><%="#{patient.display_name}"%></li>
+					<% end %>
+				</ul></td>
+			</tr>
+			</table>
+			</li>
+			<% end %> <%# link_to%>
+			
+			<% end %> <%# if appointment.date/time.nil?%>
+
+		<% end %>  <%# @appointments.each%>
+		<% end %> <%# if appointments.nil?%>
 		
 	</ul>
 	

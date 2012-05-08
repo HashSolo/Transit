@@ -1,8 +1,11 @@
 class CasesController < ApplicationController
-  before_filter :load_schedule, :only => [:show, :edit]
+  before_filter :load_case_schedule, :only => [:show, :edit]
+  before_filter :load_clinician_schedule, :only => :index 
   
   def index
 	  @title = "Case Lookup"
+	 # @clinician = current_user.clinician
+	#  @appointments = @clinician.appointments
 	  @cases = Case.paginate(:page => params[:page])
   end
   
@@ -114,8 +117,18 @@ class CasesController < ApplicationController
   
   private
   
-  def load_schedule
-  @appointments = Appointment.where(:case_id => params[:id])
+  def load_clinician_schedule
+    @clinician = current_user.clinician
+    @appointments = @clinician.appointments
   end
+  
+  def load_case_schedule
+    @case = Case.find(params[:id])
+    @appointments = @case.appointments
+  end
+  
+ # def load_schedule
+#  @appointments = Appointment.where(:case_id => params[:id])
+#  end
 
 end

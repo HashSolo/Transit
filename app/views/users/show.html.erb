@@ -19,14 +19,14 @@
 	<% if @appointments.nil? %>
 		You have no appointments scheduled
 	<% else %>
-	<% @appointments.each do |appointment| %>
+	<% @appointments.each do |appointment| %>	
 	
-		<li class="">
+		<%= link_to case_appointment_path(appointment.case, appointment) do |l|%>
+		<li class="list">
 		
-		<div>
-			<h1><%="#{appointment.date_and_time.to_formatted_s(:db) }"%><h1>
+			<h1><%="#{appointment.date_and_time.strftime("%B %d, %Y")}"%><h1>
+				<%#to_formatted_s(:db)%>
 			<h2><%="#{appointment.appointment_type}"%></h2>
-		</div>
 		<table>
 		<% if appointment.clinicians.length > 1 %>
 		<tr>
@@ -52,6 +52,7 @@
 		</tr>
 		</table>
 		</li>
+		<% end %>
 		
 	<% end %>
 	<% end %>
@@ -69,27 +70,26 @@
 	<% else %>
 	<% @cases.each do |c| %>
 	
-		<%
-		@referrer = Referrer.find(c.referrer_id)
-		@clinician = Clinician.find(c.clinician_id)
-		@patients = c.patients.all
-		%>
-	
-		<li class="">
+		<%= link_to case_path(c) do |l| %>
+		<li class="list">
 						
 			<table>
+				<tr>
+					<td>Case</td>
+					<td><%="#{c.id}"%></td>
+				</tr>
 				<tr>
 					<td>Patient email</td>
 					<td><%="#{c.user.email}"%></td>
 				</tr>	
 				<tr>
 					<td>Referrer</td>
-					<td><%="#{@referrer.display_name}"%></td>
+					<td><%="#{c.referrer.display_name}"%></td>
 				</tr>
 				<tr>
 					<td>Patients</td>
 					<td><ul>
-						<% @patients.each do |patient| %>
+						<% c.patients.each do |patient| %>
 							<li><%="#{patient.display_name}"%></li>
 						<% end %>
 					<ul></td>
@@ -98,6 +98,7 @@
 	
 	
 		</li>
+		<% end %>
 		
 	<% end %>
 	<% end %>
@@ -106,16 +107,17 @@
 	</div>
 	
 	<div class="chat">
-		<h1>Clinic Chat</h1>
+		<h1 class="home_header">Clinic Chat</h1>
 		
 		<table>
+			
 			<tr>
-				<td><%="#{@user.email}:"%></td>
+				<td><%="#{@user.email.to(5)}:"%></td>
 				<td>Guys, don't forget incubator #4 is broken</td>
 			</tr>
 			<tr>
-				<td><%="#{@user.email}:"%></td>
-				<td>Guys, don't forget incubator #4 is broken</td>
+				<td><%="#{'kketterson'.to(5)}:"%></td>
+				<td>Anybody want coffee?</td>
 			</tr>
 		</table>
 	</div>

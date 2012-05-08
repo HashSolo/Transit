@@ -1,5 +1,15 @@
-Clinician A
-Clinician B
+<div class="clinician_index">
+	
+	<div class="clinicians">
+		<table>
+			<% @clinicians.each do |clinician| %>
+			<tr><td><%= "#{clinician.display_name}"%></td>
+				<td><%="#{clinician.role}"%></td></tr>
+			<% end %>
+		</table>
+	</div>
+	
+</div>
 
 <script type="text/javascript">
 

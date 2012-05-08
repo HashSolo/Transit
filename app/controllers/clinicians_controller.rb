@@ -1,6 +1,8 @@
 class CliniciansController < ApplicationController
   def index
     @title = "All Employees"
+    @clinicians = Clinician.all
+    @referrers = Referrer.all
   end
   
   def show

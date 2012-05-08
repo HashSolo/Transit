@@ -1,63 +1,80 @@
-<ul class="case_index">
-	<% @cases.each do |c| %>
+<div class="case_index">
 	
-	<%
-	@referrer = Referrer.find(c.referrer_id)
-	@user = User.find(c.user_id)
-	@clinician = Clinician.find(c.clinician_id)
-	@patients = c.patients.all
-	%>
-
-		<li>
+	<ul>
 		
-			<%= link_to case_path(c) do |l| %>			
-			<span class="round left"> 
-				<br>
-				<span class="icon">g</span>
-				<h1>ID <%="#{c.id}"%></h1>
-			</span>
-			<% end %>
-			
-			<span class="middle">
-				<h1>Information</h1>
+		<%= link_to new_case_path do |l| %>
+		<li>
+		<span class="icon">⊕</span>	
+		<h1>New Case</h1>
+		</li>
+		<% end %>
+		
+		<% @cases.each do |c| %>
+
+		<%= link_to case_path(c) do |l| %>
+		<li>
+			<div class="left">
 				<table>
-					<tr>
-						<td>Opened:</td><td><%= "#{c.created_at.to_date}"%></td>
-					</tr>
-					<tr>
-						<td>Account:</td><td><%= "#{@user.email}"%></td>
-					</tr>
-					<tr>
-						<td>Referring MD:</td><td><%= "#{@referrer.last_name}, #{@referrer.first_name}".to(15) %></td>
-					</tr>
-					<tr>
-						<td>Clinician:</td><td><%= "#{@clinician.last_name}, #{@clinician.first_name}".to(15)%></td>
-					</tr>
+					<th><%="Case #{c.id}"%></th>
+					<tr><td>Referrer</td>
+						<td><%="#{c.referrer.display_name}"%></td></tr>
+					<tr><td>Email</td>
+						<td><%="#{c.user.email}"%></td></tr>
+					<tr><td>Clinician</td>
+						<td><%="#{c.clinician.display_name}"%></td></tr>
+					<tr><td>Status</td>
+						<td><%="Pre-retrieval"%></td></tr>
+					<tr><td>Diagnosis</td>
+						<td><%="Ovulary Dysfunction"%></td></tr>
 				</table>
-				
-			</span>
+			</div>
 			
-			<span class="right">
-				<% if @patients.count == 0 %>
-				<h1>No patients</h1>
-				<% else %>
-				<h1>Patients</h1>
+			<div class="center">
 				<table>
-					<% @patients.each do |p| %>
-					<tr>
-						<td><%= "#{p.last_name}, #{p.first_name}".to(15) %></td>
-					</tr>
+					<th>Patients</th>
+					<% i = 1 %>
+					<% c.patients.each do |patient| %>
+						<% if i > 4 %> 
+							<tr><td>(more)</td><td></td></tr>
+							<% break %>
+						<% else %>
+							<tr><td><%="#{patient.display_name}"%></td>
+								<td>Undetermined</td></tr>
+						<% end %>
+						<% i = i + 1 %>
 					<% end %>
 				</table>
-				<% end %>
-			</span>
-		
+			</div>
+			
+			<div class="right">
+				<table>
+					<th>Appointments</th>
+					<% i = 1 %>
+					<% c.appointments.each do |appointment| %>
+						<% if appointment.date_and_time.nil? || appointment.appointment_type.nil? %>
+							<% next %>
+						<% else %>
+						<% if i > 4 %>
+							<tr><td>(more)</td><td></td></tr>
+							<% break %>
+						<% else %>	<tr><td><%="#{appointment.appointment_type}"%></td>
+							<td><%="#{appointment.date_and_time.to_formatted_s(:db)}"%></td></tr>
+						<% end %>
+						<% i = i + 1 %>
+						<% end %>
+					<% end %>
+				</table>
+			</div>
+			
 		</li>
+		<% end %> <%# link_to%>
 
-<% end %>
-<%= will_paginate @cases %>
+		<% end %>
+		<%= will_paginate @cases %>
 
-</ul>
+	</ul>
+
+</div>
 
 <script type="text/javascript">
 
