@@ -20,8 +20,8 @@ class CliniciansController < ApplicationController
     @user.toggle(:clinician_account)
 
     #assigns dummy password to user for now
-	  @user.password = "foobarbaz"
-	  @user.password_confirmation = "foobarbaz"
+	  @user.password = "foobar"
+	  @user.password_confirmation = "foobar"
 	  @user.email = params[:clinician][:email]	  
    # @clinician = @user.clinician.build(params[:clinician])
     @clinician = Clinician.new(params[:clinician])     

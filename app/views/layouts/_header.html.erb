@@ -18,15 +18,12 @@ Upper header Section: includes Transit home icon and user icon
 						<li><%= link_to '#' do |l| %><span class=""><%= "#{current_user.email}"%></span> <span class="icon">&#8595</span>  <% end %></li>
 						<li class="logout_menu"><%= link_to edit_user_path(current_user) do |l| %><span>Settings</span><% end %></li>
 
-						<li class="logout_menu"><%= link_to new_session_path do |l| %><span>Logout</span><% end %></li>
+						<li class="logout_menu"><%= link_to signout_path, :method => :delete do |l| %><span>Logout</span><% end %></li>
 						
 						
 					</ul>
 						
-				<span> 
-			
-				
-				
+				<span> 											
 				
 			</nav>
 				
@@ -91,7 +88,7 @@ Middle header Section: includes main tab toolbar
 
 					<li><%= link_to cases_path do |l| %><span class="icon">l</span>   <span class="">IVF</span><% end %></li>
 
-					<li class="case_menu"><%= link_to cases_path do |l| %><span>Access all current patient and IVF related forms and data</span><% end %></li>
+					<li class="case_menu"><%= link_to cases_path do |l| %><span>Begin new IVF case. Access all current IVF case forms and data.</span><% end %></li>
 
 
 					</ul>

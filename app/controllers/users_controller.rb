@@ -10,6 +10,15 @@ class UsersController < ApplicationController
   
   def show
 	@user = User.find(params[:id])
+	
+	@cases = Case.all
+	if @user.clinician_account
+	  @clinician = @user.clinician
+    if !(@clinician.appointments.nil?)
+       @appointments = @clinician.appointments
+     end
+  end
+	
 	@title = "Your Account"
   end
 

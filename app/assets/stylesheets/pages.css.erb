@@ -8,7 +8,7 @@
 html {height:100%;font-family:'Trebuchet MS', Arial, sans-serif;}
 body {height:100%;margin:0;padding:0;font-family:'Trebuchet MS', Arial, sans-serif;}
 div.content {display:inline-block;float:left;width:100%;position:relative;min-height:100%;}
-div.middle_content {display:block;width:100%;position:relative;height:100%;margin-top:5px;}
+div.middle_content {border:0px green solid;display:block;width:100%;position:relative;height:100%;margin-top:5px;}
 
 /*debug*/
 div#debug {width:100%;background:yellow;}
@@ -41,7 +41,7 @@ header nav.header span.home_icon {top:1px;left:2px;position:absolute;display:inl
 header nav.header span.home_icon h2 {font-size:16px;display:inline-block;}
 header nav.header span.home_icon a {text-decoration:none;color:#ffffff;}
 header nav.header span.log_out {border:solid 0px;font-size:9px;display:inline;float:right;
-								z-index:1;position:absolute;padding:0px;vertical-align:bottom;
+								z-index:2;position:absolute;padding:0px;vertical-align:bottom;
 								right:2px;}
 header nav.header span.log_out ul li.logout_menu {display:none;font-size:9px;text-align:left;}
 header nav.header span.log_out ul li.logout_menu span {}
@@ -54,13 +54,13 @@ header nav.header span.log_out ul li:hover {list-style-type:none;}
 header nav.header span.log_out ul li.menu {display:none;font-size:10px;} 
 header nav.header span.log_out ul li a span {padding:0px;}
 /*Middle header section with primary Transit tabs*/
-header div.mid_header {vertical-align:bottom;z-index:-1;padding-top:1px;position:relative;
-						width:100%;height:45px;background:#325d5d;}
-header span.tab {border:red solid 0px;margin-top:2px;background:#325d5d;
+header div.mid_header {vertical-align:bottom;z-index:-1;padding:0px;position:relative;
+						width:100%;height:25px;background:#325d5d;}
+header span.tab {border:red solid 0px;height:20px;margin-top:2px;background:#325d5d;
 				text-align:center;display:inline-block;width:100px%;font-size:16px;padding:0px;
-				z-index:1;top:37px;position:absolute;color:#ffffff;}
-header span.tab#navigation_tab{border:0px red solid;}
-header span.tab#navigation_tab{left:50px;}
+				z-index:1;top:25px;position:absolute;color:#ffffff;}
+header span.tab#navigation_tab{}
+header span.tab#navigation_tab{left:2px;top:28px;}
 header span.tab#calendar_tab {left:200px;}
 header span.tab#case_tab {left:370px;}
 header span.tab#clinic_tab {left:510px;}
@@ -75,7 +75,7 @@ header span.tab ul li:hover {list-style-type:none;}
 header span.tab ul li.calendar_menu, 
 header span.tab ul li.case_menu, 
 header span.tab ul li.clinic_menu, 
-header span.tab ul li.search_menu {position:absolute;width:200px;top:30px;left:0px;background:#325d5d;display:none;font-size:16px;text-align:left;} 
+header span.tab ul li.search_menu {position:absolute;width:200px;top:23px;left:0px;background:#325d5d;display:none;font-size:16px;text-align:left;} 
 header span.tab ul li.calendar_menu {}
 header span.tab ul li.calendar_menu:hover, 
 header span.tab ul li.case_menu:hover, 
@@ -92,7 +92,8 @@ header span.tab span {width:auto;padding:0px;margin-left:auto;}
 header div.sub_header {border-bottom:solid #325d5d 1px;height:17px;width:100%;}
 header div.sub_header div {vertical-align:center;display:inline-block;font-size:10px;}
 header div.sub_header div#toolbar_toggle {width:16%} 
-header div.sub_header div.middle{font-size:15px;width:66%;text-align:center;}
+header div.sub_header div.middle{left:140px;position:absolute;font-size:15px;width:66%;text-align:center;}
+header div.sub_header div.middle h1{border:0px red solid;}
 header div.sub_header div#schedule_toggle{border:red solid 0px;margin-top:5px;float:right;width:16%;text-align:right;margin-right:0px;}
 header div.sub_header div#schedule_toggle span{text-align:right;margin-right:0px;padding-right:0px;border:0px solid black;}
 /*header div.header_close {margin-top:0px;vertical-align:top;position:relative;height:1px;width:100%;}*/
@@ -142,9 +143,6 @@ nav.header ul li.header_right {float:right;text-align:center;font-size:24px;widt
 nav.header ul li.header_right.selected {background:#325d5d;border:4px double #7895a3;}
 nav.header ul li a {text-decoration:none;color:#ffffff;display:block;height:70px;}
 */
-
-
-
 
 /*Footer*/
 footer {padding:0px;height:50px;margin:0px;display:inline-block;float:left;width:100%;text-align:center;position:relative;float:bottom;}
@@ -233,6 +231,30 @@ div.float_right{float:right;}
 .styled_button{background-color:#325d64;color:white;border:none;cursor:pointer}
 /*header picture*/
 .signin_pic{margin-top:0;width:70%;height:500px;background:white;float:left;}
+
+/*Home Page - User Show*/
+
+div.user_show {height:auto;}
+div.user_show div.profile {position:absolute;width:625px;display:inline-block;border:1px red solid;}
+div.user_show div.profile span {border:1px red solid;font-size:120px;}
+div.user_show div.profile h1 {position:absolute;left:125px;vertical-align:top;border:1px red solid;font-size:25px;display:inline-block;}
+div.user_show div.profile table {position:absolute;left:0px;top:30px;border:1px red solid;font-size:26px;display:inline-block;}
+div.user_show h1.home_header {font-size:18px;text-align:center;}
+div.user_show div.schedule, 
+div.user_show div.cases, 
+div.user_show div.chat {position:absolute;min-height:300px;width:33%;border:1px red solid;display:inline-block;}
+div.user_show div.schedule {top:125px;left:0px;;} 
+div.user_show div.cases {top:125px;left:315px;}
+div.user_show div.chat {right:0px;min-height:425px;}
+div.user_show div ul {list-style-type:none;}
+div.user_show div ul li {border:1px red solid;}
+div.user_show div ul li h1,
+div.user_show div ul li h2 {display:block;}
+div.user_show div ul li table {border:1px red solid;font-size:12px;}
+div.user_show div ul li table tr > td:last-child {padding-left:5px;}
+div.user_show div.chat table {font-size:12px;}
+div.user_show div.chat table tr > td:first-child {font-weight:bold;}
+div.user_show div.chat table tr > td:last-child {padding-left:5px;}
 
 /*New Case*/
 div.entries{padding:0px;margin:0px;position:relative;left:45px;width:97%;border:2px solid #7895a3;background:white;}
