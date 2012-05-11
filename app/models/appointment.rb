@@ -9,6 +9,10 @@ class Appointment < ActiveRecord::Base
   attr_accessor :clinician_list
   after_save :update_clinicians
   
+  def display_time
+    "#{date_and_time.strftime("%r | %D")}"
+  end
+  
   private
   
   def update_patients

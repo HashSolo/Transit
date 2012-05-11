@@ -1,9 +1,12 @@
 Transit::Application.routes.draw do
   resources :users
 	resources :sessions, :only => [:new, :create, :destroy]
-	resources :clinicians
 	resources :referrers
 	#resources :appointments	
+
+	resources :clinicians do
+	  resources :posts
+  end
 
 	
 	resources :cases do

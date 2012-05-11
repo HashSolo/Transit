@@ -50,7 +50,7 @@ header nav.header span.log_out {border:solid 0px;font-size:9px;display:inline;fl
 								right:2px;}
 header nav.header span.log_out ul li.logout_menu {display:none;font-size:9px;text-align:left;}
 header nav.header span.log_out ul li.logout_menu span {}
-header nav.header span.log_out ul li.logout_menu:hover {background:#444444;}
+header nav.header span.log_out ul li.logout_menu:hover {background:#aaaaaa;}
 
 header nav.header span.log_out a {text-decoration:none;color:#ffffff;}
 header nav.header span.log_out span.icon {font-size:8px;}
@@ -201,13 +201,13 @@ div.right_sidebar {display:inline-block;width:100%;height:100%;float:left;positi
 div.right_sidebar ul.right_sidebar {min-height:500px;font-size:12px;border:1px solid black;list-style-type:none;}
 
 div.right_sidebar ul {list-style-type:none;}
-div.right_sidebar ul a li.list {text-decoration:none;color:black;}
-div.right_sidebar ul li.list {border:2px #aaaaaa solid;margin:5px 5px;}
+div.right_sidebar ul a {text-decoration:none;}
+div.right_sidebar ul a li.list {color:black;}
+div.right_sidebar ul li.list {border:2px #444444 solid;margin:5px 5px;}
 div.right_sidebar ul li.list:hover {background:#aaaaaa;}
-div.right_sidebar ul a li.list h1,
-div.right_sidebar ul a li.list h2 {text-decoration:none;display:block;}
+div.right_sidebar ul li.list div.appointment_header {font-size:10px;background:#444444;color:white;}
 div.right_sidebar ul li table {border:0px black solid;font-size:12px;}
-div.right_sidebar ul li table tr {border: 1px black solid;}
+div.right_sidebar ul li table tr {border:0px black solid;}
 div.right_sidebar ul li table tr > td:last-child {padding-left:5px;}
 
 
@@ -251,29 +251,42 @@ div.float_right{float:right;}
 /*Home Page - User Show*/
 
 div.user_show {height:auto;}
-div.user_show div.profile {position:absolute;width:625px;display:inline-block;border:1px black solid;}
+div.user_show div.profile {position:absolute;width:625px;display:inline-block;border:0px black solid;}
 div.user_show div.profile span {border:0px red solid;font-size:120px;}
 div.user_show div.profile h1 {position:absolute;left:125px;vertical-align:top;border:0px red solid;font-size:25px;display:inline-block;}
-div.user_show div.profile table {position:absolute;left:0px;top:30px;border:0px red solid;font-size:26px;display:inline-block;}
+div.user_show div.profile table {position:absolute;width:495px;left:0px;top:30px;border:0px red solid;font-size:26px;display:inline-block;}
+div.user_show div.profile table tr > td:last-child:{padding-left:5px;}
 div.user_show h1.home_header {font-size:18px;text-align:center;}
 div.user_show div.schedule, 
 div.user_show div.cases, 
-div.user_show div.chat {position:absolute;min-height:300px;width:33%;border:1px black solid;display:inline-block;}
-div.user_show div.schedule {top:125px;left:0px;;} 
+div.user_show div.chat {overflow:auto;position:absolute;height:300px;width:33%;border:0px black solid;display:inline-block;}
+div.user_show div.schedule {text-decoration:none;top:125px;left:0px;;} 
 div.user_show div.cases {top:125px;left:315px;}
 div.user_show div.chat {right:0px;min-height:425px;}
 div.user_show div ul {list-style-type:none;}
-div.user_show div ul a li.list {text-decoration:none;color:black;}
-div.user_show div ul li.list {border:2px #aaaaaa solid;margin:5px 5px;}
+div.user_show div ul a li.list {color:black;}
+div.user_show div ul li.list {background:#eeeeee;border:0px #444444 solid;margin:5px 5px;}
 div.user_show div ul li.list:hover {background:#aaaaaa;}
-div.user_show div ul a li.list h1,
-div.user_show div ul a li.list h2 {text-decoration:none;display:block;}
+div.user_show div ul li.list:hover div.ah {background:#aaaaaa;color:black;}
+div.user_show div ul a {text-decoration:none;}
+div.user_show div ul a li.list h2 {display:block;}
 div.user_show div ul li table {width:100%;border:0px black solid;font-size:12px;}
+div.user_show div ul li div.ah {}
 div.user_show div ul li table tr {width:100%;border-top: 1px #aaaaaa solid;}
 div.user_show div ul li table tr > td:last-child {padding-left:5px;}
 div.user_show div table {font-size:12px;}
 div.user_show div table tr > td:first-child {font-weight:bold;}
-div.user_show div table tr > td:last-child {padding-left:5px;}
+div.user_show div table tr > td:last-child {padding-left:50px;}
+div.user_show div.chat {font-size:12px;}
+div.user_show div.chat {min-height:400px;}
+div.user_show div.chat div.chat_index {border:0px red solid;min-height:350px;} 
+div.user_show div.chat div.post {display:inline-block;width:100%;border-bottom:1px #aaaaaa solid;}
+div.user_show div.chat div.post div.post_time {font-size:8px;text-align:center;border:0px red solid;width:100%;display:inline-block;}
+div.user_show div.chat div.post div.clinician {font-weight:bold;float:left;border:0px red solid;width:20%;display:inline-block;}
+div.user_show div.chat div.post div.content {border:0px red solid;width:79%;display:inline-block;}
+div.user_show div.chat a div.post_link {margin-left:30%;border:0px red solid;text-align:center;text-decoration:none;display:inline-block;color:black;}
+div.user_show div.chat div.post_link:hover {background:#aaaaaa;}
+div.user_show div.chat div.post_link {float:center;}
 
 /*New Case*/
 div.entries{padding:0px;margin:0px;position:relative;left:45px;width:97%;border:2px solid #aaaaaa;background:white;}
@@ -312,43 +325,76 @@ ul.patient_index li span.left:hover span.icon_new{color:#aaaaaa;margin-left:25%;
 
 /*Case Index*/
 div.case_index ul {list-style-type:none;width:100%;}
-div.case_index ul li{font-size:12px;width:100%;height:85px;border:2px #aaaaaa solid;margin-top:20px;margin:bottom:20px;}
+div.case_index ul li{font-size:12px;width:100%;height:auto;border:2px #444444 solid;margin-top:20px;margin:bottom:20px;}
 div.case_index ul a {color:black;text-decoration:none;}
 div.case_index ul li:hover {background:#aaaaaa;}
 div.case_index ul > a:first-child li {vertical-align:middle;text-align:center;margin-top:0px;}
 div.case_index ul li span {font-size:83px;}
 div.case_index ul li h1 {display:inline-block;font-size:50px;}
-div.case_index ul li div {height:85px;vertical-align:top;display:inline-block;border-left:1px #aaaaaa solid;width:31%;}
-div.case_index ul li div.left {left:0px;}
-div.case_index ul li div.center {left:500px;}
-div.case_index ul li div.right {right:0px;width:35%;}
+div.case_index ul li div {width:32%;height:auto;vertical-align:top;display:inline-block;border:0px red solid;}
+div.case_index ul li div.header_item {text-align:center;background:#444444;color:white;height:12px;width:100%;display:block;}
+div.case_index ul li div.left {font-size:10px;}
+div.case_index ul li div.center {width:33%;font-size:10px;}
+div.case_index ul li div.right {width:33%;font-size:10px;}
 div.case_index ul li div h2 {font-weight:bold;text-align:center;}
-div.case_index ul li div table {display:block;border:0px red solid;}
-div.case_index ul li div table th {font-weight:bold;}
+div.case_index ul li div table {height:auto;width:100%;display:inline-block;border:0px red solid;}
+div.case_index ul li div table th {font-size:12px;font-weight:bold;}
 div.case_index ul li div table tr > td:last-child {padding-left:5px;} 
-div.case_index ul li div table tr {text-align:center;}
-div.case_index ul li div table tr td {border:0px black dotted;}
+div.case_index ul li div table tr {border-bottom:1px #aaaaaa dotted;display:inline-block;width:100%;}
+div.case_index ul li div table tr td {display:inline-block;border:0px red solid;}
+div.case_index ul li div table tr > td:first-child {float:left;width:50%;}
+div.case_index ul li div table tr > td:last-child {float:left;}
+div.case_index ul li div.right table tr > td:first-child {width:50%;}
+div.case_index ul li div.right table tr > td:last-child {;}
 
-/* Old case index
-ul.case_index li{list-style-type:none;margin:15px;padding:10px;background:#aaaaaa;border:4px double #444444;}
-ul.case_index li a {text-decoration:none;}
-ul.case_index li span{display:inline-block;vertical-align:top;}
-ul.case_index li span.left{width:20%;border:2px solid #444444;}
-ul.case_index li span.left:hover {background:#444444;}
-ul.case_index li span.left h1 {font-size:10%;text-align:center;color:#444444;}
-ul.case_index li span.left span.icon{margin-left:22%;font-size:70px;color:#444444;}
-ul.case_index li span.left:hover span.icon{color:#ffffff;}
-ul.case_index li span.left:hover h1 {color:#ffffff;}
-ul.case_index li span.middle {margin-left:8%;width:40%;}
-ul.case_index li span.middle h1 {font-size:20px;text-align:center}
-ul.case_index li span.middle table {margin-left:auto;margin-right:auto;}
-ul.case_index li span.middle table tr > td:first-child {text-align:right;}
-ul.case_index li span.middle table tr td {font-size:15px;}
-ul.case_index li span.right {margin-left:8%;width:20%;}
-ul.case_index li span.right h1 {font-size:20px;text-align:center;}
-ul.case_index li span.right table {margin-left:auto;margin-right:auto;}
-ul.case_index li span.right table tr td {font-size:15px;text-align:center;}
+/*Clinic Page or clinic index*/
+div.clinician_index div {font-size:12px;vertical-align:top;border:0px #444444 solid;display:inline-block;width:49%;}
+div.clinician_index div h1 {text-align:center;font-weight:bold;}
+div.clinician_index div table {display:inline-block;width:100%;border:0px red solid;}
+div.clinician_index div table tr {border-bottom:1px #aaaaaa solid;display:inline-block;width:100%;}
+div.clinician_index div table tr:hover {background:#aaaaaa;}
+div.clinician_index div table tr td {display:inline-block;border:0px red solid;}
+div.clinician_index div table tr > td:first-child {width:50%;float:left;}
+div.clinician_index div table tr > td:last-child {float:left;}
+div.clinician_index div.posts {width:100%;display:inline-block;min-height:400px;}
+div.clinician_index div.posts div.post_time {font-size:8px;text-align:center;border:0px red solid;width:100%;display:inline-block;}
+div.clinician_index div.posts div.clinician {font-weight:bold;float:left;border:0px red solid;width:20%;display:inline-block;}
+div.clinician_index div.posts div.content {border:0px red solid;width:75%;display:inline-block;}
+div.clinician_index div.clinic_information {vertical-align:bottom;margin-left:0%;border:0px red solid;display:inline-block;width:100%;}
+div.clinician_index div.clinic_information table {vertical-align:bottom;margin-left:40px;border:0px red solid;display:inline-block;width:50%;}
+div.clinician_index div.clinic_information table tr {border-bottom:1px #aaaaaa solid;display:inline-block;width:100%;}
+div.clinician_index div.clinic_information table tr td {display:inline-block;}
+div.clinician_index div.clinic_information table tr td a {display:inline-block;text-decoration:none;color:blue;}
+div.clinician_index div.clinic_information div.clinic_picture{display:inline-block;border:1px #aaaaaa solid;height:180px;width:40%;
+					background-image:url("<%= asset_path 'ArtIVF.jpeg' %>")  no-repeat center left;}
+
+/*Generic Form*/
+div.generic_form {display:inline-block;width:100%;font-size:12px;}
+div.generic_form h1 {font-weight:bold;text-align:left;float:center;}
+
+div.generic_form table {border-bottom:1px #aaaaaa solid;table-layout:fixed;width:100%;}
+div.generic_form table tr td {text-align:right;width:45%;padding: 10px 10px;font-size:12px}
+div.generic_form table tr > td:first-child {text-align:left;}
+div.generic_form .submit_button {width:25%;display:inline-block;}
+
+
+/*
+div.generic_form table tr {width:100%;display:inline-block;float:left;}
+div.generic_form table tr.odd {background:#eeeeee;}
+div.generic_form table tr td {display:inline-block;width:40%;}
+div.generic_form table tr > td:first-child {text-align:left;}
+div.generic_form table tr > td:last-child {text-align:right;}
 */
+
+
+
+/*Post page*/
+div.post_new{font-size:12px;}
+div.post_new div.posts {min-height:400px;}
+div.post_new div.post_time {font-size:8px;text-align:center;border:0px red solid;width:100%;display:inline-block;}
+div.post_new div.clinician {font-weight:bold;float:left;border:0px red solid;width:20%;display:inline-block;}
+div.post_new div.content {border:0px red solid;width:75%;display:inline-block;}
+
 
 /*Home Page*/
 div.nav_bar {padding:0px;margin:auto;width:100%;height:50px;background:#aaaaaa;}

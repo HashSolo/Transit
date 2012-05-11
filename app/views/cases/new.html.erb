@@ -1,79 +1,49 @@
+<div class="generic_form">
 <%= form_for @case do |f|%>
 
-
+	<h1>Account Information</h1>
+	<table>
+		<tr class="odd">
+			<td>Email</td><td><%= fields_for @user do |g| %>
+				<%= g.text_field :email %>
+				<% end %></td>
+		</tr>
+	</table>
 	
-	<div class="grid_9 alpha omega">
-	<div class="grid_4 alpha">
-		<div class="table_wrapper top_wrapper left_wrapper">
-			<h2>Account Information</h2>
-			<table class="form">
-				<tr>	
-					<td class="label">Email:</td>
-					<td class="value"><%= fields_for @user do |g| %>
-						<%= g.text_field :email %>
-						<% end %>
-					</td>	
-				</tr>
-			</table>
-		</div>
-	</div>	
+	<h1>Referrer</h1>
+	<table>
+		<tr class="">
+			<td>Referrer name</td><td><%= f.select(:referrer_id, options_for_select( @referrers.collect {|g| ["#{g.first_name} #{g.last_name}", g.id]})) %></td>
+		</tr>
+	</table>
 	
-	<div class="grid_5 omega">
-			<div class="table_wrapper top_wrapper right_wrapper">		
-				<h2>Referral Information</h2>			
-				<table class="form">
-					<tr>
-						<td class="label">Referring MD:</td>
-						<td class="value"><%= f.select(:referrer_id, options_for_select( @referrers.collect {|g| ["#{g.first_name} #{g.last_name}", g.id]})) %></td>
-					</tr>
-				</table>
-			</div>
-		</div>
-	</div>
+	<h1>Head Clinician</h1>
+	<table>
+		<tr class="odd">
+			<td>Clinician name</td><td><%= f.select(:clinician_id, options_for_select( @clinicians.collect {|g| ["#{g.first_name} #{g.last_name}", g.id]} )) %></td>
+		</tr>
+	</table>
 	
-	
-	<div class="grid_9 alpha omega">
-	<div class="grid_4 alpha">
-		<div class="table_wrapper bottom_wrapper left_wrapper">	
-			<h2>Clinician Information</h2>							
-			<table class="form">
-				<tr>
-					<td class="label">Case clinician:</td>
-					<td class="value"><%= f.select(:clinician_id, options_for_select( @clinicians.collect {|g| ["#{g.first_name} #{g.last_name}", g.id]} )) %></td>
-				</tr>
-			</table>
-		</div>
-	</div>
-	
-	<div class="grid_5 omega">
-		<div class="table_wrapper bottom_wrapper right_wrapper">		
-			<h2>Appointment Information</h2>										
-			<table class="form">
-			<tr>	
-				<td class="label">Date:</td>	
-				<td class="value"><%= fields_for @appointment do |g| %>
-					<%= g.date_select :date_and_time %></td>
-			</tr>
-			<tr>
-				<td class="label">Time:</td>
-				<td class="value">
-					<%= g.time_select :date_and_time, :ignore_date => true %></td>
-			</tr>
-			<tr>
-				<td class="label">Physician:</td>	
-				<td class="value"><%= g.select(:clinician_id, options_for_select(@clinicians.collect {|h| ["#{h.first_name} #{h.last_name}", h.id]})) %></td>
-			</tr>
-			</table>
-		</div>
-	</div>
-	</div>
-
-	<% end %>
+	<h1>Initial Consultation</h1>
+	<table>
+		<tr class="">
+			<td>Date</td><td><%= fields_for @appointment do |g| %>
+				<%= g.date_select :date_and_time %></td>
+		</tr>
+		<tr class="odd">
+			<td>Time</td><td><%= g.time_select :date_and_time, :ignore_date => true %></td>
+		</tr>
+		<tr class="odd">
+			<td>with</td><td><%= g.select(:clinician_id, options_for_select(@clinicians.collect {|h| ["#{h.first_name} #{h.last_name}", h.id]})) %></td>
+		</tr>
+		<% end %>
+	</table>
 
 
 		
 	<%= f.submit "Create Case", :class => "case_button" %>
 <% end %>
+</div>
 
 <script type="text/javascript">
 

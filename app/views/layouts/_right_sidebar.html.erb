@@ -13,9 +13,10 @@
 			<%= link_to case_appointment_path(appointment.case, appointment) do |l|%>
 			<li class="list">
 
-				<h1><%="#{appointment.date_and_time.strftime("%B %d, %Y")}"%><h1>
-					<%#to_formatted_s(:db)%>
-				<h2><%="#{appointment.appointment_type}"%></h2>
+				<div class="appointment_header">
+				<%="#{appointment.display_time}"%><br>
+				<%="#{appointment.appointment_type}"%>
+				</div>
 			<table>
 			<% if appointment.clinicians.length > 1 %>
 			<tr>

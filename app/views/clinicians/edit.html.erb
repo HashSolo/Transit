@@ -1,0 +1,24 @@
+<div class="generic_form">
+<%= form_for @clinician do |f| %>
+
+	<table>
+	
+		<tr>
+			<td>First Name</td><td><%= f.text_field :first_name %></td>
+		</tr>
+		<tr>
+			<td>Last Name</td><td><%= f.text_field :last_name %></td>
+		</tr>
+		<tr>
+			<td>Email</td><td><%= f.text_field :email %></td>
+		</tr>
+		<tr>
+			<td>Role</td><td><%= f.select(:role, options_for_select([["Select Role",nil],["Administrator", "Administrator"],["Nurse","Nurse"]])) %></td>
+		</tr>
+		
+	</table>
+
+		<%= f.submit "Create Clinician", :class => "submit_button" %>
+
+<% end %>
+</div>

@@ -13,9 +13,12 @@
 
 		<%= link_to case_path(c) do |l| %>
 		<li>
+			<div class="header_item">
+				<%="Case #{c.id}"%>
+			</div>
 			<div class="left">
 				<table>
-					<th><%="Case #{c.id}"%></th>
+					<th>Information</th>
 					<tr><td>Referrer</td>
 						<td><%="#{c.referrer.display_name}"%></td></tr>
 					<tr><td>Email</td>
@@ -58,7 +61,7 @@
 							<tr><td>(more)</td><td></td></tr>
 							<% break %>
 						<% else %>	<tr><td><%="#{appointment.appointment_type}"%></td>
-							<td><%="#{appointment.date_and_time.to_formatted_s(:db)}"%></td></tr>
+							<td><%="#{appointment.display_time}"%></td></tr>
 						<% end %>
 						<% i = i + 1 %>
 						<% end %>

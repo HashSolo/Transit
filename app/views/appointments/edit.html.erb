@@ -1,0 +1,60 @@
+<div class="generic_form">
+
+<%= form_for [@case, @appointment] do |f| %>
+
+<table>
+	
+		<tr>	
+			<td class="label">Date:</td>	
+			<td class="value">
+				<%= f.date_select :date_and_time %></td>
+		</tr>
+		<tr>
+			<td class="label">Time:</td>
+			<td class="value">
+				<%= f.time_select :date_and_time, :ignore_date => true %></td>
+		</tr>
+
+		<tr><td class="label">Appointment Type</td> 
+					<td class="value"><%= f.select(:appointment_type, options_for_select([["Initial Consultation","Initial Consultation"],["Financial Consultation","Financial Consultation"],["Day 3 Blood Test","Day 3 Blood Test"],["Saline Sonogram","Saline Sonogram"],["HSG","HSG"],["IVF/IUI Medication Class","IVF/IUI Medication Class"],["Medication Insurance Review","Medication Insurance Review"],["Andrology","Andrology"],["Retrieval","Retrieval"],["Transfer","Transfer"]])
+					)%> 
+		</td></tr>	
+		
+		<tr>
+			<td class="label">Clinicians (check all that apply)</td>
+			<td class="value">
+				<% @clinicians.each do |clinician|%>
+					<%= check_box_tag(
+						"appointment[clinician_list][#{clinician.id}]",
+						"1",
+						@appointment.clinicians.detect{|d| d == clinician}
+					)%>
+					<%= "#{clinician.display_name}"%><br>
+				<% end %>
+			</td>
+			
+		</tr>
+				
+		<tr>
+			<td class="label">Patients (check all that apply)</td>
+			<td class="value">
+				<% @patients.each do |patient|%>
+					<%= check_box_tag(
+						"appointment[patient_list][#{patient.id}]",
+						"1",
+						@appointment.patients.detect{|d| d == patient}
+					)%>
+					<%= "#{patient.display_name}"%><br>
+				<% end %>
+			</td>
+			
+		</tr>
+		
+		</table>
+		
+	<%= f.submit "Schedule Appointment"%>
+	
+	
+<% end %>
+
+</div>

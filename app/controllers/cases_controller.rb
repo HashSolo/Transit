@@ -62,7 +62,7 @@ class CasesController < ApplicationController
 	    #if @appointment.save
 	      @title = "New Case!"
 	      flash[:success] = "New Case Successfully Created"
-	      redirect_to case_path(@case)
+	      redirect_to cases_path
 	    #else
 	    #  @title = "Error"
 	    #  @clinicians = Clinician.all

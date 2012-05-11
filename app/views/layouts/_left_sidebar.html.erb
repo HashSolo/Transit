@@ -53,7 +53,7 @@ Case Toolbar
 Clinic Toolbar
 *************************************************************%>
 <div id="clinic_toolbar" class="hidden">
-		<% if is_controller_active?('clinicians') || is_controller_active?('referrers') %>
+		<% if is_controller_active?('clinicians') || is_controller_active?('referrers') || is_controller_active?('posts') %>
 			
 			<ul class="">
 				
@@ -63,7 +63,7 @@ Clinic Toolbar
 				<li id='case_1' class="option"><%= link_to clinicians_path do |l|%><span class="icon">&#8594</span><span class="text">Clinic Overview</span></a><% end %></li>
 				<li id='case_2' class="option"><%= link_to new_clinician_path do |l|%><span class="icon">&#8594</span><span class="text"> Add Clinician</span><% end %></li>
 				<li id='case_3' class="option"><%= link_to new_referrer_path do |l|%><span class="icon">&#8594</span><span class="text"> Add Referrer</span><% end %></li>
-				<li id='case_4' class="option"><%= link_to '#' do |l|%><span class="icon">&#8594</span><span class="text"> Chat</span><% end %></li>
+				<li id='case_4' class="option"><%= link_to new_clinician_post_path(current_user.clinician) do |l|%><span class="icon">&#8594</span><span class="text"> Chat</span><% end %></li>
 				
 			</ul>
 			

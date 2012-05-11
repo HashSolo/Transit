@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120502212347) do
+ActiveRecord::Schema.define(:version => 20120510135635) do
 
   create_table "allergies", :force => true do |t|
     t.integer  "history_female_id"
@@ -587,6 +587,13 @@ ActiveRecord::Schema.define(:version => 20120502212347) do
     t.string   "ethnicity"
     t.string   "marital_status"
     t.string   "occupation"
+  end
+
+  create_table "posts", :force => true do |t|
+    t.string   "content"
+    t.integer  "clinician_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "pregnancies", :force => true do |t|

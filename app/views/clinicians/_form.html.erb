@@ -1,0 +1,18 @@
+<table>
+
+	<tr>
+		<td>First Name</td><td><%= object.text_field :first_name %></td>
+	</tr>
+	<tr>
+		<td>Last Name</td><td><%= object.text_field :last_name %></td>
+	</tr>
+	<tr>
+		<td>Email</td><td><%= object.text_field :email %></td>
+	</tr>
+	<tr>
+		<td>Role</td><td><%= object.select(:role, options_for_select([["Select Role",nil],["Administrator", "Administrator"],["Nurse","Nurse"]])) %></td>
+	</tr>
+	
+</table>
+
+	<%= object.submit "Create Clinician", :class => "submit_button" %>

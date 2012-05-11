@@ -4,7 +4,7 @@
 		<span class="icon">u</span>
 		<h1>Welcome <%="#{@clinician.first_name} #{ @clinician.last_name}"%>!<h1>
 		<table>	
-			<tr><td><pre>Member since </pre> </td><td><%= "    	#{@user.created_at.strftime("%B %d, %Y")}" %></td></tr>
+			<tr><td>Member since</td><td><%= "    	#{@user.created_at.strftime("%B %d, %Y")}" %></td></tr>
 			<tr><td>Email </td><td><%="#{@user.email}"%></td></tr>
 			<tr><td>Role </td><td><%="#{@clinician.role}"%></td></tr>
 		</table>	
@@ -24,10 +24,11 @@
 		<%= link_to case_appointment_path(appointment.case, appointment) do |l|%>
 		<li class="list">
 		
-			<h1><%="#{appointment.date_and_time.strftime("%B %d, %Y")}"%><h1>
-				<%#to_formatted_s(:db)%>
-			<h2><%="#{appointment.appointment_type}"%></h2>
 		<table>
+			<div class="ah">
+			<%="#{appointment.display_time}"%><br>
+			<%="#{appointment.appointment_type}"%>
+			</div>
 		<% if appointment.clinicians.length > 1 %>
 		<tr>
 			<td>with</td>
@@ -71,6 +72,7 @@
 	<% @cases.each do |c| %>
 	
 		<%= link_to case_path(c) do |l| %>
+
 		<li class="list">
 						
 			<table>
@@ -107,21 +109,34 @@
 	</div>
 	
 	<div class="chat">
-		<h1 class="home_header">Clinic Chat</h1>
+		<h1 class="home_header">Message Board</h1>
 		
-		<table>
-			
-			<tr>
-				<td><%="#{@user.email.to(5)}:"%></td>
-				<td>Guys, don't forget incubator #4 is broken</td>
-			</tr>
-			<tr>
-				<td><%="#{'kketterson'.to(5)}:"%></td>
-				<td>Anybody want coffee?</td>
-			</tr>
-		</table>
+		<div class="chat_index">
+		<% @posts.each do |post| %>
+
+			<div class="post">
+				<div class="post_time">
+					<%= "#{post.display_time}"%>
+				</div>
+				<div class="clinician"><%= 				"#{post.clinician.display_name}" %></div> 							
+				<div class="content"><%= "#{post.content}"%></div>
+			</div>
+
+		<% end %>
+		</div>
+
+		<br>
+		<br>
+		<%=link_to new_clinician_post_path(current_user.clinician) do |l| %>
+		
+		<div class="post_link">
+			Post to message board
+		</div>	
+		<% end %>
+
 	</div>
 	
+
 </div>
 
 

@@ -1,33 +1,27 @@
-<h1 class="admin_title">Add a New Clinician</h1>
+<div class="generic_form">
 <%= form_for @clinician do |f| %>
-<div class="grid_4 suffix_1 alpha">	
-	<div class="table_wrapper left_wrapper">
-	<table class="form">
+
+	<table>
+	
 		<tr>
-			<td class="label"><%= f.label :last_name %></td><td class="value"><%= f.text_field :last_name %></td>
+			<td>First Name</td><td><%= f.text_field :first_name %></td>
 		</tr>
 		<tr>
-			<td class="label"><%= f.label :first_name %></td><td class="value"><%= f.text_field :first_name %></td>
+			<td>Last Name</td><td><%= f.text_field :last_name %></td>
 		</tr>
+		<tr>
+			<td>Email</td><td><%= f.text_field :email %></td>
+		</tr>
+		<tr>
+			<td>Role</td><td><%= f.select(:role, options_for_select([["Select Role",nil],["Administrator", "Administrator"],["Nurse","Nurse"]])) %></td>
+		</tr>
+		
 	</table>
-	</div>
-</div>
-<div class="grid_4 omega">
-	<div class="table_wrapper right_wrapper">
-	<table class="form">
-		<tr>
-			<td class="label"><%= f.label :email %></td><td class="value"><%= f.email_field :email %></td>
-		</tr>
-		<tr>
-			<td class="label"><%= f.label :role %></td><td class="value"><%= f.text_field :role %></td>
-		</tr>
-	</table>
-</div>
-</div>
-	<div class="referrer_submit_button">
-		<%= f.submit :value => "Create Clincian" %>
-	</div>
+
+		<%= f.submit "Create Clinician", :class => "submit_button" %>
+
 <% end %>
+</div>
 
 <script type="text/javascript">
 

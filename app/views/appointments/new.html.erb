@@ -1,21 +1,27 @@
-<div class="appointment_form">
-
-<%#
-
-t.integer :case_id
-t.integer :clinician_id
-t.datetime :date_and_time
-t.string :appointment_type
-	
-
-%>
+<div class="generic_form">
 
 <%= form_for [@case, @appointment] do |f| %>
 
 <table>
+	
+		<tr>	
+			<td class="label">Date:</td>	
+			<td class="value">
+				<%= f.date_select :date_and_time %></td>
+		</tr>
+		<tr>
+			<td class="label">Time:</td>
+			<td class="value">
+				<%= f.time_select :date_and_time, :ignore_date => true %></td>
+		</tr>
+
+		<tr><td class="label">Appointment Type</td> 
+					<td class="value"><%= f.select(:appointment_type, options_for_select([["Initial Consultation","Initial Consultation"],["Financial Consultation","Financial Consultation"],["Day 3 Blood Test","Day 3 Blood Test"],["Saline Sonogram","Saline Sonogram"],["HSG","HSG"],["IVF/IUI Medication Class","IVF/IUI Medication Class"],["Medication Insurance Review","Medication Insurance Review"],["Andrology","Andrology"],["Retrieval","Retrieval"],["Transfer","Transfer"]])
+					)%> 
+		</td></tr>	
 		
 		<tr>
-			<td class="label">Clinicians</td>
+			<td class="label">Clinicians (check all that apply)</td>
 			<td class="value">
 				<% @clinicians.each do |clinician|%>
 					<%= check_box_tag(
@@ -30,7 +36,7 @@ t.string :appointment_type
 		</tr>
 				
 		<tr>
-			<td class="label">Patients</td>
+			<td class="label">Patients (check all that apply)</td>
 			<td class="value">
 				<% @patients.each do |patient|%>
 					<%= check_box_tag(
@@ -44,43 +50,8 @@ t.string :appointment_type
 			
 		</tr>
 		
-		<tr>	
-			<td class="label">Date:</td>	
-			<td class="value">
-				<%= f.date_select :date_and_time %></td>
-		</tr>
-		<tr>
-			<td class="label">Time:</td>
-			<td class="value">
-				<%= f.time_select :date_and_time, :ignore_date => true %></td>
-		</tr>
-	
-		<tr><td class="label">Appointment Type</td> 
-				<td class="value">
-				<div class="fix"><%= f.radio_button :appointment_type, "Initial Consultation" %>
-				<%= label :appointment_type, "Initial Consultation"%></div>
-				<div class="fix"><%= f.radio_button :appointment_type, "Financial Consultation" %>
-				<%= label :appointment_type, "Financial Consultation"%></div>
-				<div class="fix"><%= f.radio_button :appointment_type, "Day 3 Blood Test" %>
-				<%= label :appointment_type, "Day 3 Blood Test"%></div>
-				<div class="fix"><%= f.radio_button :appointment_type, "Saline Sonogram" %>
-				<%= label :appointment_type, "Saline Sonogram"%></div>
-				<div class="fix"><%= f.radio_button :appointment_type, "HSG" %>
-				<%= label :appointment_type, "HSG"%></div>
-				<div class="fix"><%= f.radio_button :appointment_type, "IVF/IUI Medication Class" %>
-				<%= label :appointment_type, "IVF/IUI Medication Class"%></div>
-				<div class="fix"><%= f.radio_button :appointment_type, "Medication Insurance Review" %>
-				<%= label :appointment_type, "Medication Insurance Review"%></div>
-				<div class="fix"><%= f.radio_button :appointment_type, "Andrology" %>
-				<%= label :appointment_type, "Andrology"%></div>
-				<div class="fix"><%= f.radio_button :appointment_type, "Retrieval" %>
-				<%= label :appointment_type, "Retrieval"%></div>
-				<div class="fix"><%= f.radio_button :appointment_type, "Transfer" %>
-				<%= label :appointment_type, "Transfer"%></div>
-				</td></tr>
-	
-</table>
-	
+		</table>
+		
 	<%= f.submit "Schedule Appointment"%>
 	
 	

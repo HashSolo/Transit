@@ -18,6 +18,8 @@ class UsersController < ApplicationController
        @appointments = @clinician.appointments
      end
   end
+  
+  @posts = Post.all
 	
 	@title = "Your Account"
   end

@@ -1,43 +1,27 @@
-<div class="top-profile-section">
-	<h1>Account Settings</h1>
+<div class="generic_form">
+<%= form_for @user do |f| %>
+
+	<table>
+	
+		<tr>
+			<td>Email</td><td><%= f.text_field :email %></td>
+		</tr>
+		<tr>
+			<td>Password</td><td><%= f.password_field :password %></td>
+		</tr>
+		<tr>
+			<td>Password confirmation</td><td><%= f.password_field :password_confirmation %></td>
+		</tr>
+		
+	</table>
+
+		<%= f.submit "Update user information", :class => "submit_button" %>
+
+<% end %>
 </div>
 
-<div class="middle-settings-section">
-	<div class="grid_6 alpha">
-		<div class="user-settings-table">
-				<%= form_for(@user) do |f| %>
-					<%= render 'shared/error_messages', :object => f.object %>
-				<table>
-				
-				<tr><div class="field">
-					<td><%= f.label :email %></td>
-					<td><%= f.text_field :email %></td>
-				</div></tr>
-				<tr class="password-division-bottom"><div class="field">
-					<td><%= f.label :password %></td>
-					<td><%= f.password_field :password %></td>
-				</div></tr>
-				<tr><div class="field">
-					<td><%= f.label :password_confirmation, "Confirmation" %></td>
-					<td><%= f.password_field :password_confirmation %></td>
-				</div></tr>
-				
-				</table>
-				<div class="actions">
-					<%= f.submit "Update", :class => "styled-button green-gradient" %>
-				</div>
-				<% end %>
-		</div>
-	</div>
-			
-	<div class="grid_6 omega">
-		<div class="change-gravatar">
-			<div class="image-capsule dark-gray-gradient">
-					<a href="http://gravatar.com/emails" target="_blank">Change image at Gravatar.com!</a>
-			</div>
-		</div>
-	</div>	
-</div>
+
+
 
 <script type="text/javascript">
 

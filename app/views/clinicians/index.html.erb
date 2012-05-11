@@ -1,12 +1,86 @@
 <div class="clinician_index">
 	
+	<div class="clinic_information">
+		<h1>General Information</h1>
+		<div class="clinic_picture">
+			CLINIC PHOTO
+		</div>
+		<table>
+			<tr>
+				<td>Clinic</td><td>ART Institute</td>
+			</tr>
+			<tr>
+				<td>Clinic Director</td><td></td>
+			</tr>
+			<tr>
+				<td>Administrative Director</td><td></td>
+			</tr>
+			<tr>
+				<td>Embryology Director</td><td></td>
+			</tr>
+			<tr>
+				<td>Head Nurse</td><td></td>
+			</tr>
+			<tr>
+				<td>Address 1</td><td></td>
+			</tr>
+			<tr>
+				<td>Address 2</td><td></td>
+			</tr>
+			<tr>
+				<td>Open Since</td><td></td>
+			</tr>
+			<tr>
+				<td>Employees</td><td><%="#{@clinicians.count}"%></td>
+			</tr>
+			<tr>
+				<td>Country</td><td>US</td>
+			</tr>
+			<tr>
+				<td>Website</td><td>
+					<%=link_to 'http://bestivf.org/', 'http://bestivf.org/'%>
+					</td>
+			</tr>
+		</table>
+	</div>
+	<br>
+	<br>
 	<div class="clinicians">
+		<h1>Employees<h1>
 		<table>
 			<% @clinicians.each do |clinician| %>
 			<tr><td><%= "#{clinician.display_name}"%></td>
 				<td><%="#{clinician.role}"%></td></tr>
 			<% end %>
 		</table>
+	</div>
+	
+	<div class="referrers">
+		<h1>Referrers</h1>
+		<table>
+			<% @referrers.each do |referrer| %>
+			<tr><td><%= "#{referrer.display_name}"%></td>
+				<td><%="Bethesda Gynecology"%></td></tr>
+			<% end %>
+		</table>
+	</div>
+	
+	<br>
+	<br>
+	
+	<div class="posts">
+		<h1>Message Board</h1>
+		<br>
+
+	<% @posts.each do |post| %>
+		
+		<div class="post_time">
+			<%= "#{post.display_time}"%>
+		</div>
+		<div class="clinician"><%= "#{post.clinician.display_name}" %></div> 							
+		<div class="content"><%= "#{post.content}"%></div>
+	
+	<% end %>
 	</div>
 	
 </div>

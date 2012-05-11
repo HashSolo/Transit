@@ -1,45 +1,40 @@
-<h1 class="admin_title">Add a New Patient to Case</h1>
+<div class="generic_form">
 <%= form_for ([@case, @patient]) do |f| %>
-<div class="grid_4 suffix_1 alpha">	
-	<div class="table_wrapper left_wrapper">
-	<table class="form">
+
+	<table>
+	
 		<tr>
-			<td class="label"><%= f.label :last_name %></td><td class="value"><%= f.text_field :last_name %></td>
+			<td>First Name</td><td><%= f.text_field :first_name %></td>
 		</tr>
 		<tr>
-			<td class="label"><%= f.label :first_name %></td><td class="value"><%= f.text_field :first_name %></td>
+			<td>Last Name</td><td><%= f.password_field :last_name %></td>
 		</tr>
 		<tr>
-			<td class="label"><%= f.label :sex %></td><td class="value"><%= f.radio_button :sex, 'Female' %>
+			<td>Sex</td><td><%= f.radio_button :sex, 'Female' %>
 			<%= label :sex_female, "Female"%>
 			<%= f.radio_button :sex, "Male" %>
 			<%= label :sex_male, "Male"%></td>
 		</tr>
 		<tr>
-			<td class="label"><%= f.label :date_of_birth %></td><td class="value"><%= f.date_select :date_of_birth %></td>
+			<td>Date of Birth</td><td><%= f.date_select :date_of_birth %></td>
 		</tr>
+		
+		<tr>
+			<td class="label">Occupation</td><td class="value"><%= f.text_field :occupation %></td>
+		</tr>
+		<tr>
+			<td class="label">Ethnicity</td><td class="value"><%= f.text_field :ethnicity %></td>
+		</tr>
+		<tr>
+			<td class="label">Marital Status</td><td class="value"><%= f.text_field :marital_status %></td>
+		</tr>
+		
 	</table>
-	</div>
-</div>
-<div class="grid_4 omega">
-	<div class="table_wrapper right_wrapper">
-	<table class="form">
-		<tr>
-			<td class="label"><%= f.label :occupation %></td><td class="value"><%= f.text_field :occupation %></td>
-		</tr>
-		<tr>
-			<td class="label"><%= f.label :ethnicity %></td><td class="value"><%= f.text_field :ethnicity %></td>
-		</tr>
-		<tr>
-			<td class="label"><%= f.label :marital_status %></td><td class="value"><%= f.text_field :marital_status %></td>
-		</tr>
-	</table>
-</div>
-</div>
-	<div class="referrer_submit_button">
-		<%= f.submit :value => "Update Patient" %>
-	</div>
+
+		<%= f.submit "Update patient", :class => "submit_button" %>
+
 <% end %>
+	</div>
 
 <script type="text/javascript">
 

@@ -1,0 +1,53 @@
+<div class="post_new">
+
+	<div class="posts">
+	<% @posts.each do |post| %>
+		
+		<div class="post_time">
+			<%= "#{post.display_time}"%>
+		</div>
+		<div class="clinician"><%= "#{post.clinician.display_name}" %></div> 							
+		<div class="content"><%= "#{post.content}"%></div>
+	
+	<% end %>
+	</div>
+
+	
+	<%= form_for ([@clinician, @post]) do |f| %>
+		<br>
+		<br>
+		<div>
+		<%= f.submit :value => "Post" %>
+		<%= f.text_field :content %>
+		</div>
+	
+	<% end %>
+	
+</div>
+
+<script type="text/javascript">
+
+var default_left;
+var default_right;
+
+$(document).ready(function(){
+
+	default_left=2;
+	default_right=2;
+	set_headers("Clinic Chat","Clinic Toolbar");
+	set_toolbar(default_left, default_right);
+	toolbar_type("clinic");
+	
+	
+});
+
+$('#toolbar_toggle').click(function(){
+	toolbar_toggle(default_left, default_right);	
+});
+
+$('#schedule_toggle').click(function(){
+	appointment_toggle(default_left, default_right);	
+});
+
+
+</script>

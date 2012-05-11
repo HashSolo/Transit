@@ -3,6 +3,8 @@ class CliniciansController < ApplicationController
     @title = "All Employees"
     @clinicians = Clinician.all
     @referrers = Referrer.all
+    @appointments = current_user.clinician.appointments
+    @posts = Post.all
   end
   
   def show
