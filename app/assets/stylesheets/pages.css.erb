@@ -251,18 +251,33 @@ div.float_right{float:right;}
 /*Home Page - User Show*/
 
 div.user_show {height:auto;}
-div.user_show div.profile {position:absolute;width:625px;display:inline-block;border:0px black solid;}
-div.user_show div.profile span {border:0px red solid;font-size:120px;}
-div.user_show div.profile h1 {position:absolute;left:125px;vertical-align:top;border:0px red solid;font-size:25px;display:inline-block;}
-div.user_show div.profile table {position:absolute;width:495px;left:0px;top:30px;border:0px red solid;font-size:26px;display:inline-block;}
-div.user_show div.profile table tr > td:last-child:{padding-left:5px;}
+div.user_show div.profile {position:absolute;width:32%;display:inline-block;border:1px red solid;}
+div.user_show div.profile span {border:1px red solid;font-size:60px;}
+div.user_show div.profile h1 {position:absolute;left:75px;vertical-align:top;border:0px red solid;font-size:12px;display:inline-block;}
+div.user_show div.profile table {position:absolute;width:200px;left:0px;top:15px;border:1px red solid;font-size:10px;display:inline-block;}
+div.user_show div.profile table tr > td:last-child {padding-left:5px;}
 div.user_show h1.home_header {font-size:18px;text-align:center;}
+
+div.user_show div.schedule_container {top:65px;border:0px red solid;width:32%;height:400px;position:absolute;}
+div.user_show h1.schedule_header {border:0px red solid;position:absolute;width:100%;display:inline-block;}
+div.user_show div.schedule {position:absolute;top:20px;height:490px;overflow:auto;}
+
+div.user_show div.case_container {left:33%;border:0px red solid;width:32%;height:230px;position:absolute;}
+div.user_show h1.case_header {border:0px red solid;position:absolute;width:100%;display:inline-block;}
+div.user_show div.cases 
+
+div.user_show div.chat_container {left:300px;height:100px;width:50px;border:5px red solid;position:absolute;display:inline-block;}
+div.user_show h1.chat_header {border:0px red solid;position:absolute;width:30%;display:inline-block;right:0px;}	
+div.user_show div.chat
+
+div.user_show div.exp {width:30%;display:inline-block;position:absolute;left:300px;top:300px;font-size:400px;border:4px green solid;}
+
 div.user_show div.schedule, 
 div.user_show div.cases, 
-div.user_show div.chat {overflow:auto;position:absolute;height:300px;width:33%;border:0px black solid;display:inline-block;}
-div.user_show div.schedule {text-decoration:none;top:125px;left:0px;;} 
-div.user_show div.cases {top:125px;left:315px;}
-div.user_show div.chat {right:0px;min-height:425px;}
+div.user_show div.chat {overflow:auto;position:absolute;width:30%;border:0px black solid;display:inline-block;}
+div.user_show div.schedule {width:100%;}
+div.user_show div.cases {height:190px;top:20px;width:100%;}
+div.user_show div.chat {right:0px;height:425px;}
 div.user_show div ul {list-style-type:none;}
 div.user_show div ul a li.list {color:black;}
 div.user_show div ul li.list {background:#eeeeee;border:0px #444444 solid;margin:5px 5px;}
@@ -277,16 +292,23 @@ div.user_show div ul li table tr > td:last-child {padding-left:5px;}
 div.user_show div table {font-size:12px;}
 div.user_show div table tr > td:first-child {font-weight:bold;}
 div.user_show div table tr > td:last-child {padding-left:50px;}
-div.user_show div.chat {font-size:12px;}
-div.user_show div.chat {min-height:400px;}
+div.user_show div.chat {top:20px;font-size:12px;}
+div.user_show div.chat {min-height:250px;}
 div.user_show div.chat div.chat_index {border:0px red solid;min-height:350px;} 
-div.user_show div.chat div.post {display:inline-block;width:100%;border-bottom:1px #aaaaaa solid;}
-div.user_show div.chat div.post div.post_time {font-size:8px;text-align:center;border:0px red solid;width:100%;display:inline-block;}
-div.user_show div.chat div.post div.clinician {font-weight:bold;float:left;border:0px red solid;width:20%;display:inline-block;}
-div.user_show div.chat div.post div.content {border:0px red solid;width:79%;display:inline-block;}
+div.user_show div.chat div.post {background:#eeeeee;margin:5px 5px;display:inline-block;width:98%;border-bottom:1px #aaaaaa solid;}
+div.user_show div.chat div.post div.picture {border:0px red solid;display:inline-block;width:12%;font-size:35px;}
+div.user_show div.chat div.post div.container {vertical-align:top;border:0px red solid;width:79%;display:inline-block;}
+div.user_show div.chat div.post div.container div.clinician {border:0px red solid;width:40%;display:inline-block;font-weight:bold;font-size:10px;float:left;}
+div.user_show div.chat div.post div.container div.post_time {vertical-align:top;border:0px red solid;width:40%;float:right;display:inline-block;text-align:right;font-size:8px;}
+div.user_show div.chat div.post div.container div.post_time span {font-size:80px;}
+div.user_show div.chat div.post div.container div.content {vertical-align:top;border:0px red solid;width:100%;display:inline-block;}
 div.user_show div.chat a div.post_link {margin-left:30%;border:0px red solid;text-align:center;text-decoration:none;display:inline-block;color:black;}
 div.user_show div.chat div.post_link:hover {background:#aaaaaa;}
 div.user_show div.chat div.post_link {float:center;}
+/*
+{top:25px;font-size:10px;font-family:courier;float:right;
+						left:830px;text-align:right;vertical-align:top;}
+*/
 
 /*New Case*/
 div.entries{padding:0px;margin:0px;position:relative;left:45px;width:97%;border:2px solid #aaaaaa;background:white;}

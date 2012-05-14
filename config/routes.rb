@@ -2,7 +2,7 @@ Transit::Application.routes.draw do
   resources :users
 	resources :sessions, :only => [:new, :create, :destroy]
 	resources :referrers
-	#resources :appointments	
+	resources :appointments, :only => [:index]	
 
 	resources :clinicians do
 	  resources :posts
